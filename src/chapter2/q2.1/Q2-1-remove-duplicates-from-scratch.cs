@@ -30,6 +30,27 @@ namespace Chapter2
                 node = node.next;
             }
         }
+
+        public static void removeDuplicatesNoBuffer(LinkedListNode head)
+        {
+            LinkedListNode currentNode = head;
+            LinkedListNode nextNode;
+            while (currentNode != null)
+            {
+                nextNode = currentNode.next;
+                while (nextNode != null)
+                {
+                    if (currentNode.data.Equals(nextNode.data))
+                    {
+                        nextNode.prev.next = nextNode.next;
+                        if (nextNode.next != null)
+                            nextNode.next.prev = nextNode.prev;
+                    }
+                    nextNode = nextNode.next;
+                }
+                currentNode = currentNode.next;
+            }
+        }
     }
 }
 

@@ -8,7 +8,8 @@ Continuous work in progress
 ### Prerequisites
 
 You need to install on your machine the current version of .NET Core 1.1 (1.0.0-preview2-1-003177)
-Verify your version running dotnet --version in a terminal/console window.
+
+Verify your version running `dotnet --version` in a terminal/console window.
 
 ### Build and Run
 

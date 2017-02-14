@@ -6,6 +6,7 @@ namespace Chapter2
     {
         // Summary:
         // Write code to remove duplicates from an unsorted linked list.
+        // Used built in LinkedList and LinkedListNode
         public static void removeDuplicates(LinkedList<int> list)
         {
             Dictionary<int, bool> d = new Dictionary<int, bool>();

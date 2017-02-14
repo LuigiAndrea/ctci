@@ -1,5 +1,6 @@
 // FOLLOW UP
 // How would you solve this problem if a temporary buffer is not allowed?
+// Used built in LinkedList and LinkedListNode
 
 using System.Collections.Generic;
 
@@ -32,7 +33,7 @@ namespace Chapter2
 
         //Different approach using the tail of the list
         public static void removeDuplicatesNoBuffer2(LinkedList<int> list)
-        {     
+        {
             LinkedListNode<int> head = list.First;
             LinkedListNode<int> tail = list.Last;
             LinkedListNode<int> previousNode;

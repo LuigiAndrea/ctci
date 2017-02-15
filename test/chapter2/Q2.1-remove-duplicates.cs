@@ -1,6 +1,7 @@
 using static Chapter2.Q2_1RemoveDuplicates;
 using static Chapter2.Q2_1RemoveDuplicates2;
 using LinkedListNode = Chapter2.LinkedListNode;
+using static Tests.Chapter2.Utilities;
 using static Chapter2.Q2_1RemoveDuplicatesFromScratch;
 using System.Collections.Generic;
 using Xunit;
@@ -178,21 +179,6 @@ namespace Tests.Chapter2
         {
             LinkedListNode node = buildLinkedListNodeFromArray(new int[] { });
             return new TheoryData<LinkedListNode>() { node };
-        }
-
-        private static LinkedListNode buildLinkedListNodeFromArray(int[] values)
-        {
-            if (values.Length == 0)
-                return null;
-
-            LinkedListNode node = new LinkedListNode(values[0], null, null);
-            LinkedListNode nodePrec = node;
-            for (int i = 1; i < values.Length; i++)
-            {
-                nodePrec = new LinkedListNode(values[i], nodePrec, null);
-            }
-
-            return node;
         }
     }
 }

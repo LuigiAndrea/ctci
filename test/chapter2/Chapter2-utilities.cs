@@ -1,7 +1,6 @@
 using System;
 using Chapter2;
 
-
 namespace Tests.Chapter2
 {
     internal class Utilities

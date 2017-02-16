@@ -1,4 +1,3 @@
-using System.Text;
 using static System.Console;
 
 namespace Chapter2

@@ -1,11 +1,10 @@
 using System;
-using Chapter2;
 
-namespace Tests.Chapter2
+namespace Chapter2
 {
-    internal class Utilities
+    public static class Utilities
     {
-        internal static T buildLinkedListNodeFromArray<T>(int[] values) where T : LinkedListNode, new()
+        public static T buildLinkedListNodeFromArray<T>(int[] values) where T : LinkedListNode, new()
         {
             if (values.Length == 0)
                 return null;

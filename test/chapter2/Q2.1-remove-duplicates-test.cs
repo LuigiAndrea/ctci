@@ -1,7 +1,7 @@
 using static Chapter2.Q2_1RemoveDuplicates;
 using static Chapter2.Q2_1RemoveDuplicates2;
 using LinkedListNode = Chapter2.DoubleLinkedListNode;
-using static Tests.Chapter2.Utilities;
+using static Chapter2.Utilities;
 using static Chapter2.Q2_1RemoveDuplicatesFromScratch;
 using System.Collections.Generic;
 using Xunit;

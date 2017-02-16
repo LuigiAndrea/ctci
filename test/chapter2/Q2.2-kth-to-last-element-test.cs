@@ -1,7 +1,7 @@
 using Singly = Chapter2.SinglyLinkedListNode;
 using Xunit;
 using static Chapter2.Q2_2KthToLastElement;
-using static Tests.Chapter2.Utilities;
+using static Chapter2.Utilities;
 
 
 namespace Tests.Chapter2

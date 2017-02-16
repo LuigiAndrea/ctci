@@ -1,6 +1,4 @@
 using System.Text;
-using static System.Console;
-using System;
 
 namespace Chapter2
 {

@@ -1,10 +1,6 @@
 using System;
 using Chapter2;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 11e0073be2f5e192bb23dc8bd5411f3441694b7d
 namespace Tests.Chapter2
 {
     internal class Utilities

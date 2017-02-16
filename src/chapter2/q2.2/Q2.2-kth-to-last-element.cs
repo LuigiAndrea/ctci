@@ -28,7 +28,7 @@ namespace Chapter2
 
             node = head;
             i = 0;
-            
+
             while (i != index)
             {
                 i++;
@@ -36,6 +36,27 @@ namespace Chapter2
             }
 
             return node;
+        }
+
+        public static Singly KLastElementTwoPointers(Singly head, int k)
+        {
+            Singly p1 = head;
+            Singly p2 = head;
+
+            for (int i = 0; i < k; i++)
+            {
+                if(p1==null) return null;
+                p1 = p1.next;
+            }
+
+            while (p1 != null)
+            {
+                p1 = p1.next; ;
+                p2 = p2.next;
+            }
+
+            return p2;
+
         }
     }
 }

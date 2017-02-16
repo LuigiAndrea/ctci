@@ -30,6 +30,30 @@ namespace Tests.Chapter2
             Singly node = KLastElement(head, k);
             Assert.True(node == null);
         }
+
+        [TheoryAttribute]
+        [MemberData("getLinkedList", MemberType = typeof(TestDataKLastElement))]
+        public static void KLastElementTwoPointersTest(Singly head, int k)
+        {
+            Singly node = KLastElementTwoPointers(head, k);
+            Assert.True(node.data.Equals(55));
+        }
+
+        [TheoryAttribute]
+        [MemberData("getLinkedList2", MemberType = typeof(TestDataKLastElement))]
+        public static void KLastElementTwoPointersTest2(Singly head, int k)
+        {
+            Singly node = KLastElementTwoPointers(head, k);
+            Assert.True(node.data.Equals(11));
+        }
+
+        [TheoryAttribute]
+        [MemberData("getLinkedList3", MemberType = typeof(TestDataKLastElement))]
+        public static void KLastElementTwoPointersTest3(Singly head, int k)
+        {
+            Singly node = KLastElementTwoPointers(head, k);
+            Assert.True(node == null);
+        }
     }
 
     class TestDataKLastElement
@@ -50,7 +74,7 @@ namespace Tests.Chapter2
         public static TheoryData<Singly, int> getLinkedList3()
         {
             Singly node = buildLinkedListNodeFromArray<Singly>(values);
-            return new TheoryData<Singly, int>() { { node, 13 },{node,0} };
+            return new TheoryData<Singly, int>() { { node, 13 }, { node, 0 } };
         }
     }
 }

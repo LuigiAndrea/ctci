@@ -1,6 +1,6 @@
 using static Chapter2.Q2_1RemoveDuplicates;
 using static Chapter2.Q2_1RemoveDuplicates2;
-using LinkedListNode = Chapter2.LinkedListNode;
+using LinkedListNode = Chapter2.DoubleLinkedListNode;
 using static Tests.Chapter2.Utilities;
 using static Chapter2.Q2_1RemoveDuplicatesFromScratch;
 using System.Collections.Generic;
@@ -162,7 +162,7 @@ namespace Tests.Chapter2
         public static TheoryData<LinkedListNode> getLinkedList()
         {
             int[] values = { 5, 15, 5, 15, 5 };
-            LinkedListNode node = buildLinkedListNodeFromArray(values);
+            LinkedListNode node = buildLinkedListNodeFromArray<LinkedListNode>(values);
 
             return new TheoryData<LinkedListNode>() { node };
         }
@@ -170,14 +170,14 @@ namespace Tests.Chapter2
         public static TheoryData<LinkedListNode> getLinkedList2()
         {
             int[] values = { 1, 2, 3 };
-            LinkedListNode node = buildLinkedListNodeFromArray(values);
+            LinkedListNode node = buildLinkedListNodeFromArray<LinkedListNode>(values);
 
             return new TheoryData<LinkedListNode>() { node };
         }
 
         public static TheoryData<LinkedListNode> getLinkedList3()
         {
-            LinkedListNode node = buildLinkedListNodeFromArray(new int[] { });
+            LinkedListNode node = buildLinkedListNodeFromArray<LinkedListNode>(new int[] { });
             return new TheoryData<LinkedListNode>() { node };
         }
     }

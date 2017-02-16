@@ -8,7 +8,7 @@ namespace Chapter2
 {
     public class Q2_1RemoveDuplicatesFromScratch
     {
-        public static void removeDuplicates(LinkedListNode node)
+        public static void removeDuplicates(DoubleLinkedListNode node)
         {
             Dictionary<int, bool> dic = new Dictionary<int, bool>();
             while (node != null)
@@ -31,10 +31,10 @@ namespace Chapter2
             }
         }
 
-        public static void removeDuplicatesNoBuffer(LinkedListNode head)
+        public static void removeDuplicatesNoBuffer(DoubleLinkedListNode head)
         {
-            LinkedListNode currentNode = head;
-            LinkedListNode nextNode;
+            DoubleLinkedListNode currentNode = head;
+            DoubleLinkedListNode nextNode;
             while (currentNode != null)
             {
                 nextNode = currentNode.next;

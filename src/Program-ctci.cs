@@ -1,9 +1,4 @@
-﻿using static System.Console;
-using LinkedListNode = Chapter2.LinkedListNode;
-//using System.Collections.Generic;
-//using System.Text;
-
-namespace Program.ctci
+﻿namespace Program.ctci
 {
     public class CrackingTheCodeInterview
     {

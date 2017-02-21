@@ -42,19 +42,20 @@ namespace Chapter2
 
         private static PartialSum addLists(Singly list1, Singly list2)
         {
+            PartialSum sum = null;
             //or list2
             if (list1 == null)
             {
-                PartialSum sum = new PartialSum();
+                sum = new PartialSum();
                 return sum;
             }
 
-            PartialSum psum = addLists(list1.next, list2.next);
-            int value = list1.data  + list2.data  + psum.carry;
-            Singly s = new Singly(value%10,null,psum.sum);
-            psum.sum=s;
-            psum.carry = value / 10;
-            return psum;
+            sum = addLists(list1.next, list2.next);
+            int value = list1.data + list2.data + sum.carry;
+            Singly s = new Singly(value % 10, null, sum.sum);
+            sum.sum = s;
+            sum.carry = value / 10;
+            return sum;
         }
 
         private static Singly padList(Singly l, int padding)

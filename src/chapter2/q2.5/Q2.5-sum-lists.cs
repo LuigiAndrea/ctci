@@ -18,12 +18,12 @@ namespace Chapter2
             if (list1 == null && list2 == null && carry == 0)
                 return null;
 
-            int value = ((list1!=null) ? list1.data : 0) + ((list2!=null) ? list2.data : 0) + carry;
-            Singly res = new Singly();
-            res.data = value % 10;
+            int value = ((list1 != null) ? list1.data : 0) +
+                        ((list2 != null) ? list2.data : 0) +
+                        carry;
 
-            Singly newNode = addListsCarry(list1?.next, list2?.next, value > 9 ? 1 : 0);
-            res.next = newNode;
+            Singly res = new Singly(value % 10, null,
+                        addListsCarry(list1?.next, list2?.next, value > 9 ? 1 : 0));
             return res;
         }
     }

@@ -6,7 +6,7 @@ namespace Chapter2
     {
         public static T buildLinkedListNodeFromArray<T>(int[] values) where T : LinkedListNode, new()
         {
-            if (values.Length == 0)
+            if (values==null || values.Length == 0)
                 return null;
             T node = (T)Activator.CreateInstance(typeof(T), new object[] { values[0], null, null });
             T nodePrec = node;

@@ -12,10 +12,11 @@ namespace Tests.Chapter2
         [MemberData("getMiddleNode", MemberType = typeof(TestDataMiddleNode))]
         public static void deleteMiddleNodeTest(Singly middleNode)
         {
-            Console.WriteLine(middleNode.data);
             Singly newNextNode = middleNode.next.next;
             Assert.True(middleNode.data.Equals(9));
+
             bool result = DeleteMiddleNode(middleNode);
+            
             Assert.True(result);
             Assert.True(middleNode.next == newNextNode);
             Assert.True(middleNode.data.Equals(-4));

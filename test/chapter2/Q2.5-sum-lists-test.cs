@@ -3,6 +3,7 @@ using Xunit;
 using static Chapter2.Utilities;
 using static Chapter2.Q2_5SumList;
 using static Chapter2.Q2_5SumListFollowUp;
+using static Chapter2.Q2_5SumListFollowUpIterative;
 using Singly = Chapter2.SinglyLinkedListNode;
 
 namespace Tests.Chapter2
@@ -15,6 +16,9 @@ namespace Tests.Chapter2
         {
             int[] result = new int[6] { 1, 0, 8, 7, 2, 2 };
             Singly list = addListsForward(l1, l2);
+            compareValues(list, result);
+
+            list = addListsForwardIte(l1, l2);
             compareValues(list, result);
 
             result = new int[5] { 8, 8, 0, 3, 1 };
@@ -30,6 +34,9 @@ namespace Tests.Chapter2
             Singly list = addListsForward(l1, l2);
             compareValues(list, result);
 
+            list = addListsForwardIte(l1, l2);
+            compareValues(list, result);
+
             result = new int[2] { 8, 1 };
             list = addLists(l1, l2);
             compareValues(list, result);
@@ -40,7 +47,8 @@ namespace Tests.Chapter2
         public static void sumLists3(Singly l1, Singly l2)
         {
             Assert.True(addListsForward(l1, l2) == null);
-            Assert.True(addLists(l1,l2)==null);
+            Assert.True(addListsForwardIte(l1, l2) == null);
+            Assert.True(addLists(l1, l2) == null);
         }
 
         private static void compareValues(Singly list, int[] res)

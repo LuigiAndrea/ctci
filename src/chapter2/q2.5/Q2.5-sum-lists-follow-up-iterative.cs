@@ -7,7 +7,7 @@ namespace Chapter2
 {
     public class Q2_5SumListFollowUpIterative
     {
-        public static Singly addListsForward2(Singly list1, Singly list2)
+        public static Singly addListsForwardIte(Singly list1, Singly list2)
         {
             int n1 = getNumber(list1);
             int n2 = getNumber(list2);

@@ -7,27 +7,31 @@ namespace Chapter2
 {
     public class Q2_8LoopDetection
     {
-        public static Singly loopDetection(Singly list)
+        public static Singly loopDetection(Singly listHead)
         {
-            if (list == null)
+            if (listHead == null)
             {
                 return null;
             }
 
-           Singly nodeCollision = findNode(list);
+            Singly nodeCollision = findCollisionNode(listHead);
 
-           while(nodeCollision != list){
-               nodeCollision=nodeCollision.next;
-               list = list.next;
-           }
+            if (nodeCollision == null)
+                return nodeCollision;
+
+            while (nodeCollision != listHead)
+            {
+                nodeCollision = nodeCollision.next;
+                listHead = listHead.next;
+            }
 
             return nodeCollision;
         }
 
-        private static Singly findNode(Singly list)
+        private static Singly findCollisionNode(Singly list)
         {
-            Singly p1 = new Singly(list.data,null,list.next);
-            Singly p2 = new Singly(list.data,null,list.next);
+            Singly p1 = new Singly(list.data, null, list.next);
+            Singly p2 = new Singly(list.data, null, list.next);
             Singly result = null;
             while (p1 != p2 && p1 != null && p2 != null)
             {

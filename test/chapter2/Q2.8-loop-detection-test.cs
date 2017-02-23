@@ -2,6 +2,7 @@ using Xunit;
 
 using static Chapter2.Utilities;
 using static Chapter2.Q2_8LoopDetection;
+using static Chapter2.Q2_8LoopDetection2;
 using Singly = Chapter2.SinglyLinkedListNode;
 
 namespace Tests.Chapter2
@@ -14,6 +15,9 @@ namespace Tests.Chapter2
         {
             Singly startLoopNode = loopDetection(list);
             Assert.True(startLoopNode.data.Equals(44));
+
+            startLoopNode = loopDetection2(list);
+            Assert.True(startLoopNode.data.Equals(44));
         }
 
         [TheoryAttribute]
@@ -21,6 +25,9 @@ namespace Tests.Chapter2
         public static void listLoopTest2(Singly list)
         {
             Singly startLoopNode = loopDetection(list);
+            Assert.True(startLoopNode == null);
+
+            startLoopNode = loopDetection2(list);
             Assert.True(startLoopNode == null);
         }
     }

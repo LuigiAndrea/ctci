@@ -15,7 +15,7 @@ namespace Chapter3
             private IndexArray[] idxStack;
 
             //Parameter: capacity
-            //  size of the array that have to contain the stacks
+            // Size of the array that have to contain the stacks
             public FixedMultiStack(int capacity)
             {
                 if (capacity < numberOfStack)

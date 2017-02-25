@@ -1,5 +1,6 @@
 //Three in One. Describe how you could use a single array to implement three stacks.
 using Chapter3.Exceptions;
+using System;
 
 namespace Chapter3
 {
@@ -17,9 +18,11 @@ namespace Chapter3
             //  size of the array that have to contain the stacks
             public FixedMultiStack(int capacity)
             {
+                if (capacity < numberOfStack)
+                    throw new ArgumentException("Capacity cannot be less than the number of the stacks available");
                 idxStack = new IndexArray[numberOfStack];
                 this.arrayCapacity = capacity;
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < numberOfStack; i++)
                 {
                     idxStack[i] = new IndexArray(i * capacity / numberOfStack,
                             (i + 1) * capacity / numberOfStack - 1);
@@ -59,7 +62,7 @@ namespace Chapter3
             public bool isEmpty(stacks s)
             {
                 IndexArray idx = idxStack[(int)s];
-                return idx.Current.Equals(0);
+                return idx.Current.Equals(idx.First);
             }
 
             public bool isFull(stacks s)

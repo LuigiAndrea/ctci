@@ -1,4 +1,5 @@
 using System;
+using Chapter3.Exceptions;
 
 namespace Chapter3
 {
@@ -38,7 +39,7 @@ namespace Chapter3
         public T remove()
         {
             if (first == null)
-                throw new Exception("Empty Queue");
+                throw new EmptyQueueException();
 
             T item = first.data;
             first = first.next;
@@ -50,7 +51,7 @@ namespace Chapter3
         public T peek()
         {
             if (first == null)
-                throw new Exception("Empty Queue");
+                throw new EmptyQueueException();
             return first.data;
         }
 

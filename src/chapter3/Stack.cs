@@ -1,4 +1,5 @@
 using System;
+using Chapter3.Exceptions;
 
 namespace Chapter3
 {
@@ -20,7 +21,7 @@ namespace Chapter3
         public T pop()
         {
             if (top == null)
-                throw new Exception("Empty Stack");
+                throw new EmptyStackException();
 
             T item = top.data;
             top = top.next;
@@ -37,7 +38,7 @@ namespace Chapter3
         public T peek()
         {
             if (top == null)
-                throw new Exception("Empty Stack");
+                throw new EmptyStackException();
             return top.data;
         }
 

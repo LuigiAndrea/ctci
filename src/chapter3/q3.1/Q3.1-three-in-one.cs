@@ -52,7 +52,7 @@ namespace Chapter3
                 {
                     int result = array[idx.Current - 1];
                     array[idx.Current] = 0;
-                    idx.Current = idx.Current.Equals(0) ? 0 : idx.Current - 1;
+                    idx.Current --;
                     return result;
                 }
                 else
@@ -73,8 +73,15 @@ namespace Chapter3
 
             public int peek(stacks s)
             {
-                IndexArray idx = idxStack[(int)s];
-                return array[idx.Current - 1];
+                if (!isEmpty(s))
+                {
+                    IndexArray idx = idxStack[(int)s];
+                    return array[idx.Current - 1];
+                }
+                else
+                {
+                    throw new EmptyStackException();
+                }
             }
 
             private class IndexArray

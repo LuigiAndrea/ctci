@@ -3,6 +3,7 @@ os: Visual Studio 2015
 build_script:
   - ps: dotnet restore
   - ps: dotnet build src
+  - ps: dotnet build test
   - ps: dotnet test test
 
 test: off 

@@ -1,3 +1,7 @@
+| Linux/OSX | Windows |
+| --- | --- |
+| [![Build Status](https://travis-ci.org/LuigiAndrea/ctci.png?branch=master)](https://travis-ci.org/LuigiAndrea/ctci) | [![Build status](https://ci.appveyor.com/api/projects/status/0dfaivsu6degg079/branch/master?svg=true)](https://ci.appveyor.com/project/LuigiAndrea/ctci) |
+
 CTCI
 ====
 

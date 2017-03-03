@@ -32,7 +32,7 @@ namespace Chapter2
         {
             Singly p1 = new Singly(list.data, null, list.next);
             Singly p2 = new Singly(list.data, null, list.next);
-            Singly result = null;
+
             while (p1 != p2 && p1 != null && p2 != null)
             {
                 p1 = p1?.next;
@@ -41,10 +41,10 @@ namespace Chapter2
 
             if (p1 == p2)
             {
-                result = p2;
+                return p2;
             }
 
-            return result;
+            return null;
         }
     }
 }

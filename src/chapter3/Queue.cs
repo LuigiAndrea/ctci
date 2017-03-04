@@ -1,4 +1,3 @@
-using System;
 using Chapter3.Exceptions;
 
 namespace Chapter3

@@ -1,5 +1,6 @@
 // Stack Min: How would you design a stack which, in addition to push and pop, has a function min
 // which returns the minimum element? Push, pop and min should all operate in 0(1) time.
+using Chapter3.Exceptions;
 
 namespace Chapter3
 {
@@ -11,11 +12,13 @@ namespace Chapter3
 
             new public void push(int item)
             {
+                base.push(item);
+
                 if (item <= min())
                 {
                     stackForMin.push(item);
                 }
-                base.push(item);
+
             }
 
             new public int pop()
@@ -29,6 +32,8 @@ namespace Chapter3
 
             public int min()
             {
+                if (base.isEmpty())
+                    throw new EmptyStackException();
                 return (stackForMin.isEmpty())
                         ? int.MaxValue
                         : stackForMin.peek();

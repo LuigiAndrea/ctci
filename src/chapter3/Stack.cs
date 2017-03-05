@@ -4,7 +4,7 @@ namespace Chapter3
 {
     public class Stack<T>
     {
-        private class StackNode
+        protected class StackNode
         {
             internal T data;
             internal StackNode next;
@@ -15,7 +15,7 @@ namespace Chapter3
             }
         }
 
-        private StackNode top;
+        protected StackNode top;
 
         public T pop()
         {

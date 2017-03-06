@@ -6,8 +6,8 @@ namespace Chapter3
     {
         protected class StackNode
         {
-            internal T data;
-            internal StackNode next;
+            public T data;
+            public StackNode next;
 
             public StackNode(T data)
             {

@@ -44,7 +44,7 @@ namespace Chapter3
                 return val;
             }
 
-            private StackWithCapacity getLastStack()
+            protected StackWithCapacity getLastStack()
             {
                 return listOfStacks.peek();
             }
@@ -98,7 +98,7 @@ namespace Chapter3
 
             new public int pop()
             {
-                this.count++;
+                this.count--;
                 return base.pop();
             }
 

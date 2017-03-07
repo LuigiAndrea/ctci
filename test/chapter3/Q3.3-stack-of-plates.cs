@@ -1,8 +1,9 @@
 using Xunit;
 
 using static Chapter3.Q3_3StackOfPlates;
+using Chapter3;
 using Chapter3.Exceptions;
-using System;
+
 namespace Tests.Chapter3
 {
     public class Q3_3

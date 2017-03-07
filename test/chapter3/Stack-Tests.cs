@@ -1,7 +1,7 @@
 using Xunit;
 using System;
-using Chapter3.Exceptions;
 
+using Chapter3.Exceptions;
 using Chapter3;
 
 namespace Tests.Chapter3

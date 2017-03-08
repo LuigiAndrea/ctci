@@ -3,6 +3,7 @@ using Xunit;
 using static Chapter3.Q3_3StackOfPlates;
 using Chapter3;
 using Chapter3.Exceptions;
+using System;
 
 namespace Tests.Chapter3
 {
@@ -41,6 +42,9 @@ namespace Tests.Chapter3
             DataSetOfStack dsm = new DataSetOfStack(3);
             var exception = Record.Exception(() => dsm.pop());
             Assert.IsType<EmptyStackException>(exception);
+
+            exception = Record.Exception(() => new DataSetOfStack(0));
+            Assert.IsType<ArgumentException>(exception);
         }
 
         class DataSetOfStack : SetOfStacks

@@ -5,6 +5,8 @@
 // SetOfStacks.push() and SetOfStacks. pop() should behave identically to a single stack 
 // (that is, pop() should return the same values as it would if there were just a single stack). 
 
+using System;
+
 namespace Chapter3
 {
     public class Q3_3StackOfPlates
@@ -16,6 +18,8 @@ namespace Chapter3
 
             public SetOfStacks(int capacityStacks)
             {
+                if (capacityStacks <= 0)
+                    throw new ArgumentException("The size of the stacks has to be positive");
                 this.capacityStacks = capacityStacks;
                 listOfStacks.push(new StackWithCapacity(capacityStacks));
             }
@@ -30,7 +34,7 @@ namespace Chapter3
                 {
                     stack = new StackWithCapacity(this.capacityStacks);
                     stack.push(item);
-                    listOfStacks.push(stack);         
+                    listOfStacks.push(stack);
                 }
             }
 

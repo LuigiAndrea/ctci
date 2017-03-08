@@ -79,6 +79,26 @@ namespace Chapter3
         {
             if (bottom == null)
                 throw new EmptyStackException();
+
+            int value = bottom.data;
+
+            bottom = bottom.above;
+            if (bottom != null)
+                bottom.below = null;
+            else
+            {
+                top = null;
+            }
+
+            this.count--;
+
+            return value;
+        }
+
+        public int peekBottom()
+        {
+            if (bottom == null)
+                throw new EmptyStackException();
             return bottom.data;
         }
 

@@ -21,12 +21,20 @@ namespace Tests.Chapter3
             stack.push(32);
             Assert.True(stack.isFull());
             Assert.True(stack.Count.Equals(3));
+
             Assert.True(stack.getBottom().Equals(41));
+            Assert.True(stack.peekBottom().Equals(4));
+            Assert.True(stack.Count.Equals(2));
 
             stack.pop();
             Assert.True(stack.peek().Equals(4));
+
             stack.pop();
-            stack.pop();
+            Assert.True(stack.Count.Equals(0));
+            Assert.True(stack.isEmpty());
+
+            stack.push(11);
+            Assert.True(stack.getBottom().Equals(11));
             Assert.True(stack.Count.Equals(0));
             Assert.True(stack.isEmpty());
         }
@@ -43,6 +51,9 @@ namespace Tests.Chapter3
             Assert.IsType<EmptyStackException>(ex);
 
             ex = Record.Exception(() => stack.getBottom());
+            Assert.IsType<EmptyStackException>(ex);
+
+            ex = Record.Exception(() => stack.peekBottom());
             Assert.IsType<EmptyStackException>(ex);
 
             for (int i = 0; i < 3; i++)

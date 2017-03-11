@@ -38,7 +38,7 @@ namespace Chapter3
         public T remove()
         {
             if (first == null)
-                throw new EmptyQueueException();
+                throw new EmptyQueueException(nameof(remove));
 
             T item = first.data;
             first = first.next;
@@ -50,7 +50,7 @@ namespace Chapter3
         public T peek()
         {
             if (first == null)
-                throw new EmptyQueueException();
+                throw new EmptyQueueException(nameof(peek));
             return first.data;
         }
 

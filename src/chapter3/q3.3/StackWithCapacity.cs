@@ -22,7 +22,7 @@ namespace Chapter3
         new public void push(int item)
         {
             if(this.isFull()){
-                throw new FullStackException();
+                throw new FullStackException(nameof(push));
             }
             
             this.count++;

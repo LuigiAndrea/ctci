@@ -20,7 +20,7 @@ namespace Chapter3
         public T pop()
         {
             if (top == null)
-                throw new EmptyStackException();
+                throw new EmptyStackException(nameof(pop));
 
             T item = top.data;
             top = top.next;
@@ -37,7 +37,7 @@ namespace Chapter3
         public T peek()
         {
             if (top == null)
-                throw new EmptyStackException();
+                throw new EmptyStackException(nameof(peek));
             return top.data;
         }
 

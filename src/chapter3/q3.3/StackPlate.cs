@@ -35,7 +35,7 @@ namespace Chapter3
         public int pop()
         {
             if (top == null)
-                throw new EmptyStackException();
+                throw new EmptyStackException(nameof(pop));
 
             int item = top.data;
             top = top.below;
@@ -51,7 +51,7 @@ namespace Chapter3
         public void push(int item)
         {
             if (this.isFull())
-                throw new FullStackException();
+                throw new FullStackException(nameof(push));
 
             StackNode node = new StackNode(item);
             node.below = top;
@@ -71,14 +71,14 @@ namespace Chapter3
         public int peek()
         {
             if (top == null)
-                throw new EmptyStackException();
+                throw new EmptyStackException(nameof(peek));
             return top.data;
         }
 
         public int getBottom()
         {
             if (bottom == null)
-                throw new EmptyStackException();
+                throw new EmptyStackException(nameof(getBottom));
 
             int value = bottom.data;
 
@@ -98,7 +98,7 @@ namespace Chapter3
         public int peekBottom()
         {
             if (bottom == null)
-                throw new EmptyStackException();
+                throw new EmptyStackException(nameof(peekBottom));
             return bottom.data;
         }
 

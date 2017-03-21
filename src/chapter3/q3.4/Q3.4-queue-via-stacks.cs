@@ -1,5 +1,7 @@
 // Implement a MyQueue class which implements a queue using two stacks
 
+using Chapter3.Exceptions;
+
 namespace Chapter3
 {
     public class Q3_4QueueViaStacks
@@ -22,19 +24,31 @@ namespace Chapter3
             public T remove()
             {
                 if (oldStack.isEmpty())
-                {
                     shiftStacks();
+
+                try
+                {
+                    return oldStack.pop();
                 }
-                return oldStack.pop();
+                catch (EmptyStackException)
+                {
+                    throw new EmptyQueueException(nameof(remove));
+                }
             }
 
             public T peek()
             {
                 if (oldStack.isEmpty())
-                {
                     shiftStacks();
+
+                try
+                {
+                    return oldStack.peek();
                 }
-                return oldStack.peek();
+                catch (EmptyStackException)
+                {
+                    throw new EmptyQueueException(nameof(peek));
+                }
             }
 
             private void shiftStacks()

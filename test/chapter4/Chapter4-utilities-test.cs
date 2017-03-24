@@ -6,11 +6,11 @@ using Chapter4;
 
 namespace Tests.Chapter4
 {
-    public class Chapter4UtilitiesTests
+    public class Chapter4UtilitiesTest
     {
         TreeBinaryNode<int> tbn;
 
-        public Chapter4UtilitiesTests()
+        public Chapter4UtilitiesTest()
         {
             createTree();
         }

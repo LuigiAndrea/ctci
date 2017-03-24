@@ -4,10 +4,10 @@ using Chapter4;
 
 namespace Tests.Chapter4
 {
-    public class TreeBinaryNodeTests
+    public class TreeBinaryNodeTest
     {
         [FactAttribute]
-        private static void TreeBinaryNodeTest()
+        private static void TreeBinaryNodeDefaultTest()
         {
             TreeBinaryNode<int> tbn = new TreeBinaryNode<int>(6);
             TreeBinaryNode<int> left = new TreeBinaryNode<int>(61);

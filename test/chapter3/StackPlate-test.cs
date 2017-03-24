@@ -6,7 +6,7 @@ using Chapter3;
 
 namespace Tests.Chapter3
 {
-    public class StackPlateTests
+    public class StackPlateTest
     {
         [FactAttribute]
         private static void stackPlateTest()

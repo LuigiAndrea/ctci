@@ -6,7 +6,7 @@ using Chapter3.Exceptions;
 
 namespace Tests.Chapter3
 {
-    public class QueueTests
+    public class QueueTest
     {
         [FactAttribute]
         private static void queueTest()

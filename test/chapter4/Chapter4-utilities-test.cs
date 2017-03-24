@@ -20,8 +20,7 @@ namespace Tests.Chapter4
         {
             int[] result = new int[6] { 3, 7, 2, 5, 9, 23 };
             List<int> list = t.getTraversalList(t.typeTraversal.preOrder, tbn);
-            for (int i = 0; i < list.Count; i++)
-                Assert.True(list[i].Equals(result[i]));
+            checkTree(list, result);
         }
 
         [FactAttribute]
@@ -29,8 +28,7 @@ namespace Tests.Chapter4
         {
             int[] result = new int[6] { 2, 7, 5, 3, 9, 23 };
             List<int> list = t.getTraversalList(t.typeTraversal.inOrder, tbn);
-            for (int i = 0; i < list.Count; i++)
-                Assert.True(list[i].Equals(result[i]));
+            checkTree(list, result);
         }
 
         [FactAttribute]
@@ -38,8 +36,7 @@ namespace Tests.Chapter4
         {
             int[] result = new int[6] { 2, 5, 7, 23, 9, 3 };
             List<int> list = t.getTraversalList(t.typeTraversal.postOrder, tbn);
-            for (int i = 0; i < list.Count; i++)
-                Assert.True(list[i].Equals(result[i]));
+            checkTree(list, result);
         }
 
         private void createTree()
@@ -50,6 +47,12 @@ namespace Tests.Chapter4
             tl.left = new TreeBinaryNode<int>(2);
             tl.right = new TreeBinaryNode<int>(5);
             tr.right = new TreeBinaryNode<int>(23);
+        }
+
+        private void checkTree(List<int> list, int[] result)
+        {
+            for (int i = 0; i < list.Count; i++)
+                Assert.True(list[i].Equals(result[i]));
         }
     }
 }

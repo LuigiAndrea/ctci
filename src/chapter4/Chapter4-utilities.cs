@@ -11,6 +11,7 @@ namespace Chapter4
 
             public static List<T> getTraversalList(typeTraversal type, TreeBinaryNode<T> t)
             {
+                clearList();
                 switch ((int)type)
                 {
                     case 0:
@@ -54,6 +55,11 @@ namespace Chapter4
                     postOrderTraversal(node.right);
                     listOrder.Add(node.value);
                 }
+            }
+
+            private static void clearList()
+            {
+                listOrder.Clear();
             }
         }
     }

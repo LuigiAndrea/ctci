@@ -4,14 +4,13 @@ namespace Chapter4
 {
     public static class Utilities
     {
-        public static class Traversal<T>
+        public class Traversal<T>
         {
             public enum typeTraversal { preOrder, inOrder, postOrder }
-            static List<T> listOrder = new List<T>();
+            List<T> listOrder = new List<T>();
 
-            public static List<T> getTraversalList(typeTraversal type, TreeBinaryNode<T> t)
+            public Traversal(typeTraversal type, TreeBinaryNode<T> t)
             {
-                clearList();
                 switch ((int)type)
                 {
                     case 0:
@@ -24,42 +23,51 @@ namespace Chapter4
                         postOrderTraversal(t);
                         break;
                 }
-
-                return listOrder;
             }
-            private static void inOrderTraversal(TreeBinaryNode<T> node)
+
+            public List<T> getTraversalList()
+            {
+                return this.listOrder;
+            }
+            private void inOrderTraversal(TreeBinaryNode<T> node)
             {
                 if (node != null)
                 {
                     inOrderTraversal(node.left);
-                    listOrder.Add(node.value);
+                    this.listOrder.Add(node.value);
                     inOrderTraversal(node.right);
                 }
             }
 
-            private static void preOrderTraversal(TreeBinaryNode<T> node)
+            private void preOrderTraversal(TreeBinaryNode<T> node)
             {
                 if (node != null)
                 {
-                    listOrder.Add(node.value);
+                    this.listOrder.Add(node.value);
                     preOrderTraversal(node.left);
                     preOrderTraversal(node.right);
                 }
             }
 
-            private static void postOrderTraversal(TreeBinaryNode<T> node)
+            private void postOrderTraversal(TreeBinaryNode<T> node)
             {
                 if (node != null)
                 {
                     postOrderTraversal(node.left);
                     postOrderTraversal(node.right);
-                    listOrder.Add(node.value);
+                    this.listOrder.Add(node.value);
                 }
             }
 
-            private static void clearList()
+            public bool EqualsToArray(int[] result)
             {
-                listOrder.Clear();
+                if (result==null || result.Length != this.listOrder.Count)
+                    return false;
+                for (int i = 0; i < this.listOrder.Count; i++)
+                    if (!this.listOrder[i].Equals(result[i]))
+                        return false;
+
+                return true;
             }
         }
     }

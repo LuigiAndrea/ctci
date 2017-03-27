@@ -4,6 +4,8 @@ using Chapter4;
 using static Chapter4.Utilities;
 using Type = Chapter4.Utilities.TypeTraversal;
 
+using static Tests.Chapter4.TestUtilities;
+
 namespace Tests.Chapter4
 {
     public class Chapter4UtilitiesTest
@@ -21,27 +23,27 @@ namespace Tests.Chapter4
         private void Chapter4PreOrderTest()
         {
             int[] result = new int[6] { 3, 7, 2, 5, 9, 23 };
-            checkValues(result, Type.preOrder, tbn);
+            checkValues(result, tbn, Type.preOrder);
         }
 
         [FactAttribute]
         private void Chapter4InOrderTest()
         {
             int[] result = new int[6] { 2, 7, 5, 3, 9, 23 };
-            checkValues(result, Type.inOrder, tbn);
+            checkValues(result, tbn, Type.inOrder);
         }
 
         [FactAttribute]
         private void Chapter4PostOrderTest()
         {
             int[] result = new int[6] { 2, 5, 7, 23, 9, 3 };
-            checkValues(result, Type.postOrder, tbn);
+            checkValues(result, tbn, Type.postOrder);
         }
 
         [FactAttribute]
         private void Chapter4EmptyAndNullTest()
         {
-            checkValues(new int[] { }, Type.preOrder, null);
+            checkValues(new int[] { }, null);
             Assert.Empty(new Traversal<int>(Type.preOrder, null).getTraversalList());
         }
 
@@ -49,14 +51,9 @@ namespace Tests.Chapter4
         private void Chapter4CharTest()
         {
             char[] result = new char[4] { 'R', 's', 'f', 'A' };
-            checkValues(result, Type.preOrder, charTree);
+            checkValues(result, charTree);
         }
 
-        private void checkValues<T>(T[] result, Type type, TreeBinaryNode<T> tree)
-        {
-            Traversal<T> t = new Traversal<T>(type, tree);
-            Assert.True(t.EqualsToArray(result));
-        }
         private void createTree()
         {
             TreeBinaryNode<int> tl = new TreeBinaryNode<int>(7);

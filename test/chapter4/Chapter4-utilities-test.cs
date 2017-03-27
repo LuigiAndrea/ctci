@@ -3,7 +3,6 @@ using Xunit;
 using Chapter4;
 using static Chapter4.Utilities;
 using Type = Chapter4.Utilities.TypeTraversal;
-using static Program.ctci.CrackingTheCodeInterview;
 
 namespace Tests.Chapter4
 {
@@ -16,7 +15,6 @@ namespace Tests.Chapter4
         {
             createTree();
             createCharTree();
-            PrintBinaryTree<char>.pretty(charTree);
         }
 
         [FactAttribute]

@@ -4,12 +4,12 @@ namespace Chapter4
 {
     public static class Utilities
     {
+        public enum TypeTraversal { preOrder, inOrder, postOrder }
         public class Traversal<T>
         {
-            public enum typeTraversal { preOrder, inOrder, postOrder }
             List<T> listOrder = new List<T>();
 
-            public Traversal(typeTraversal type, TreeBinaryNode<T> t)
+            public Traversal(TypeTraversal type, TreeBinaryNode<T> t)
             {
                 switch ((int)type)
                 {
@@ -59,9 +59,9 @@ namespace Chapter4
                 }
             }
 
-            public bool EqualsToArray(int[] result)
+            public bool EqualsToArray(T[] result)
             {
-                if (result==null || result.Length != this.listOrder.Count)
+                if (result == null || result.Length != this.listOrder.Count)
                     return false;
                 for (int i = 0; i < this.listOrder.Count; i++)
                     if (!this.listOrder[i].Equals(result[i]))

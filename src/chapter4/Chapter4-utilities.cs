@@ -4,6 +4,9 @@ namespace Chapter4
 {
     public static class Utilities
     {
+        /// <summary>
+        /// Let visit and store the nodes of a TreeBinaryNode in three different approaches.
+        ///</summary>
         public enum TypeTraversal { preOrder, inOrder, postOrder }
         public class Traversal<T>
         {
@@ -25,6 +28,7 @@ namespace Chapter4
                 }
             }
 
+            /// <returns>Return a list of TreeBinaryNode's values as they are visited</returns>
             public List<T> getTraversalList()
             {
                 return this.listOrder;
@@ -58,6 +62,12 @@ namespace Chapter4
                     this.listOrder.Add(node.value);
                 }
             }
+
+            /// <summary>
+            /// Determine if the values of this instance of TreeBinaryNode are the same as the values provided.
+            ///</summary>
+            /// <param name="result"> Array of values to compare.</param>
+            /// <returns>A bool value equals to True if all the values are the same.</returns>  
 
             public bool EqualsToArray(T[] result)
             {

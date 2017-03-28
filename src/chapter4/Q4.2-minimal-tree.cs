@@ -7,7 +7,7 @@ namespace Chapter4
     {
         public static TreeBinaryNode<int> MinimalTree(int[] array)
         {
-            return MinimalTree(array, 0, array.Length - 1);
+            return (array == null) ? null : MinimalTree(array, 0, array.Length - 1);
         }
 
         private static TreeBinaryNode<int> MinimalTree(int[] array, int start, int end)

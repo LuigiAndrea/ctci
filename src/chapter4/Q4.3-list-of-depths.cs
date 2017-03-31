@@ -2,7 +2,6 @@
 // at each depth (e.g., if you have a tree with depth D, you'll have D linked lists)
 
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Chapter4
 {
@@ -28,7 +27,7 @@ namespace Chapter4
             }
             else
             {
-                linkedList = lists.ElementAt(level);
+                linkedList = lists[level];
             }
 
             linkedList.AddLast(node);

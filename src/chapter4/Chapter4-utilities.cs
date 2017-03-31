@@ -69,8 +69,7 @@ namespace Chapter4
             /// Determine if the values of this instance of TreeBinaryNode are the same as the values provided.
             ///</summary>
             /// <param name="result"> Array of values to compare.</param>
-            /// <returns>A bool value equals to True if all the values are the same.</returns>  
-
+            /// <returns>A bool value equals to True if all the values are the same.</returns>
             public bool EqualsToArray(T[] result)
             {
                 if (result == null || result.Length != this.listOrder.Count)

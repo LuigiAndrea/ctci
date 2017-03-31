@@ -44,7 +44,7 @@ namespace Chapter4
                     inOrderTraversal(node.right);
                 }
             }
-            
+
             private void preOrderTraversal(TreeBinaryNode<T> node)
             {
                 if (node != null)
@@ -98,122 +98,124 @@ namespace Chapter4
         /// </code>
         /// </example>
         public static class PrintBinaryTree<T>
-    {
-        private static string nullNode = "[-,-]";
-        private class NodePrint
         {
-            public TreeBinaryNode<T> left;
-            public TreeBinaryNode<T> right;
-            public string pairDesc;
-
-            public NodePrint(TreeBinaryNode<T> left, TreeBinaryNode<T> right)
+            private static string nullNode = "[-,-]";
+            private class NodePrint
             {
-                bool leftisNull = left == null ? true : false;
-                bool rightIsNull = right == null ? true : false;
-                this.left = left;
-                this.right = right;
+                public TreeBinaryNode<T> left;
+                public TreeBinaryNode<T> right;
+                public string pairDesc;
 
-                if (!leftisNull && !rightIsNull)
+                public NodePrint(TreeBinaryNode<T> left, TreeBinaryNode<T> right)
                 {
-                    this.pairDesc = $"[{left.value},{right.value}] ";
-                }
-                else if (!leftisNull)
-                {
-                    this.pairDesc = $"[{left.value},-] ";
-                }
-                else if (!rightIsNull)
-                {
-                    this.pairDesc = $"[-,{right.value}] ";
-                }
-                else
-                {
-                    this.pairDesc = nullNode;
-                }
-            }
+                    bool leftisNull = left == null ? true : false;
+                    bool rightIsNull = right == null ? true : false;
+                    this.left = left;
+                    this.right = right;
 
-            public NodePrint(TreeBinaryNode<T> root)
-            {
-                this.left = root.left;
-                this.right = root.right;
-                this.pairDesc = $" --- {root.value} ---";
-            }
-        }
-        public static void pretty(TreeBinaryNode<T> node)
-        {
-            if (node == null)
-                return;
-
-            Queue<NodePrint> oldQ = new Queue<NodePrint>();
-            Queue<NodePrint> newQ = new Queue<NodePrint>();
-
-            oldQ.Enqueue(new NodePrint(node));
-
-            NodePrint root = oldQ.Dequeue();
-            WriteLine(root.pairDesc);
-            WriteLine();
-            oldQ.Enqueue(new NodePrint(root.left, root.right));
-
-            while (oldQ.Count > 0)
-            {
-                int ind = oldQ.Count;
-
-                for (int i = 0; i < ind; i++)
-                {
-                    NodePrint n = oldQ.Dequeue();
-
-                    Write(n.pairDesc);
-
-                    TreeBinaryNode<T> a = n.left;
-                    TreeBinaryNode<T> b = n.right;
-
-                    addElements(a, ref newQ);
-                    addElements(b, ref newQ);
-                }
-
-                WriteLine();
-                WriteLine();
-                ind = newQ.Count;
-
-                bool atLeastOne = false;
-                for (int i = 0; i < ind; i++)
-                {
-                    NodePrint n = newQ.Dequeue();
-                    if (n.pairDesc != nullNode)
+                    if (!leftisNull && !rightIsNull)
                     {
-                        atLeastOne = true;
+                        this.pairDesc = $"[{left.value},{right.value}] ";
+                    }
+                    else if (!leftisNull)
+                    {
+                        this.pairDesc = $"[{left.value},-] ";
+                    }
+                    else if (!rightIsNull)
+                    {
+                        this.pairDesc = $"[-,{right.value}] ";
+                    }
+                    else
+                    {
+                        this.pairDesc = nullNode;
+                    }
+                }
+
+                public NodePrint(TreeBinaryNode<T> root)
+                {
+                    this.left = root.left;
+                    this.right = root.right;
+                    this.pairDesc = $" --- {root.value} ---";
+                }
+            }
+            public static void pretty(TreeBinaryNode<T> node)
+            {
+                if (node == null)
+                    return;
+
+                Queue<NodePrint> oldQ = new Queue<NodePrint>();
+                Queue<NodePrint> newQ = new Queue<NodePrint>();
+
+                oldQ.Enqueue(new NodePrint(node));
+
+                NodePrint root = oldQ.Dequeue();
+                WriteLine(root.pairDesc);
+                WriteLine();
+
+                if (root.left != null && root.right != null)
+                    oldQ.Enqueue(new NodePrint(root.left, root.right));
+
+                while (oldQ.Count > 0)
+                {
+                    int ind = oldQ.Count;
+
+                    for (int i = 0; i < ind; i++)
+                    {
+                        NodePrint n = oldQ.Dequeue();
+
+                        Write(n.pairDesc);
+
+                        TreeBinaryNode<T> a = n.left;
+                        TreeBinaryNode<T> b = n.right;
+
+                        addElements(a, ref newQ);
+                        addElements(b, ref newQ);
                     }
 
-                    oldQ.Enqueue(n);
+                    WriteLine();
+                    WriteLine();
+                    ind = newQ.Count;
 
+                    bool atLeastOne = false;
+                    for (int i = 0; i < ind; i++)
+                    {
+                        NodePrint n = newQ.Dequeue();
+                        if (n.pairDesc != nullNode)
+                        {
+                            atLeastOne = true;
+                        }
+
+                        oldQ.Enqueue(n);
+
+                    }
+
+                    if (!atLeastOne)
+                        return;
                 }
-
-                if (!atLeastOne)
-                    return;
             }
-        }
 
-        private static void addElements(TreeBinaryNode<T> node, ref Queue<NodePrint> queue)
-        {
-            if (node != null)
+            private static void addElements(TreeBinaryNode<T> node, ref Queue<NodePrint> queue)
             {
-                if (node.left != null && node.right != null)
+                if (node != null)
                 {
-                    queue.Enqueue(new NodePrint(node.left, node.right));
-                }
-                else if (node.right != null)
-                {
-                    queue.Enqueue(new NodePrint(null, node.right));
-                }
-                else if (node.left != null)
-                {
-                    queue.Enqueue(new NodePrint(node.left, null));
-                }
-                else
-                {
-                    queue.Enqueue(new NodePrint(null, null));
+                    if (node.left != null && node.right != null)
+                    {
+                        queue.Enqueue(new NodePrint(node.left, node.right));
+                    }
+                    else if (node.right != null)
+                    {
+                        queue.Enqueue(new NodePrint(null, node.right));
+                    }
+                    else if (node.left != null)
+                    {
+                        queue.Enqueue(new NodePrint(node.left, null));
+                    }
+                    else
+                    {
+                        queue.Enqueue(new NodePrint(null, null));
+                    }
                 }
             }
         }
     }
-}
 }

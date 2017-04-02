@@ -10,7 +10,6 @@ namespace Chapter1
 
             foreach (char el in s)
             {
-
                 int index = GetCharacterValue(el);
                 bitVector = Toggle(bitVector, index);
             }

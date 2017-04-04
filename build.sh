@@ -11,8 +11,6 @@ fi
 
 dotnet restore
 dotnet build src
-dotnet build test
-dotnet test test
 
 revision=${TRAVIS_JOB_ID:=1}  
 revision=$(printf "%04d" $revision) 

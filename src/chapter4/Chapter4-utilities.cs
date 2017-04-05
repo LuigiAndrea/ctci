@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using static System.Math;
 using static System.Console;
 
 namespace Chapter4
@@ -215,6 +216,19 @@ namespace Chapter4
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Calculate the depth of a Binary Tree.
+        ///</summary>
+        /// <param name="node"> TreeBinaryNode. The root of the Binary Tree.</param>
+        /// <returns>The length of the Binary Tree.</returns>
+        public static int getDepth<T>(TreeBinaryNode<T> node)
+        {
+            if (node == null)
+                return -1;
+
+            return Max(getDepth(node.left), getDepth(node.right)) + 1;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 
+using Chapter4;
 using static Chapter4.Utilities;
 using Type = Chapter4.Utilities.TypeTraversal;
 
@@ -15,7 +16,7 @@ namespace Tests.Chapter4
         {
             tree = new Tree();
         }
-        
+
         public void Dispose()
         {
             tree.Dispose();
@@ -29,6 +30,7 @@ namespace Tests.Chapter4
         public Chapter4UtilitiesTest(Chapter4UtilitiesTestFixture fixture)
         {
             _fixture = fixture;
+
         }
 
         [FactAttribute]
@@ -65,6 +67,15 @@ namespace Tests.Chapter4
         {
             char[] result = new char[4] { 'R', 's', 'f', 'A' };
             checkValues(result, _fixture.tree.charTree);
+        }
+
+        [FactAttribute]
+        private void Chapter4getDepthTest()
+        {
+            Assert.True(getDepth(_fixture.tree.tbn).Equals(2));
+            Assert.True(getDepth(_fixture.tree.charTree).Equals(2));
+            Assert.True(getDepth(new TreeBinaryNode<int>(5)).Equals(0));
+            Assert.True(getDepth<int>(null).Equals(-1));
         }
     }
 }

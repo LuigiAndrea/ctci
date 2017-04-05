@@ -152,7 +152,7 @@ namespace Chapter4
                 WriteLine(root.pairDesc);
                 WriteLine();
 
-                if (root.left != null && root.right != null)
+                if (root.left != null || root.right != null)
                     oldQ.Enqueue(new NodePrint(root.left, root.right));
 
                 while (oldQ.Count > 0)

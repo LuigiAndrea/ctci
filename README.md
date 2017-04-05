@@ -17,19 +17,9 @@ Verify your version running `dotnet --version` in a terminal/console window.
 
 ### Build and Run
 
-To __build and run__ the sample, navigate to src and run the following commands:
+To __build and run all the tests__, navigate to test and run the following commands:
 ```
 dotnet restore
-
-dotnet build
-
-dotnet run
-```
-To __build and run all the tests__, navigate to the test directory and type the following commands:
-```
-dotnet restore
-
-dotnet build
 
 dotnet test
 ```

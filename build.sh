@@ -10,7 +10,7 @@ if [ -d $artifactsFolder ]; then
 fi
 
 dotnet restore
-dotnet build src
+dotnet test test
 
 revision=${TRAVIS_JOB_ID:=1}  
 revision=$(printf "%04d" $revision) 

@@ -10,7 +10,7 @@ if [ -d $artifactsFolder ]; then
 fi
 
 cd test
-dotnet test restore
+dotnet restore
 dotnet test
 
 revision=${TRAVIS_JOB_ID:=1}  

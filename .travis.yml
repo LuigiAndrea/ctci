@@ -6,8 +6,6 @@ env:
   - DOTNETCORE=1
 mono:
   - none
-os:
-  - linux
 branches:
   only:
     - master

@@ -11,7 +11,7 @@ Continuous work in progress
 
 ### Prerequisites
 
-You need to install on your machine the current version of .NET Core 1.1 (1.0.0-preview2-1-003177)
+You need to have installed .NET Core 1.1 on your machine.
 
 Verify your version running `dotnet --version` in a terminal/console window.
 
@@ -23,4 +23,4 @@ dotnet restore
 
 dotnet test
 ```
-The files are organized in a way that it is also possible to run the tests per class or namespace
+Use the --filter option of `dotnet test` to run specific tests

@@ -1,6 +1,6 @@
 os: Visual Studio 2017
 build_script:
-  - ps: cd test; Set-Location -Path ./test; dotnet restore; dotnet test
+  - ps: sl -Path ./test; dotnet restore; dotnet test
 
 test: off 
 version: "{build}"

@@ -1,9 +1,8 @@
 os: Visual Studio 2017
-before_build:
-- nuget restore
 build_script:
+  - ps: cd test
   - ps: dotnet restore
-  - ps: dotnet test test
+  - ps: dotnet test
 
 test: off 
 version: "{build}"

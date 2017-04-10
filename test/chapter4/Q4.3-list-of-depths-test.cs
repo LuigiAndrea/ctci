@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 using Xunit;
 
+using static Tests.Chapter4.TestUtilities;
 using Chapter4;
-using static Chapter4.Q4_2MinimalTree;
 
 namespace Tests.Chapter4
 {
@@ -12,7 +12,7 @@ namespace Tests.Chapter4
         [FactAttribute]
         private void ListOfDepthsTest()
         {
-            TreeBinaryNode<int> tree = createTree();
+            TreeBinaryNode<int> tree = createNumericBalancedTree(11);
             List<LinkedList<TreeBinaryNode<int>>> l = Q4_3ListOfDepths.getListOfDepths<int>(tree);
             List<LinkedList<TreeBinaryNode<int>>> l2 = Q4_3ListOfDepthsIterative.getListOfDepths<int>(tree);
             int[][] result = {
@@ -33,18 +33,6 @@ namespace Tests.Chapter4
             Assert.True(list.Count.Equals(0));
             List<LinkedList<TreeBinaryNode<int>>> list2 = Q4_3ListOfDepthsIterative.getListOfDepths<int>(null);
             Assert.True(list2.Count.Equals(0));
-        }
-
-        private TreeBinaryNode<int> createTree()
-        {
-            const int size = 11;
-            int[] array = new int[size];
-            for (int i = 0; i < size; i++)
-            {
-                array[i] = i;
-            }
-
-            return MinimalTree(array);
         }
 
         private void checkValues<T>(List<LinkedList<TreeBinaryNode<T>>> l, T[][] result)

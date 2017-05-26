@@ -34,5 +34,34 @@ namespace Tests.Chapter4
             return MinimalTree(array);
         }
 
+        /// <summary>
+        /// Create a Numeric Balanced Tree with also information about the parents.
+        /// </summary>
+        /// <param name="array">Array of nodes to use to build the tree.</param>
+        public static class buildParentTree
+        {
+            public static TreeBinaryParentNode<int> MinimalParentTree(int[] array)
+            {
+                return (array == null) ? null
+                                    : MinimalParentTree(array, 0, array.Length - 1, null);
+            }
+
+            private static TreeBinaryParentNode<int> MinimalParentTree(int[] array, int start, int end, TreeBinaryParentNode<int> parent)
+            {
+                TreeBinaryParentNode<int> currentParent = parent;
+
+                if (start > end)
+                    return null;
+
+                int midIndex = (start + end) / 2;
+                int middle = array[midIndex];
+                parent = new TreeBinaryParentNode<int>(middle, null, null, currentParent);
+                parent.left = MinimalParentTree(array, start, midIndex - 1, parent);
+                parent.right = MinimalParentTree(array, midIndex + 1, end, parent);
+
+                return parent;
+            }
+        }
+
     }
 }

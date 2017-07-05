@@ -19,7 +19,7 @@ namespace Chapter6
                 throw new ArgumentException();        
             
             totalNormalWeight = (bottle.count * (bottle.count + 1) / 2) * bottle.pill.normalWeight;
-            WriteLine("The bottle # {0} has the {1} {2}",getBottle(),diffWeight>0 ? "heavy" : "light", "pills");
+            WriteLine($"The bottle # {getBottle()} has the {(diffWeight>0 ? "heavy" : "light")} pills");
         }
         public static double getBottle()
         {

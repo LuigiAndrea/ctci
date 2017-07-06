@@ -12,7 +12,7 @@ namespace Chapter6
         public static int[] listOfPrimes(int max)
         {
             if(max<=0)
-                throw new ArgumentException("Mex has to be greater than 0");
+                throw new ArgumentException("Max has to be greater than 0");
 
             bool[] list = sieveOfEratosthenes(max);
             int count = list.Where(x => x==true).Count();

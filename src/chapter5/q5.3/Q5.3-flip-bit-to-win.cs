@@ -10,7 +10,7 @@ namespace Chapter5
             uint number = (uint)num;
 
             if (~number == 0)
-                return BitConverter.GetBytes(number).Length;
+                return BitConverter.GetBytes(number).Length*8;
 
             int currentLength = 0;
             int previousLength = 0;

@@ -12,12 +12,48 @@ namespace Chapter5
             int smallestNum = 0;
             int largestNum = 0;
 
-            largestNum = getLargestNumber(num);
-            smallestNum = getSmallestNumber(num);
+            smallestNum = getSmallestNumber(num,
+            (numberOnes, numberZeros) =>
+                        {
+                            int copy = num;
+                            copy &= -1 << numberZeros + numberOnes + 1;
+                            int mask = ((1 << numberOnes + 1) - 1) << (numberZeros - 1);
+                            copy |= mask;
+
+                            return copy;
+                        });
+
+            largestNum = getLargestNumber(num,
+            (numberOnes, numberZeros) =>
+                    {
+                        int copy = num;
+                        int rightmostNonTrailingZero = numberZeros + numberOnes;
+
+                        copy |= 1 << rightmostNonTrailingZero;
+                        copy &= -1 << rightmostNonTrailingZero;
+                        copy |= (1 << (numberOnes - 1)) - 1;
+                        return copy;
+                    });
+
             return (smallestNum, largestNum);
         }
 
-        private static int getLargestNumber(int num)
+        public static (int smallestNum, int largestNum) nextNumber2(int num)
+        {
+            if (num <= 0)
+                throw new ArgumentException(message: $"The number {nameof(num)} must be positive", paramName: nameof(num));
+
+            int smallestNum = 0;
+            int largestNum = 0;
+
+            largestNum = getLargestNumber(num,
+                (numberOnes, numberZeros) => num + (1 << numberZeros) + (1 << numberOnes - 1) - 1);
+
+            smallestNum = getSmallestNumber(num,
+                (numberOnes, numberZeros) => num + 1 - (1 << numberOnes) - (1 << (numberZeros - 1)));
+            return (smallestNum, largestNum);
+        }
+        private static int getLargestNumber(int num, Func<int, int, int> getNumber)
         {
             int temp = num;
             int numberZeros = 0;
@@ -38,16 +74,10 @@ namespace Chapter5
             if (numberOnes + numberZeros == 31)
                 return -1;
 
-            int rightmostNonTrailingZero = numberZeros + numberOnes;
-
-            num |= 1 << rightmostNonTrailingZero;
-            num &= -1 << rightmostNonTrailingZero;
-            num |= (1 << (numberOnes - 1)) - 1;
-            return num;
+            return getNumber(numberOnes, numberZeros);
 
         }
-
-        private static int getSmallestNumber(int num)
+        private static int getSmallestNumber(int num, Func<int, int, int> getNumber)
         {
             int temp = num;
             int numberZeros = 0;
@@ -67,13 +97,7 @@ namespace Chapter5
                 temp >>= 1;
             }
 
-            int rightmostNonTrailingOne = numberZeros + numberOnes;
-
-            num &= -1 << rightmostNonTrailingOne + 1;
-            int mask = ((1 << numberOnes + 1) - 1) << (numberZeros - 1);
-            num |= mask;
-
-            return num;
+            return getNumber(numberOnes, numberZeros);
         }
     }
 }

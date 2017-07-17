@@ -16,8 +16,8 @@ namespace Chapter5
             (numberOnes, numberZeros) =>
                         {
                             int copy = num;
-                            copy &= -1 << numberZeros + numberOnes + 1;
-                            int mask = ((1 << numberOnes + 1) - 1) << (numberZeros - 1);
+                            copy &= (-1 << (numberZeros + numberOnes + 1));
+                            int mask = ((1 << (numberOnes + 1)) - 1) << (numberZeros - 1);
                             copy |= mask;
 
                             return copy;
@@ -29,9 +29,9 @@ namespace Chapter5
                         int copy = num;
                         int rightmostNonTrailingZero = numberZeros + numberOnes;
 
-                        copy |= 1 << rightmostNonTrailingZero;
-                        copy &= -1 << rightmostNonTrailingZero;
-                        copy |= (1 << (numberOnes - 1)) - 1;
+                        copy |= (1 << rightmostNonTrailingZero);
+                        copy &= (-1 << rightmostNonTrailingZero);
+                        copy |= ((1 << (numberOnes - 1)) - 1);
                         return copy;
                     });
 
@@ -47,7 +47,7 @@ namespace Chapter5
             int largestNum = 0;
 
             largestNum = getLargestNumber(num,
-                (numberOnes, numberZeros) => num + (1 << numberZeros) + (1 << numberOnes - 1) - 1);
+                (numberOnes, numberZeros) => num - 1 + (1 << numberZeros) + (1 << (numberOnes - 1)));
 
             smallestNum = getSmallestNumber(num,
                 (numberOnes, numberZeros) => num + 1 - (1 << numberOnes) - (1 << (numberZeros - 1)));

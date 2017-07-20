@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using static System.Math;
 using static System.Console;
+using System;
+using System.Linq;
 
 namespace Chapter4
 {
@@ -229,6 +231,83 @@ namespace Chapter4
                 return -1;
 
             return Max(getDepth(node.left), getDepth(node.right)) + 1;
+        }
+
+        /// <summary>
+        /// Build a graph with no duplicates.
+        ///</summary>
+        /// <param name="adjacencyList"> A list that contains all the nodes to create.</param>
+        /// <returns>The Graph.</returns>
+        /// <example> 
+        /// This sample shows how to use the generic populateGraph method
+        /// <code>
+        // List<AdjacencyList<int>> listOfNodes = new List<AdjacencyList<int>>(){
+        //             new AdjacencyList<int>() { fatherName = 3, children = new List<int> { 13, 23, 5 } },
+        //             new AdjacencyList<int>() { fatherName = 13, children = new List<int> { 3 } },
+        //             new AdjacencyList<int>() { fatherName = 23, children = new List<int> { 13 } }
+        //     };
+        //     Call the method
+        //     populateGraph<int>(listOfNodes);
+        /// </code>
+        /// </example>
+        public static Graph<T> populateGraph<T>(List<AdjacencyList<T>> adjacencyList)
+        {
+            if (adjacencyList == null)
+                throw new ArgumentNullException(paramName: nameof(adjacencyList), message: $"{nameof(adjacencyList)} must not be null");
+
+            Dictionary<T, GraphNode<T>> instancesOfNodes = new Dictionary<T, GraphNode<T>>();
+            List<GraphNode<T>> allNodesGraph = new List<GraphNode<T>>();
+            GraphNode<T> father;
+
+            foreach (var graphNode in adjacencyList)
+            {
+                T keyInstances = graphNode.fatherName;
+                if (!instancesOfNodes.ContainsKey(keyInstances))
+                {
+                    father = new GraphNode<T>(graphNode.fatherName);
+                    instancesOfNodes.Add(keyInstances, father);
+                    allNodesGraph.Add(father);
+                }
+                else if (instancesOfNodes[keyInstances].adjacent.Count != 0)
+                {//It means that the adjacencyList contains the same node more times (noisy in the data provided)
+                    continue;
+                }
+
+                father = instancesOfNodes[keyInstances];
+                var size = graphNode?.children?.Count;
+
+                if (size == null) continue;
+
+                for (int i = 0; i < size; i++)
+                {
+                    T childName = graphNode.children.ElementAt(i);
+                    if (instancesOfNodes.ContainsKey(childName))
+                    {
+                        father.adjacent.Add(instancesOfNodes[childName]);
+                    }
+                    else //new child, we have to create a node
+                    {
+                        GraphNode<T> child = new GraphNode<T>(childName);
+                        father.adjacent.Add(child);
+                        instancesOfNodes.Add(child.value, child); //Added just for completeness
+                        allNodesGraph.Add(child);
+                    }
+                }
+            }
+
+            return new Graph<T>(allNodesGraph);
+        }
+
+        public class AdjacencyList<T>
+        {
+            public T fatherName;
+            public List<T> children;
+        }
+
+        //Deapth-First and Breadth-First Search and Print(Breadth-First)
+        public static void printGraph<T>(Graph<T> g)
+        {
+
         }
     }
 }

@@ -3,6 +3,7 @@ using static System.Math;
 using static System.Console;
 using System;
 using System.Linq;
+using System.Text;
 
 namespace Chapter4
 {
@@ -304,10 +305,40 @@ namespace Chapter4
             public List<T> children;
         }
 
-        //Deapth-First and Breadth-First Search and Print(Breadth-First)
-        public static void printGraph<T>(Graph<T> g)
-        {
 
+        /// <summary>
+        /// Print the Graph without the bells and whistles.
+        ///</summary>
+        /// <param name="graph"> The Graph object.</param>
+        public static void printGraph<T>(Graph<T> graph)
+        {
+            foreach (GraphNode<T> node in graph.nodes)
+            {
+                WriteLine($"Father: {node.value}");
+
+                Write($"Children: ");
+                if (node.adjacent.Count == 0)
+                {
+                    Write("None");
+                }
+                else
+                {
+                    Write(getString(node.adjacent));
+                }
+
+                WriteLine("\n");
+
+            }
+
+             string getString(List<GraphNode<T>> nodes){
+                 StringBuilder sb = new StringBuilder();
+                 foreach (GraphNode<T> child in nodes)
+                 {
+                     sb.Append($"{child.value}; ");
+                 }
+
+                 return $"[{sb.Remove(sb.Length-2,2).ToString()}]";
+             }
         }
     }
 }

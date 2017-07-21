@@ -330,15 +330,74 @@ namespace Chapter4
 
             }
 
-             string getString(List<GraphNode<T>> nodes){
-                 StringBuilder sb = new StringBuilder();
-                 foreach (GraphNode<T> child in nodes)
-                 {
-                     sb.Append($"{child.value}; ");
-                 }
+            string getString(List<GraphNode<T>> nodes)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (GraphNode<T> child in nodes)
+                {
+                    sb.Append($"{child.value}; ");
+                }
 
-                 return $"[{sb.Remove(sb.Length-2,2).ToString()}]";
-             }
+                return $"[{sb.Remove(sb.Length - 2, 2).ToString()}]";
+            }
+        }
+
+        /// <summary>
+        /// Search if there is a path between two nodes, depth-first-search
+        ///</summary>
+        /// <param name="startNode"> Source node.</param>
+        /// <param name="endNode"> Destination node.</param>
+        ///<returns>True if there is a connection between the two nodes, false otherwise</returns>
+        public static bool depthFirstSearch<T>(GraphNode<T> startNode, GraphNode<T> endNode)
+        {
+            if (startNode == null || endNode == null)
+                return false;
+
+            startNode.visited = true;
+            foreach (GraphNode<T> child in startNode.adjacent)
+            {
+                if (child.Equals(endNode))
+                    return true;
+                else
+                {
+                    if (child.visited == false)
+                        return depthFirstSearch(child, endNode);
+                }
+            }
+            return false;
+        }
+
+
+        /// <summary>
+        /// Search if there is a path between two nodes, breadh-first-search
+        ///</summary>
+        /// <param name="startNode"> Source node.</param>
+        /// <param name="endNode"> Destination node.</param>
+        ///<returns>True if there is a connection between the two nodes, false otherwise</returns>
+        public static bool breadhFirstSearch<T>(GraphNode<T> startNode, GraphNode<T> endNode)
+        {
+            if (startNode == null || endNode == null)
+                return false;
+
+            Queue<GraphNode<T>> q = new Queue<GraphNode<T>>();
+            q.Enqueue(startNode);
+
+            while (q.Count > 0)
+            {
+                GraphNode<T> father = q.Dequeue();
+                father.visited = true;
+                if (father.Equals(endNode))
+                    return true;
+
+                foreach (GraphNode<T> child in father.adjacent)
+                {
+                    if (child.visited == false)
+                    {
+                        q.Enqueue(child);
+                    }
+                }
+            }
+            return false;
         }
     }
 }

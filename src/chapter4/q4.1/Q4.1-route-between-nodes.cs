@@ -4,7 +4,7 @@ using static Chapter4.Utilities;
 
 namespace Chapter4
 {
-    public static class Q4_1RouteNodes
+    public static class Q4_1RouteBetweenNodes
     {
 
         public static bool searchRouteBetweenNodes<T>(GraphNode<T> startNode, GraphNode<T> endNode)

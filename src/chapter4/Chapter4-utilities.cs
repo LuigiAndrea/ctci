@@ -305,7 +305,6 @@ namespace Chapter4
             public List<T> children;
         }
 
-
         /// <summary>
         /// Print the Graph without the bells and whistles.
         ///</summary>
@@ -399,5 +398,7 @@ namespace Chapter4
             }
             return false;
         }
+
+        public static void cleanGrapth<T>(Graph<T> graph) => graph.nodes.ForEach(x => x.visited = false);
     }
 }

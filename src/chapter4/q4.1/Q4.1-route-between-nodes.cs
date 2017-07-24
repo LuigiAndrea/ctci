@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 using static Chapter4.Utilities;
@@ -21,10 +22,10 @@ namespace Chapter4
         ///<returns>A string representing the route between the two nodes</returns>
         public static string getRouteBetweenNodes<T>(GraphNode<T> startNode, GraphNode<T> endNode)
         {
-            string noRoute = $"No route between the nodes {startNode.value} and {endNode.value}";
-
             if (startNode == null || endNode == null)
-                return noRoute;
+                 throw new ArgumentNullException(paramName: $"{nameof(startNode)} or {nameof(endNode)}", message: $"{nameof(startNode)} or {nameof(endNode)} must not be null");;
+
+            string noRoute = $"No route between the nodes {startNode.value} and {endNode.value}";
 
             Queue<GraphNode<T>> q = new Queue<GraphNode<T>>();
             Queue<StringBuilder> listOfPaths = new Queue<StringBuilder>();

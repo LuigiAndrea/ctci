@@ -62,6 +62,5 @@ namespace Tests.Chapter4
                 return parent;
             }
         }
-
     }
 }

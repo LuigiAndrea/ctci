@@ -399,6 +399,10 @@ namespace Chapter4
             return false;
         }
 
+        /// <summary>
+        /// Set all nodes visited property to false. Reset to its Initial state 
+        ///</summary>
+        /// <param name="graph"> The Graph.</param>
         public static void cleanGrapth<T>(Graph<T> graph) => graph.nodes.ForEach(x => x.visited = false);
     }
 }

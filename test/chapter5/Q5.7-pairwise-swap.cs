@@ -12,9 +12,10 @@ namespace Tests.Chapter5
             (int input, int output)[] cases = {
                 (3726,3405),
                 (int.MaxValue,unchecked((int)0xbfffffff)),
-               (int.MinValue,0x40000000),
+                (int.MinValue,0x40000000),
                 (0,0),
                 (1,2),
+                (-1,-1)
                 };
 
             foreach (var test in cases)

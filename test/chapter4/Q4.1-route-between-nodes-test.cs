@@ -25,8 +25,6 @@ namespace Tests.Chapter4
         [FactAttribute]
         private void RouteBetweenNodesTest()
         {
-            printGraph(graph);
-
             GraphNode<int> node23 = graph.getNode(23);
             GraphNode<int> node15 = graph.getNode(15);
             

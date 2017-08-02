@@ -329,16 +329,8 @@ namespace Chapter4
 
             }
 
-            string getString(List<GraphNode<T>> nodes)
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (GraphNode<T> child in nodes)
-                {
-                    sb.Append($"{child.value}; ");
-                }
-
-                return $"[{sb.Remove(sb.Length - 2, 2).ToString()}]";
-            }
+            string getString(List<GraphNode<T>> nodes) => $"[{string.Join("; ", nodes.Select(x => x.value))}]";
+            
         }
 
         /// <summary>

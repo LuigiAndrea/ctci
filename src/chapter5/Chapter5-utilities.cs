@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using static System.Console;
 
 namespace Chapter5
@@ -60,5 +62,34 @@ namespace Chapter5
         /// <param name="index"> The Index. The index is zero based</param>
         /// <returns>The new number.</returns>
         public static int clearFromIndexThroughZero(int num, int index) => num & (-1 << index + 1);
+
+        /// <summary>
+        /// Print a monochorome screen
+        ///</summary>
+        /// <param name="screen"> Bytes of the monochrome screen</param>
+        /// <param name="width"> The width of the screen in pixels. Always divisible by 8</param>
+        public static void printMonochromeScreen(Byte[] screen, int width)
+        {
+            if (width % 8 != 0)
+                throw new ArgumentException(paramName: nameof(width), message: "The width must be divisible by 8");
+
+            int byteXRows = width / 8;
+
+            for (int row = 0; row < screen.Length; row++)
+            {
+                printByte(new BitArray(BitConverter.GetBytes(screen[row])));
+                if ((row + 1) % byteXRows == 0)
+                    WriteLine();
+            }
+        }
+
+        private static void printByte(BitArray byteToBit)
+        {
+            int size = byteToBit.Length;
+            for (var i = size - 1; i >= 0; i--)
+                Write((bool)byteToBit[i] ? 1 : 0);
+        }
     }
 }
+
+

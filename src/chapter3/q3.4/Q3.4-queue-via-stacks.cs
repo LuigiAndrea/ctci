@@ -16,11 +16,8 @@ namespace Chapter3
                 newStack = new Stack<T>();
             }
 
-            public void add(T element)
-            {
-                newStack.push(element);
-            }
-
+            public void add(T element) => newStack.push(element);
+            
             public T remove()
             {
                 if (oldStack.isEmpty())
@@ -30,9 +27,9 @@ namespace Chapter3
                 {
                     return oldStack.pop();
                 }
-                catch (EmptyStackException)
-                {
-                    throw new EmptyQueueException(nameof(remove));
+                catch (EmptyStackException ex)
+                {                 
+                    throw new EmptyQueueException($"{ex.TargetSite.DeclaringType.FullName} --> {nameof(remove)}");
                 }
             }
 
@@ -45,9 +42,9 @@ namespace Chapter3
                 {
                     return oldStack.peek();
                 }
-                catch (EmptyStackException)
+                catch (EmptyStackException ex)
                 {
-                    throw new EmptyQueueException(nameof(peek));
+                    throw new EmptyQueueException($"{ex.TargetSite.DeclaringType.FullName} --> {nameof(peek)}");
                 }
             }
 
@@ -59,10 +56,8 @@ namespace Chapter3
                 }
             }
 
-            public bool isEmpty()
-            {
-                return oldStack.isEmpty() && newStack.isEmpty();
-            }
+            public bool isEmpty() => oldStack.isEmpty() && newStack.isEmpty();
+            
         }
     }
 }

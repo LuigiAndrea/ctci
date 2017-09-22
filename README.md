@@ -10,9 +10,7 @@ Continuous work in progress
 
 ### Prerequisites
 
-You need to have installed .NET Core 1.1 on your machine.
-
-Verify your version running `dotnet --version` in a terminal/console window.
+You need to have installed .NET Core on your machine.
 
 ### Build and Run
 

@@ -6,13 +6,7 @@ namespace Chapter5
     {
         public static byte[] DrawLine(byte[] screen, int width, int x1, int x2, int y)
         {
-            //Check that the horizontal lines have the same number of pixels
-            if (width < 0 || width % 8 != 0 || (screen.Length % (width / 8)) != 0)
-                throw new ArgumentException(message: "The width is wrong for this screen ", paramName: nameof(width));
-            else if (y < 0 || y >= (screen.Length / (width / 8)))
-                throw new ArgumentException(message: "The y is out of range for this screen ", paramName: nameof(y));
-            else if (x1 < 0 || x2 < 0 || x1 > x2 || x1 > width || x2 > width)
-                throw new ArgumentException(message: "The position of the horizontal line is wrong ", paramName: $"({nameof(x1)},{nameof(x2)})");
+            checkArguments(screen, width, x1, x2, y);
 
             int currentLine = (width / 8) * y;
 
@@ -46,6 +40,19 @@ namespace Chapter5
             }
 
             return screen;
+        }
+
+        private static void checkArguments(byte[] screen, int width, int x1, int x2, int y)
+        {
+            if (screen == null)
+                throw new ArgumentNullException(message: "The screen cannot be null", paramName: nameof(screen));
+            //Check that the horizontal lines must have the same number of pixels
+            if (width < 0 || width % 8 != 0 || (screen.Length % (width / 8)) != 0)
+                throw new ArgumentException(message: "The width is wrong for this screen ", paramName: nameof(width));
+            else if (y < 0 || y >= (screen.Length / (width / 8)))
+                throw new ArgumentException(message: "The y is out of range for this screen ", paramName: nameof(y));
+            else if (x1 < 0 || x2 < 0 || x1 > x2 || x1 >= width || x2 >= width)
+                throw new ArgumentException(message: "The position of the horizontal line is wrong ", paramName: $"({nameof(x1)},{nameof(x2)})");
         }
     }
 }

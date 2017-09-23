@@ -8,11 +8,11 @@ namespace Tests.Chapter5
     public class Q5_8
     {
         const int width = 16;
+        byte[] screen = new byte[8] { 0b0001_0111, 0b0101_0000, 0b0000_0000, 0b1100_0000, 0b0000_0000, 0b0111_0000, 0b0000_0000, 0b1010_0000 };
 
         [FactAttribute]
-        private static void drawlineDifferentByteTest()
+        private void drawlineDifferentByteTest()
         {
-            byte[] screen = new byte[8] { 0b0001_0111, 0b0101_0000, 0b0000_0000, 0b1100_0000, 0b0000_0000, 0b0111_0000, 0b0000_0000, 0b1010_0000 };
             byte[] output = DrawLine(screen, width, 7, 15, 1);
             byte[] expectedByte = new byte[8] { 0b0001_0111,0b0101_0000,
                                                 0b0000_0001,0b1111_1111,
@@ -22,9 +22,8 @@ namespace Tests.Chapter5
         }
 
         [FactAttribute]
-        private static void drawlineSameByteTest()
+        private void drawlineSameByteTest()
         {
-            byte[] screen = new byte[8] { 0b0001_0111, 0b0101_0000, 0b0000_0000, 0b1100_0000, 0b0000_0000, 0b0111_0000, 0b0000_0000, 0b1010_0000 };
             byte[] output = DrawLine(screen, width, 0, 3, 2);
             byte[] expectedByte = new byte[8] { 0b0001_0111, 0b0101_0000,
                                                 0b0000_0000, 0b1100_0000,
@@ -34,9 +33,8 @@ namespace Tests.Chapter5
         }
 
         [FactAttribute]
-        private static void drawlineScreenNullExceptionTest()
+        private void drawlineScreenNullExceptionTest()
         {
-            byte[] screen = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
             Exception exception = Record.Exception(() => DrawLine(null, width, 0, 3, 2));
             Assert.IsType<ArgumentNullException>(exception);
         }
@@ -51,10 +49,8 @@ namespace Tests.Chapter5
         [InlineDataAttribute(width, -1, 10, 2)] //negative values
         [InlineDataAttribute(width, 1, 10, -2)]
         [InlineDataAttribute(width, 1, -10, 2)]
-        private static void drawlineArgumentExceptionsTest(int width, int x1, int x2, int y)
+        private void drawlineArgumentExceptionsTest(int width, int x1, int x2, int y)
         {
-            byte[] screen = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
-
             Exception actualException = Record.Exception(() => DrawLine(screen, width, x1, x2, y));
             Assert.IsType<ArgumentException>(actualException);
         }

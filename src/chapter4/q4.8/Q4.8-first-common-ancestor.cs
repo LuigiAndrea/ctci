@@ -7,6 +7,9 @@ namespace Chapter4
     {
         public static TreeBinaryParentNode<T> commonAncestor(TreeBinaryParentNode<T> firstNode, TreeBinaryParentNode<T> secondNode)
         {
+            if(firstNode == null || secondNode==null)
+                 throw new ArgumentNullException(message: "The nodes cannot be null", paramName: $"{nameof(firstNode)} or {nameof(secondNode)}");
+
             int diff = getDepth(firstNode) - getDepth(secondNode);
             TreeBinaryParentNode<T> deepNode = diff > 0 ? firstNode : secondNode;
             TreeBinaryParentNode<T> swallowNode = diff > 0 ? secondNode : firstNode;

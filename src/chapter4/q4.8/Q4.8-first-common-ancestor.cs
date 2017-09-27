@@ -17,7 +17,7 @@ namespace Chapter4
             deepNode = goingUp(deepNode, Math.Abs(diff));
 
             if(deepNode == swallowNode)
-                return swallowNode.parent;
+                return swallowNode;
 
             while(swallowNode !=null && deepNode!= swallowNode){
                 deepNode = deepNode.parent;

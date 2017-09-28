@@ -57,8 +57,6 @@ namespace Tests.Chapter4
          [FactAttribute]
         private void FCARootTest()
         {
-            TreeBinaryParentNode<int> tree2 = buildParentTree.MinimalParentTree(new int[5] { 1,1,2,3,0 });
-
             TreeBinaryParentNode<int> ancestor = commonAncestor(tree, tree);
             Assert.Equal(tree, ancestor);
         }

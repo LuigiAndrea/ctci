@@ -347,7 +347,7 @@ namespace Chapter4
             startNode.visited = true;
             foreach (GraphNode<T> child in startNode.adjacent)
             {
-                if (child.Equals(endNode))
+                if (child == endNode)
                     return true;
                 else
                 {
@@ -377,7 +377,7 @@ namespace Chapter4
             {
                 GraphNode<T> father = q.Dequeue();
                 father.visited = true;
-                if (father.Equals(endNode))
+                if (father == endNode)
                     return true;
 
                 foreach (GraphNode<T> child in father.adjacent)

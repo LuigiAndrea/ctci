@@ -2,7 +2,7 @@ using static System.Console;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BSTSequencesUtilities
+namespace Chapter4.BSTSequencesUtilities
 {
     public static class ExtensionsSequences
     {

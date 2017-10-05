@@ -97,13 +97,13 @@ namespace Chapter4
         ///  for (int i = 0; i<size; i++)
         ///      array[i] = i;
         ///  TreeBinaryNode<int> a = MinimalTree(array);
-        ///  PrintBinaryTree<int>.pretty(a);
+        ///  PrintBinaryTree.pretty<int>(a);
         /// </code>
         /// </example>
-        public static class PrintBinaryTree<T>
+        public static class PrintBinaryTree
         {
             private static string nullNode = "[-,-]";
-            private class NodePrint
+            private class NodePrint<T>
             {
                 public TreeBinaryNode<T> left;
                 public TreeBinaryNode<T> right;
@@ -141,22 +141,22 @@ namespace Chapter4
                     this.pairDesc = $" --- {root.value} ---";
                 }
             }
-            public static void pretty(TreeBinaryNode<T> node)
+            public static void pretty<T>(TreeBinaryNode<T> node)
             {
                 if (node == null)
                     return;
 
-                Queue<NodePrint> oldQ = new Queue<NodePrint>();
-                Queue<NodePrint> newQ = new Queue<NodePrint>();
+                Queue<NodePrint<T>> oldQ = new Queue<NodePrint<T>>();
+                Queue<NodePrint<T>> newQ = new Queue<NodePrint<T>>();
 
-                oldQ.Enqueue(new NodePrint(node));
+                oldQ.Enqueue(new NodePrint<T>(node));
 
-                NodePrint root = oldQ.Dequeue();
+                NodePrint<T> root = oldQ.Dequeue();
                 WriteLine(root.pairDesc);
                 WriteLine();
 
                 if (root.left != null || root.right != null)
-                    oldQ.Enqueue(new NodePrint(root.left, root.right));
+                    oldQ.Enqueue(new NodePrint<T>(root.left, root.right));
 
                 while (oldQ.Count > 0)
                 {
@@ -164,7 +164,7 @@ namespace Chapter4
 
                     for (int i = 0; i < ind; i++)
                     {
-                        NodePrint n = oldQ.Dequeue();
+                        NodePrint<T> n = oldQ.Dequeue();
 
                         Write(n.pairDesc);
 
@@ -182,7 +182,7 @@ namespace Chapter4
                     bool atLeastOne = false;
                     for (int i = 0; i < ind; i++)
                     {
-                        NodePrint n = newQ.Dequeue();
+                        NodePrint<T> n = newQ.Dequeue();
                         if (n.pairDesc != nullNode)
                         {
                             atLeastOne = true;
@@ -197,25 +197,25 @@ namespace Chapter4
                 }
             }
 
-            private static void addElements(TreeBinaryNode<T> node, ref Queue<NodePrint> queue)
+            private static void addElements<T>(TreeBinaryNode<T> node, ref Queue<NodePrint<T>> queue)
             {
                 if (node != null)
                 {
                     if (node.left != null && node.right != null)
                     {
-                        queue.Enqueue(new NodePrint(node.left, node.right));
+                        queue.Enqueue(new NodePrint<T>(node.left, node.right));
                     }
                     else if (node.right != null)
                     {
-                        queue.Enqueue(new NodePrint(null, node.right));
+                        queue.Enqueue(new NodePrint<T>(null, node.right));
                     }
                     else if (node.left != null)
                     {
-                        queue.Enqueue(new NodePrint(node.left, null));
+                        queue.Enqueue(new NodePrint<T>(node.left, null));
                     }
                     else
                     {
-                        queue.Enqueue(new NodePrint(null, null));
+                        queue.Enqueue(new NodePrint<T>(null, null));
                     }
                 }
             }
@@ -330,7 +330,7 @@ namespace Chapter4
             }
 
             string getString(List<GraphNode<T>> nodes) => $"[{string.Join("; ", nodes.Select(x => x.value))}]";
-            
+
         }
 
         /// <summary>
@@ -396,5 +396,13 @@ namespace Chapter4
         ///</summary>
         /// <param name="graph"> The Graph.</param>
         public static void cleanGrapth<T>(Graph<T> graph) => graph.nodes.ForEach(x => x.visited = false);
+    }
+
+    public static class ExtensionsTreeBinaryNode
+    {
+        public static void printDescending<T>(this TreeBinaryNode<T> tree)
+        {
+            Utilities.PrintBinaryTree.pretty(tree);
+        }
     }
 }

@@ -45,8 +45,18 @@ namespace Tests.Chapter4
         [FactAttribute]
         private void minimalTreeNullTest()
         {
-            TreeBinaryNode<int> tree = MinimalTree(null);
+            TreeBinaryNode<int> tree = MinimalTree<int>(null);
             Assert.Null(tree);
+        }
+
+        [FactAttribute]
+        private void minimalTreeCharTest()
+        {
+            char[] result = new char[5] { 'Z','C','A','B','E' };       
+            char[] array = new char[5] { 'C','A','Z','B','E' };
+            TreeBinaryNode<char> tree = MinimalTree(array);
+
+            checkValues(result, tree);
         }
 
         private int[] buildSortedArray(int size)

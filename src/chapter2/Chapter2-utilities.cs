@@ -4,15 +4,15 @@ namespace Chapter2
 {
     public static class Utilities
     {
-        public static T buildLinkedListNodeFromArray<T>(int[] values) where T : LinkedListNode, new()
+        public static TList buildLinkedListNodeFromArray<TList,TValues>(TValues[] values) where TList : LinkedListNode, new()
         {
             if (values==null || values.Length == 0)
                 return null;
-            T node = (T)Activator.CreateInstance(typeof(T), new object[] { values[0], null, null });
-            T nodePrec = node;
+            TList node = (TList)Activator.CreateInstance(typeof(TList), new object[] { values[0], null, null });
+            TList nodePrec = node;
             for (int i = 1; i < values.Length; i++)
             {
-                nodePrec = (T)Activator.CreateInstance(typeof(T), new object[] { values[i], nodePrec, null });
+                nodePrec = (TList)Activator.CreateInstance(typeof(TList), new object[] { values[i], nodePrec, null });
             }
             return node;
         }

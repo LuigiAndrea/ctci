@@ -36,7 +36,7 @@ namespace Tests.Chapter2
         public static TheoryData<Singly> getMiddleNode()
         {
             int[] values = { 11, 5, 15, 5, 7, 9, -4 };
-            Singly node = buildLinkedListNodeFromArray<Singly>(values);
+            Singly node = buildLinkedListNodeFromArray<Singly,int>(values);
 
             while (node.data != 9)
             {
@@ -49,7 +49,7 @@ namespace Tests.Chapter2
         public static TheoryData<Singly> getMiddleNode2()
         {
             int[] values = { 11, 5, 15, 5, 7, 9, -4 };
-            Singly node = buildLinkedListNodeFromArray<Singly>(values);
+            Singly node = buildLinkedListNodeFromArray<Singly,int>(values);
             Singly tail = node;
             while (tail.data != -4)
             {

@@ -162,7 +162,7 @@ namespace Tests.Chapter2
         public static TheoryData<LinkedListNode> getLinkedList()
         {
             int[] values = { 5, 15, 5, 15, 5 };
-            LinkedListNode node = buildLinkedListNodeFromArray<LinkedListNode>(values);
+            LinkedListNode node = buildLinkedListNodeFromArray<LinkedListNode,int>(values);
 
             return new TheoryData<LinkedListNode>() { node };
         }
@@ -170,14 +170,14 @@ namespace Tests.Chapter2
         public static TheoryData<LinkedListNode> getLinkedList2()
         {
             int[] values = { 1, 2, 3 };
-            LinkedListNode node = buildLinkedListNodeFromArray<LinkedListNode>(values);
+            LinkedListNode node = buildLinkedListNodeFromArray<LinkedListNode,int>(values);
 
             return new TheoryData<LinkedListNode>() { node };
         }
 
         public static TheoryData<LinkedListNode> getLinkedList3()
         {
-            LinkedListNode node = buildLinkedListNodeFromArray<LinkedListNode>(new int[] { });
+            LinkedListNode node = buildLinkedListNodeFromArray<LinkedListNode,int>(new int[] { });
             return new TheoryData<LinkedListNode>() { node };
         }
     }

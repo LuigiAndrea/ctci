@@ -42,7 +42,7 @@ namespace Tests.Chapter2
                 array[i] = i;
             }
 
-            Singly list = buildLinkedListNodeFromArray<Singly>(array);
+            Singly list = buildLinkedListNodeFromArray<Singly,int>(array);
             Result r = getStartLoopNodeandTail(list, 44);
             r.tail.next = r.startLoop;
 
@@ -51,8 +51,8 @@ namespace Tests.Chapter2
 
         public static TheoryData<Singly> getListWithoutLoop()
         {
-            Singly list = buildLinkedListNodeFromArray<Singly>(new int[] { 1, 2, 3, 4 });
-            Singly list2 = buildLinkedListNodeFromArray<Singly>(new int[0] { });
+            Singly list = buildLinkedListNodeFromArray<Singly,int>(new int[] { 1, 2, 3, 4 });
+            Singly list2 = buildLinkedListNodeFromArray<Singly,int>(new int[0] { });
             return new TheoryData<Singly>() { list, null, list2 };
         }
 

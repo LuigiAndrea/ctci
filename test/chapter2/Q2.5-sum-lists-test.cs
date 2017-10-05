@@ -65,25 +65,25 @@ namespace Tests.Chapter2
     {
         public static TheoryData<Singly, Singly> getLists()
         {
-            Singly l1 = buildLinkedListNodeFromArray<Singly>(new int[4] { 9, 9, 1, 1 });
-            Singly l2 = buildLinkedListNodeFromArray<Singly>(new int[5] { 9, 8, 8, 1, 1 });
+            Singly l1 = buildLinkedListNodeFromArray<Singly,int>(new int[4] { 9, 9, 1, 1 });
+            Singly l2 = buildLinkedListNodeFromArray<Singly,int>(new int[5] { 9, 8, 8, 1, 1 });
 
             return new TheoryData<Singly, Singly>() { { l1, l2 } };
         }
 
         public static TheoryData<Singly, Singly> getLists2()
         {
-            Singly l1 = buildLinkedListNodeFromArray<Singly>(new int[2] { 8, 1 });
-            Singly l2 = buildLinkedListNodeFromArray<Singly>(new int[0] { });
-            Singly l2_1 = buildLinkedListNodeFromArray<Singly>(null);
+            Singly l1 = buildLinkedListNodeFromArray<Singly,int>(new int[2] { 8, 1 });
+            Singly l2 = buildLinkedListNodeFromArray<Singly,int>(new int[0] { });
+            Singly l2_1 = buildLinkedListNodeFromArray<Singly,int>(null);
 
             return new TheoryData<Singly, Singly>() { { l1, l2 }, { l1, l2_1 } };
         }
 
         public static TheoryData<Singly, Singly> getLists3()
         {
-            Singly l1 = buildLinkedListNodeFromArray<Singly>(null);
-            Singly l2 = buildLinkedListNodeFromArray<Singly>(null);
+            Singly l1 = buildLinkedListNodeFromArray<Singly,string>(null);
+            Singly l2 = buildLinkedListNodeFromArray<Singly,string>(null);
 
             return new TheoryData<Singly, Singly>() { { l1, l2 } };
         }

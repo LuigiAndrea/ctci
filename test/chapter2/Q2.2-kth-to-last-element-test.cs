@@ -72,7 +72,7 @@ namespace Tests.Chapter2
     class TestDataKLastElement
     {
         static int[] values = { 11, 5, 15, 5, 7, 55 };
-        static Singly node = buildLinkedListNodeFromArray<Singly>(values);
+        static Singly node = buildLinkedListNodeFromArray<Singly,int>(values);
 
         public static TheoryData<Singly, int> getLinkedList()
         {

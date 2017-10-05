@@ -1,7 +1,7 @@
 using Xunit;
 
 using Chapter4;
-using static Tests.Chapter4.TestUtilities;
+using static Chapter4.Utilities;
 using cb = Chapter4.Q4_4CheckBalanced<int>;
 using cbTweak = Chapter4.Q4_4CheckBalancedTweak<int>;
 

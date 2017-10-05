@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using Xunit;
 
-using static Tests.Chapter4.TestUtilities;
+using static Chapter4.Utilities;
 using Chapter4;
 
 namespace Tests.Chapter4

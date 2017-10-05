@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using static System.Math;
 using static System.Console;
+using static Chapter4.Q4_2MinimalTree;
 using System;
 using System.Linq;
 using System.Text;
@@ -218,6 +219,48 @@ namespace Chapter4
                         queue.Enqueue(new NodePrint<T>(null, null));
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Create a Numeric Balanced Tree.
+        ///</summary>
+        /// <param name="size">Number of nodes contained in the tree.</param>
+        public static TreeBinaryNode<int> createNumericBalancedTree(int size)
+        {
+            int[] array = new int[size];
+            for (int i = 0; i < size; i++)
+                array[i] = i;
+
+            return MinimalTree(array);
+        }
+
+        /// <summary>
+        /// Create a Numeric Balanced Tree with also information about the parents.
+        /// </summary>
+        /// <param name="array">Array of nodes to use to build the tree.</param>
+        public static class BuildParentTree
+        {
+            public static TreeBinaryParentNode<T> MinimalParentTree<T>(T[] array)
+            {
+                return (array == null) ? null
+                                    : MinimalParentTree<T>(array, 0, array.Length - 1, null);
+            }
+
+            private static TreeBinaryParentNode<T> MinimalParentTree<T>(T[] array, int start, int end, TreeBinaryParentNode<T> parent)
+            {
+                TreeBinaryParentNode<T> currentParent = parent;
+
+                if (start > end)
+                    return null;
+
+                int midIndex = (start + end) / 2;
+                T middle = array[midIndex];
+                parent = new TreeBinaryParentNode<T>(middle, null, null, currentParent);
+                parent.left = MinimalParentTree<T>(array, start, midIndex - 1, parent);
+                parent.right = MinimalParentTree<T>(array, midIndex + 1, end, parent);
+
+                return parent;
             }
         }
 

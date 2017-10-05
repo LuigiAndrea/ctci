@@ -1,7 +1,7 @@
 using Xunit;
 
 using Chapter4;
-using static Tests.Chapter4.TestUtilities;
+using static Chapter4.Utilities;
 
 namespace Tests.Chapter4
 {
@@ -11,7 +11,7 @@ namespace Tests.Chapter4
         private static void TreeBinaryParentNodeBuildingTest()
         {
             int[] array = new int[5] { 1, 5, 12, 4, 14 };
-            TreeBinaryParentNode<int> tree = buildParentTree.MinimalParentTree(array);
+            TreeBinaryParentNode<int> tree = BuildParentTree.MinimalParentTree(array);
             TreeBinaryParentNode<int> child = (TreeBinaryParentNode<int>)tree.right.right;
 
             Assert.Equal(child.parent.value,4);

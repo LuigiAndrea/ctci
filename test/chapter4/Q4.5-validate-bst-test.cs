@@ -1,7 +1,7 @@
 using Xunit;
 
 using Chapter4;
-using static Tests.Chapter4.TestUtilities;
+using static Chapter4.Utilities;
 using bst = Chapter4.Q4_5ValidateBST;
 using bst2 = Chapter4.Q4_5ValidateBST2;
 

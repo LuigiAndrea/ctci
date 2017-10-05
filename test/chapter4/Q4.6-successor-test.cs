@@ -1,6 +1,7 @@
 using Xunit;
 
 using Chapter4;
+using static Chapter4.Utilities;
 using static Chapter4.Q4_6Successor<int>;
 using static Chapter4.Q4_6SuccessorIterative<int>;
 using static Tests.Chapter4.TestUtilities;
@@ -14,7 +15,7 @@ namespace Tests.Chapter4
         {
             int[] array = new int[7] { 1, 5, 12, 4, 14, 28, 33 };
 
-            TreeBinaryParentNode<int> tree = buildParentTree.MinimalParentTree(array);
+            TreeBinaryParentNode<int> tree = BuildParentTree.MinimalParentTree(array);
             TreeBinaryParentNode<int> n = (TreeBinaryParentNode<int>)tree.left.right;
 
             TreeBinaryParentNode<int> s = successor(n.parent);

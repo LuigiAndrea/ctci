@@ -12,8 +12,8 @@ namespace Tests.Chapter4
         [FactAttribute]
         private void checkBalancedTest()
         {
-            TreeBinaryNode<int> tree = createNumericBalancedTree(15); //Differ by 0
-            TreeBinaryNode<int> tree2 = createNumericBalancedTree(13); //Differ by 1
+            TreeBinaryNode<int> tree = CreateBinarySearchTree<TreeBinaryNode<int>>(15); //Differ by 0
+            TreeBinaryNode<int> tree2 = CreateBinarySearchTree<TreeBinaryNode<int>>(13); //Differ by 1
             TreeBinaryNode<int> tree3 = new TreeBinaryNode<int>(100, tree, new TreeBinaryNode<int>(700));
             TreeBinaryNode<int> tree4 = new TreeBinaryNode<int>(1);
 

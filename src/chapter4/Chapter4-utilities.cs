@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using static System.Math;
 using static System.Console;
 using static Chapter4.Q4_2MinimalTree;
+using static Chapter4.Utilities.BuildParentTree;
 using System;
 using System.Linq;
 using System.Text;
@@ -223,20 +224,22 @@ namespace Chapter4
         }
 
         /// <summary>
-        /// Create a Numeric Balanced Tree.
+        /// Create a Binary Search Tree.
         ///</summary>
         /// <param name="size">Number of nodes contained in the tree.</param>
-        public static TreeBinaryNode<int> createNumericBalancedTree(int size)
+        public static TTree CreateBinarySearchTree<TTree>(int size) where TTree : TreeBinaryNode<int>
         {
             int[] array = new int[size];
             for (int i = 0; i < size; i++)
                 array[i] = i;
 
-            return MinimalTree(array);
+            return (TTree)((typeof(TTree).GetGenericArguments()[0] == typeof(TreeBinaryNode<int>))
+                   ? MinimalTree(array)
+                   : MinimalParentTree(array));
         }
 
         /// <summary>
-        /// Create a Numeric Balanced Tree with also information about the parents.
+        /// Create a Balanced Tree with also information about the parents.
         /// </summary>
         /// <param name="array">Array of nodes to use to build the tree.</param>
         public static class BuildParentTree

@@ -12,7 +12,7 @@ namespace Tests.Chapter4
         [FactAttribute]
         private void validateBSTTest()
         {
-            TreeBinaryNode<int> tree = createNumericBalancedTree(13);
+            TreeBinaryNode<int> tree = CreateBinarySearchTree<TreeBinaryNode<int>>(13);
             TreeBinaryNode<int> tree2 = new TreeBinaryNode<int>(13, null, tree.right);
 
             Assert.True(bst.isBST(tree));

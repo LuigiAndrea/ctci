@@ -12,7 +12,7 @@ namespace Tests.Chapter4
         [FactAttribute]
         private void ListOfDepthsTest()
         {
-            TreeBinaryNode<int> tree = createNumericBalancedTree(11);
+            TreeBinaryNode<int> tree = CreateBinarySearchTree<TreeBinaryNode<int>>(11);
             List<LinkedList<TreeBinaryNode<int>>> l = Q4_3ListOfDepths.getListOfDepths<int>(tree);
             List<LinkedList<TreeBinaryNode<int>>> l2 = Q4_3ListOfDepthsIterative.getListOfDepths<int>(tree);
             int[][] result = {

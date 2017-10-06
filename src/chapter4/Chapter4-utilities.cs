@@ -98,7 +98,7 @@ namespace Chapter4
         ///  int[] array = new int[size];
         ///  for (int i = 0; i<size; i++)
         ///      array[i] = i;
-        ///  TreeBinaryNode<int> a = MinimalTree(array);
+        ///  TreeBinaryNode<int> a = CreateBinaryTree<TreeBinaryNode<int>,int>(array);
         ///  PrintBinaryTree.pretty<int>(a);
         /// </code>
         /// </example>
@@ -237,6 +237,12 @@ namespace Chapter4
                    ? MinimalTree(array)
                    : MinimalParentTree(array));
         }
+
+         public static TTree CreateBinaryTree<TTree,T>(T[] values) where TTree : TreeBinaryNode<T> =>
+                (TTree)((typeof(TTree).GetGenericArguments()[0] == typeof(TreeBinaryNode<T>))
+                    ? MinimalTree(values)
+                    : MinimalParentTree(values));
+        
 
         /// <summary>
         /// Create a Balanced Tree with also information about the parents.

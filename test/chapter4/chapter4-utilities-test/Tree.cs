@@ -1,6 +1,7 @@
 using System;
 
 using Chapter4;
+using static Chapter4.Utilities;
 
 namespace Tests.Chapter4
 {
@@ -10,28 +11,10 @@ namespace Tests.Chapter4
         public TreeBinaryNode<char> charTree { get; private set; }
         public Tree()
         {
-            createTree();
-            createCharTree();
+            tbn = CreateBinaryTree<TreeBinaryNode<int>,int>(new int[] { 7,2,3,5,9,23 });
+            charTree = CreateBinaryTree<TreeBinaryNode<char>,char>(new char[] { 'A','B','C','D' });
         }
-
-        private void createTree()
-        {
-            TreeBinaryNode<int> tl = new TreeBinaryNode<int>(7);
-            TreeBinaryNode<int> tr = new TreeBinaryNode<int>(9);
-            tbn = new TreeBinaryNode<int>(3, tl, tr);
-            tl.left = new TreeBinaryNode<int>(2);
-            tl.right = new TreeBinaryNode<int>(5);
-            tr.right = new TreeBinaryNode<int>(23);
-        }
-
-        private void createCharTree()
-        {
-            TreeBinaryNode<char> tl = new TreeBinaryNode<char>('s');
-            TreeBinaryNode<char> tr = new TreeBinaryNode<char>('A');
-            charTree = new TreeBinaryNode<char>('R', tl, tr);
-            tl.left = new TreeBinaryNode<char>('f');
-        }
-
+        
         public void Dispose()
         {
         }

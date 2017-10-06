@@ -36,37 +36,30 @@ namespace Tests.Chapter4
         [FactAttribute]
         private void Chapter4PreOrderTest()
         {
-            int[] result = new int[6] { 3, 7, 2, 5, 9, 23 };
+            int[] result = new int[6] { 3, 7, 2, 9, 5, 23 };
             checkValues(result, _fixture.tree.tbn, Type.preOrder);
         }
 
         [FactAttribute]
         private void Chapter4InOrderTest()
         {
-            int[] result = new int[6] { 2, 7, 5, 3, 9, 23 };
+            int[] result = new int[6] { 7,2,3,5,9,23 };
             checkValues(result, _fixture.tree.tbn, Type.inOrder);
         }
 
         [FactAttribute]
         private void Chapter4PostOrderTest()
         {
-            int[] result = new int[6] { 2, 5, 7, 23, 9, 3 };
+            int[] result = new int[6] { 2,7, 5, 23, 9, 3 };
             checkValues(result, _fixture.tree.tbn, Type.postOrder);
 
         }
 
         [FactAttribute]
-        private void Chapter4EmptyAndNullTest()
+        private void Chapter4EmptyAndNullTraversalTest()
         {
             checkValues(new int[] { }, null);
             Assert.Empty(new Traversal<int>(Type.preOrder, null).getTraversalList());
-        }
-
-        [FactAttribute]
-        private void Chapter4CharTest()
-        {
-            char[] result = new char[4] { 'R', 's', 'f', 'A' };
-            checkValues(result, _fixture.tree.charTree);
         }
 
         [FactAttribute]

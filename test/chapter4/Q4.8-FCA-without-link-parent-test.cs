@@ -2,7 +2,7 @@ using Xunit;
 
 using Chapter4;
 using static Chapter4.Q4_8FCAWithoutLinkParent<int>;
-using static Chapter4.Q4_2MinimalTree;
+using static Chapter4.Utilities;
 using System;
 
 namespace Tests.Chapter4
@@ -10,7 +10,7 @@ namespace Tests.Chapter4
     public class Q4_8WithoutLinkParent
     {
         static int[] array = new int[10] { 1, 5, 12, 4, 14, 28, 33, 3, 9, 19 };
-        static TreeBinaryNode<int> tree = MinimalTree(array);
+        static TreeBinaryNode<int> tree = CreateBinaryTree<TreeBinaryNode<int>,int>(array);
 
         [FactAttribute]
         private void FCASameLevelWithoutLinkParentTest()
@@ -46,7 +46,7 @@ namespace Tests.Chapter4
         [FactAttribute]
         private void FCANodeOfAnotherTreeWithoutLinkParentTest()
         {
-            TreeBinaryNode<int> tree2 = MinimalTree(new int[5] { 1, 1, 2, 3, 0 });
+            TreeBinaryNode<int> tree2 = CreateBinaryTree<TreeBinaryNode<int>,int>(new int[5] { 1, 1, 2, 3, 0 });
 
             TreeBinaryNode<int> firstNode = tree.right;
             TreeBinaryNode<int> secondtNode = tree2.left;

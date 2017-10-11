@@ -37,21 +37,21 @@ namespace Tests.Chapter4
         private void Chapter4PreOrderTest()
         {
             int[] result = new int[6] { 3, 7, 2, 9, 5, 23 };
-            checkValues(result, _fixture.tree.tbn, Type.preOrder);
+            checkValues(result, _fixture.tree.NumericTree, Type.preOrder);
         }
 
         [FactAttribute]
         private void Chapter4InOrderTest()
         {
-            int[] result = new int[6] { 7,2,3,5,9,23 };
-            checkValues(result, _fixture.tree.tbn, Type.inOrder);
+            int[] result = new int[6] { 7, 2, 3, 5, 9, 23 };
+            checkValues(result, _fixture.tree.NumericTree, Type.inOrder);
         }
 
         [FactAttribute]
         private void Chapter4PostOrderTest()
         {
-            int[] result = new int[6] { 2,7, 5, 23, 9, 3 };
-            checkValues(result, _fixture.tree.tbn, Type.postOrder);
+            int[] result = new int[6] { 2, 7, 5, 23, 9, 3 };
+            checkValues(result, _fixture.tree.NumericTree, Type.postOrder);
 
         }
 
@@ -65,10 +65,25 @@ namespace Tests.Chapter4
         [FactAttribute]
         private void Chapter4getDepthTest()
         {
-            Assert.True(getDepth(_fixture.tree.tbn).Equals(2));
-            Assert.True(getDepth(_fixture.tree.charTree).Equals(2));
+            Assert.True(getDepth(_fixture.tree.NumericTree).Equals(2));
+            Assert.True(getDepth(_fixture.tree.CharTree).Equals(2));
             Assert.True(getDepth(new TreeBinaryNode<int>(5)).Equals(0));
             Assert.True(getDepth<int>(null).Equals(-1));
+        }
+
+
+        [FactAttribute]
+        private void Chapter4createBinaryTree()
+        {
+            Assert.Equal(typeof(TreeBinaryNode<int>), _fixture.tree.NumericTree.GetType());
+            Assert.Equal(typeof(TreeBinaryParentNode<int>), _fixture.tree.ParentTree.GetType());
+        }
+
+        [FactAttribute]
+        private void Chapter4CreateBinarySearchTreeTree()
+        {
+            Assert.Equal(typeof(TreeBinaryNode<int>), _fixture.tree.SearchTree.GetType());
+            Assert.Equal(typeof(TreeBinaryParentNode<int>), _fixture.tree.SearchParentTree.GetType());
         }
     }
 }

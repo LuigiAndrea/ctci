@@ -233,13 +233,13 @@ namespace Chapter4
             for (int i = 0; i < size; i++)
                 array[i] = i;
 
-            return (TTree)((typeof(TTree).GetGenericArguments()[0] == typeof(TreeBinaryNode<int>))
+            return (TTree)((typeof(TTree) == typeof(TreeBinaryNode<int>))
                    ? MinimalTree(array)
                    : MinimalParentTree(array));
         }
 
          public static TTree CreateBinaryTree<TTree,T>(T[] values) where TTree : TreeBinaryNode<T> =>
-                (TTree)((typeof(TTree).GetGenericArguments()[0] == typeof(TreeBinaryNode<T>))
+                (TTree)((typeof(TTree) == typeof(TreeBinaryNode<T>))
                     ? MinimalTree(values)
                     : MinimalParentTree(values));
         

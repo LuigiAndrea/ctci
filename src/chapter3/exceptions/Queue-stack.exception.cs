@@ -1,7 +1,9 @@
 using System;
+using System.Runtime.Serialization;
+
 namespace Chapter3.Exceptions
 {
-    public class EmptyQueueException : Exception
+    public class EmptyQueueException : Exception, ISerializable
     {
         public EmptyQueueException()
         {
@@ -16,5 +18,10 @@ namespace Chapter3.Exceptions
             : base(message, inner)
         {
         }
+
+        protected EmptyQueueException(SerializationInfo info, StreamingContext context)
+            : base(info,context){
+
+            }
     }
 }

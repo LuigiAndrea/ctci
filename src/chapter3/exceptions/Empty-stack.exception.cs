@@ -1,7 +1,9 @@
 using System;
+using System.Runtime.Serialization;
+
 namespace Chapter3.Exceptions
 {
-    public class EmptyStackException : Exception
+    public class EmptyStackException : Exception, ISerializable
     {
         public EmptyStackException()
         {
@@ -14,6 +16,11 @@ namespace Chapter3.Exceptions
 
         public EmptyStackException(string message, Exception inner)
             : base(message, inner)
+        {
+        }
+
+        protected EmptyStackException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         {
         }
     }

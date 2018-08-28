@@ -8,6 +8,9 @@ namespace Chapter8
         private static List<Point> Points = new List<Point>();
         public static List<Point> getPathRobot(bool[,] grid)
         {
+            if (grid == null || grid.Length == 0)
+                throw new ArgumentException("The grid must not be null or empty");
+
             (int colms, int rows) gridDim = getDimensions(grid);
             bool res = getPath(gridDim, grid);
 
@@ -20,8 +23,8 @@ namespace Chapter8
                 return false;
 
             if (reachedBottom(gridDim) || getPath((gridDim.c - 1, gridDim.r), grid) || getPath((gridDim.c, gridDim.r - 1), grid))
-            {       
-                Points.Add(new Point(){column = gridDim.c, row =gridDim.r}) ;
+            {
+                Points.Add(new Point() { column = gridDim.c, row = gridDim.r });
                 return true;
             }
 
@@ -32,9 +35,19 @@ namespace Chapter8
         private static bool offLimit((int cols, int rows) gridDim, bool[,] grid) => gridDim.rows < 0 || gridDim.cols < 0 || !grid[gridDim.cols, gridDim.rows];
         private static (int c, int r) getDimensions(bool[,] grid) => (grid.GetLength(0) - 1, grid.GetLength(1) - 1);
 
-        public class Point {
+        public class Point
+        {
             public int column;
             public int row;
+
+            public override bool Equals(object obj)
+            {
+                Point p = (Point)obj;
+                return this.column == p.column && this.row == p.row;
+            }
+
+            public override int GetHashCode() => base.GetHashCode();
+            
         }
     }
 }

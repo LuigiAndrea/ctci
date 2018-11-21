@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
-//using System.Linq;
 
 using static Chapter8.Q8_2RobotGrid;
 

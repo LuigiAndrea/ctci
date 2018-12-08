@@ -1,2 +1,2 @@
-## Operations
-### Write methods to implement the multiply, subtract, and divide operations for integers. The results of all of these are integers. Use only the add operator.
+## Recursive Multiply
+### Write a recursive function to multiply two positive integers without using the * operator. You can use addition, subtraction, and bit shifting, but you should minimize the number of those operations.

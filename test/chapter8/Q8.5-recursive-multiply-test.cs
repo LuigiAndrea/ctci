@@ -17,6 +17,7 @@ namespace Tests.Chapter8
         private static void zeroMultiply(int a, int b)
         {
             Assert.Equal(0, multiply(a, b));
+            Assert.Equal(0, multiply_opt(a, b));
         }
 
         [TheoryAttribute]
@@ -26,6 +27,7 @@ namespace Tests.Chapter8
         private static void oneMultiply(int a, int b, int result)
         {
             Assert.Equal(result, multiply(a, b));
+            Assert.Equal(result, multiply_opt(a, b));
         }
 
         [TheoryAttribute]
@@ -36,6 +38,7 @@ namespace Tests.Chapter8
         private static void GeneralMultiply(int a, int b, int result)
         {
             Assert.Equal(result, multiply(a, b));
+            Assert.Equal(result, multiply_opt(a, b));
         }
 
         [TheoryAttribute]
@@ -46,6 +49,8 @@ namespace Tests.Chapter8
         private static void exceptionMultiply(int a, int b)
         {
             Exception actualException = Record.Exception(() => multiply(a, b));
+            Assert.IsType<ArgumentOutOfRangeException>(actualException);
+            actualException = Record.Exception(() => multiply_opt(a, b));
             Assert.IsType<ArgumentOutOfRangeException>(actualException);
         }
     }

@@ -62,6 +62,33 @@ namespace Chapter8
             return perm;
         }
 
+        public static List<string> getPermutations3(string phrase)
+        {
+            if (phrase == null)
+                RaisePermutationException(nameof(getPermutations2));
+            List<string> result = new List<string>();
+            getPerm("", phrase, result);
+            return result;
+
+
+        }
+
+        private static void getPerm(string prefix, string phrase, List<string> result)
+        {
+            if (phrase.Length == 0)
+            {
+                result.Add(prefix);
+            }
+
+            for (int i = 0; i < phrase.Length; i++)
+            {
+                string begin = phrase.Substring(0, i);
+                string end = phrase.Substring(i + 1);
+                string character = phrase.Substring(i, 1);
+                getPerm(character + prefix, begin + end, result);
+            }
+        }
+
         private static void RaisePermutationException(string method) => throw new ArgumentException($"{method}: The string to permutate must be not null");
     }
 }

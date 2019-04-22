@@ -126,6 +126,6 @@ namespace Chapter8
             return result;
         }
 
-        private static void RaisePermutationException(string method) => throw new ArgumentException($"{method}: The string to permutate must be not null");
+        internal static void RaisePermutationException(string method) => throw new ArgumentException($"{method}: The string to permutate must be not null");
     }
 }

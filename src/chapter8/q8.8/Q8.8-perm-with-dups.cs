@@ -52,7 +52,7 @@ namespace Chapter8
                 }
                 else
                 {
-                    freqTbl.TryAdd(c, 1);
+                    freqTbl.Add(c, 1);
                 }
             }
 

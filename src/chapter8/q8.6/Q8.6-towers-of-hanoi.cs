@@ -44,7 +44,6 @@ namespace Chapter8
                     return;
                 }
                 this.moveDisks(n - 1, bufferTower, destTower);
-                Console.WriteLine($"Move disk from {this.Name} to {destTower.Name}");
                 destTower.moveDiskOnTop(this);           
                 bufferTower.moveDisks(n - 1, destTower, this);
             }

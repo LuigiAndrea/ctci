@@ -10,11 +10,17 @@ namespace Chapter8
 
         public static void PaintFill(Color[,] screen, Coordinates coordinates, Color newColor)
         {
+            int rowLength = screen.GetLength(0);
+            int columnLength = screen.GetLength(1);
+
+            if(screen.Length == 0 || screen == null || coordinates == null || coordinates.row >= rowLength || coordinates.column >= columnLength){
+                throw new ArgumentException($"{nameof(PaintFill)}: Parameters provided are wrong");
+            }
             Color oldColor = screen[coordinates.row, coordinates.column];
             if (oldColor == newColor)
                 return;
 
-            PaintFill(screen, (oldColor, newColor), coordinates, (screen.GetLength(0), screen.GetLength(1)));
+            PaintFill(screen, (oldColor, newColor), coordinates, (rowLength,columnLength));
         }
 
         private static void PaintFill(Color[,] screen, (Color oldColor, Color newColor) colorMapping, Coordinates c, (int hight, int width) resolution)

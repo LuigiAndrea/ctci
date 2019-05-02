@@ -8,20 +8,32 @@ using static Chapter8.Q8_10PaintFill;
 
 namespace Tests.Chapter8
 {
-    public class Q8_10
+    public class Q8_10 : IClassFixture<Q8_10TestFixture>
     {
-        [FactAttribute]
-        private static void paintFillGeneralTest()
-        {
-            Color[,] screen = new Color[10, 10];
-            fillupScreenRandom(screen);
-            paintScreenWithColor(screen, (1, 4), (1, 5), Color.yellow);
-            paintScreenWithColor(screen, (4, 5), (0, 2), Color.yellow);      
+        private readonly Q8_10TestFixture _fixture;
 
-            PaintFill(screen, new Coordinates() { row = 1, column = 2 }, Color.red);
-            shouldBeThisColor(screen, (1, 4), (1, 5), Color.red);
-            shouldBeThisColor(screen, (4, 5), (0, 2), Color.red);
+
+        public Q8_10(Q8_10TestFixture fixture)
+        {
+            _fixture = fixture;
         }
+
+        [FactAttribute]
+        private void paintFillGeneralTest()
+        {
+            PaintFill(_fixture.screen.screenFilledUp, new Coordinates() { row = 1, column = 2 }, Color.red);
+            shouldBeThisColor(_fixture.screen.screenFilledUp, (1, 4), (1, 5), Color.red);
+            shouldBeThisColor(_fixture.screen.screenFilledUp, (4, 5), (0, 2), Color.red);
+        }
+
+        [FactAttribute]
+        private void paintFillSameColor()
+        {
+            PaintFill(_fixture.screen.screenFilledUp, new Coordinates() { row = 4, column = 0 }, Color.red);
+            shouldBeThisColor(_fixture.screen.screenFilledUp, (4, 5), (0,1), Color.red);
+        }
+
+    
 
         /// <summary>
         /// Assert that the range of rows and colums provided have the color passed as parameter
@@ -39,6 +51,31 @@ namespace Tests.Chapter8
                     Assert.Equal(color, screen[i, j]);
                 }
             }
+        }
+    }
+
+    public class Q8_10TestFixture : IDisposable
+    {
+        public Screen screen { get; private set; }
+        public Q8_10TestFixture()
+        {
+            screen = new Screen();
+        }
+
+        public void Dispose()
+        {
+            screen.Dispose();
+        }
+    }
+
+    public class Screen : IDisposable
+    {
+        public Color[,] screenFilledUp { get; private set; } = new Color[10,10];
+        public Screen()
+        {
+            fillupScreenRandom(screenFilledUp);
+            paintScreenWithColor(screenFilledUp, (1, 4), (1, 5), Color.yellow);
+            paintScreenWithColor(screenFilledUp, (4, 5), (0, 2), Color.yellow);
         }
 
         /// <summary>
@@ -78,5 +115,6 @@ namespace Tests.Chapter8
                 }
             }
         }
+        public void Dispose() { }
     }
 }

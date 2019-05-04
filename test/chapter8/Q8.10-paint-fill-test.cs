@@ -12,7 +12,6 @@ namespace Tests.Chapter8
     {
         private readonly Q8_10TestFixture _fixture;
 
-
         public Q8_10(Q8_10TestFixture fixture)
         {
             _fixture = fixture;
@@ -30,10 +29,28 @@ namespace Tests.Chapter8
         private void paintFillSameColor()
         {
             PaintFill(_fixture.screen.screenFilledUp, new Coordinates() { row = 4, column = 0 }, Color.red);
-            shouldBeThisColor(_fixture.screen.screenFilledUp, (4, 5), (0,1), Color.red);
+            shouldBeThisColor(_fixture.screen.screenFilledUp, (4, 5), (0, 1), Color.red);
         }
 
-    
+        [FactAttribute]
+        private void exceptionWrongParameters()
+        {
+            Exception actualException = Record.Exception(() => PaintFill(null, new Coordinates() { row = 4, column = 0 }, Color.orange));
+            Assert.IsType<ArgumentException>(actualException);
+
+            actualException = Record.Exception(() => PaintFill(new Color[0, 0], new Coordinates() { row = 4, column = 0 }, Color.orange));
+            Assert.IsType<ArgumentException>(actualException);
+
+            actualException = Record.Exception(() => PaintFill(_fixture.screen.screenFilledUp, new Coordinates() { row = 4, column = 10 }, Color.orange));
+            Assert.IsType<ArgumentException>(actualException);
+
+            actualException = Record.Exception(() => PaintFill(_fixture.screen.screenFilledUp, new Coordinates() { row = -1, column = 1 }, Color.orange));
+            Assert.IsType<ArgumentException>(actualException);
+
+            actualException = Record.Exception(() => PaintFill(_fixture.screen.screenFilledUp, null, Color.orange));
+            Assert.IsType<ArgumentException>(actualException);
+        }
+
 
         /// <summary>
         /// Assert that the range of rows and colums provided have the color passed as parameter
@@ -70,7 +87,7 @@ namespace Tests.Chapter8
 
     public class Screen : IDisposable
     {
-        public Color[,] screenFilledUp { get; private set; } = new Color[10,10];
+        public Color[,] screenFilledUp { get; private set; } = new Color[10, 10];
         public Screen()
         {
             fillupScreenRandom(screenFilledUp);

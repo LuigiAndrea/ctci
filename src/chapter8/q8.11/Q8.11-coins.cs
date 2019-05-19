@@ -24,12 +24,12 @@ namespace Chapter8
         }
 
         public static int calculateChangeOptimized(int amount, int[,] mappings, int index)
-        {
-            if (mappings[amount, index] > 0)
-                return mappings[amount, index];
-
+        {           
             if (index >= coins.Length - 1)
                 return 1;
+
+            if (mappings[amount, index] > 0)
+                return mappings[amount, index];
 
             int coin = coins[index];
             int ways = 0;
@@ -54,7 +54,7 @@ namespace Chapter8
         public static int calculateChangeOptimized(int cents)
         {
             validateCents(cents);
-           return calculateChangeOptimized(cents, new int[cents + 1, coins.Length], 0);
+           return calculateChangeOptimized(cents, new int[cents + 1, coins.Length-1], 0);
         }
 
         private static void validateCents(int cents)

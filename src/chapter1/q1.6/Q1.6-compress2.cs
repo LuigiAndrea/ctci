@@ -44,7 +44,7 @@ namespace Chapter1
             for (int i = 0; i < str.Length; i++)
             {
                 consecutive++;
-                if (i + 1 >= str.Length || !str[i].Equals(str[i + 1]))
+                if (i + 1 == str.Length || !str[i].Equals(str[i + 1]))
                 {
                     count += consecutive.ToString().Length + 1;
                     consecutive=0;

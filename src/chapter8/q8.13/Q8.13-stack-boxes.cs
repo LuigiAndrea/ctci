@@ -4,7 +4,7 @@ namespace Chapter8
 {
     public static class Q8_StackBoxes
     {
-        public static int GetHeightsBoxes(Box[] boxes)
+        public static int GetHeightBoxes(Box[] boxes)
         {
             int maxHeight = 0;
             Array.Sort(boxes, new Comparison<Box>((x, y) => y.Height.CompareTo(x.Height)));
@@ -36,7 +36,7 @@ namespace Chapter8
             return maxHeight;
         }
 
-        public static int GetHeightsBoxesMemorization(Box[] boxes)
+        public static int GetHeightBoxesMemorization(Box[] boxes)
         {
             int maxHeight = 0;
             Array.Sort(boxes, new Comparison<Box>((x, y) => y.Height.CompareTo(x.Height)));
@@ -72,6 +72,39 @@ namespace Chapter8
 
             maxHeight += bottomBox.Height;
             return boxHeightsMap[bottomIndex] = maxHeight;
+        }
+
+        //Decide every step whether to place or not the current box in the stack
+        public static int GetHeightBoxesWithOrWithoutCurrentBox(Box[] boxes)
+        {
+            Array.Sort(boxes, new Comparison<Box>((x, y) => y.Height.CompareTo(x.Height)));
+            int[] boxHeightsMap = new int[boxes.Length];
+            return buildStackOfBoxesWithOrWithoutCurrentBox(boxes, null, 0, boxHeightsMap);
+        }
+
+        private static int buildStackOfBoxesWithOrWithoutCurrentBox(Box[] boxes, Box bottomBox, int offset, int[] boxHeightsMap)
+        {
+            if (offset >= boxes.Length)
+                return 0;
+
+            Box newBottomBox = boxes[offset];
+            int heightWithBottom = 0;
+
+            //Height with current bottom
+            if(bottomBox == null || newBottomBox.CanGoAbove(bottomBox))
+            {
+                if(boxHeightsMap[offset] == 0){
+                    boxHeightsMap[offset] = buildStackOfBoxesWithOrWithoutCurrentBox(boxes,newBottomBox,offset + 1,boxHeightsMap);
+                    boxHeightsMap[offset] += newBottomBox.Height;
+                }
+
+                heightWithBottom = boxHeightsMap[offset];
+            }
+
+            //Height without current bottom
+            int heightWithoutCurrentBottom = buildStackOfBoxesWithOrWithoutCurrentBox(boxes,bottomBox,offset + 1,boxHeightsMap);
+
+            return Math.Max(heightWithBottom,heightWithoutCurrentBottom);
         }
 
         public class Box

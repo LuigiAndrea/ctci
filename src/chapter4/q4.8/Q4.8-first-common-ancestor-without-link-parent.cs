@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Chapter4
 {
-    public static class Q4_8FCAWithoutLinkParent<T>
+    public static class Q4_8FirstCommonAncestorWithoutLinkParent<T>
     {
         public static TreeBinaryNode<T> commonAncestorWithoutLinkParent(TreeBinaryNode<T> root, TreeBinaryNode<T> firstNode, TreeBinaryNode<T> secondNode)
         {

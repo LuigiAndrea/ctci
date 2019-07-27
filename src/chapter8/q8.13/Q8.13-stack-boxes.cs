@@ -2,7 +2,7 @@ using System;
 
 namespace Chapter8
 {
-    public static class Q8_StackBoxes
+    public static class Q8_13StackBoxes
     {
         public static int GetHeightBoxes(Box[] boxes)
         {

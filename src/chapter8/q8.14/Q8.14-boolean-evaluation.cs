@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace Chapter8
 {
@@ -6,8 +7,15 @@ namespace Chapter8
     {
         public static int CountEvaluation(string s, bool result)
         {
-            //Check if the string is valid with regular expression TODO
-            return countEval(s, result);
+            string regex = @"(?x)  
+                            ^[01]  
+                            ([\|\^\&] [01])*$";
+            //Check if the string is valid
+            if(Regex.IsMatch(s,regex)){
+                return countEval(s, result);
+            }
+            else 
+                throw new ArgumentException($"{nameof(CountEvaluation)} must have a valid string s");
         }
 
         private static int countEval(string s, bool result)

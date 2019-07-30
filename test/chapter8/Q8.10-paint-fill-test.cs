@@ -32,25 +32,21 @@ namespace Tests.Chapter8
             shouldBeThisColor(_fixture.screen.screenFilledUp, (4, 5), (0, 1), Color.red);
         }
 
-        [FactAttribute]
-        private void exceptionWrongParameters()
+        [TheoryAttribute]
+        [MemberData("getPaintParameters", MemberType = typeof(TestPaintDataExceptions))]
+        private void exceptionWrongParameters(PaintParameter p)
         {
-            Exception actualException = Record.Exception(() => PaintFill(null, new Coordinates() { row = 4, column = 0 }, Color.orange));
-            Assert.IsType<ArgumentException>(actualException);
-
-            actualException = Record.Exception(() => PaintFill(new Color[0, 0], new Coordinates() { row = 4, column = 0 }, Color.orange));
-            Assert.IsType<ArgumentException>(actualException);
-
-            actualException = Record.Exception(() => PaintFill(_fixture.screen.screenFilledUp, new Coordinates() { row = 4, column = 10 }, Color.orange));
-            Assert.IsType<ArgumentException>(actualException);
-
-            actualException = Record.Exception(() => PaintFill(_fixture.screen.screenFilledUp, new Coordinates() { row = -1, column = 1 }, Color.orange));
-            Assert.IsType<ArgumentException>(actualException);
-
-            actualException = Record.Exception(() => PaintFill(_fixture.screen.screenFilledUp, null, Color.orange));
+            Exception actualException = Record.Exception(() => PaintFill(p.screen, p.coordinates, p.newColor));
             Assert.IsType<ArgumentException>(actualException);
         }
 
+        [TheoryAttribute]
+        [MemberData("getPaintParametersForFixture", MemberType = typeof(TestPaintDataExceptions))]
+        private void exceptionWrongParametersForFixture(PaintParameter p)
+        {
+            Exception actualException = Record.Exception(() => PaintFill(_fixture.screen.screenFilledUp, p.coordinates, p.newColor));
+            Assert.IsType<ArgumentException>(actualException);
+        }
 
         /// <summary>
         /// Assert that the range of rows and colums provided have the color passed as parameter
@@ -133,5 +129,37 @@ namespace Tests.Chapter8
             }
         }
         public void Dispose() { }
+    }
+
+    class TestPaintDataExceptions
+    {
+        public static TheoryData<PaintParameter> getPaintParameters()
+        {
+            PaintParameter obj1 = new PaintParameter(null, new Coordinates() { row = 4, column = 0 }, Color.orange);
+            PaintParameter obj2 = new PaintParameter(new Color[0, 0], new Coordinates() { row = 0, column = 0 }, Color.orange);
+            PaintParameter obj3 = new PaintParameter(new Color[1, 1] { { Color.orange } }, null, Color.orange);
+
+            return new TheoryData<PaintParameter>() { obj1, obj2, obj3 };
+        }
+        public static TheoryData<PaintParameter> getPaintParametersForFixture()
+        {
+            PaintParameter obj1 = new PaintParameter(null, new Coordinates() { row = 4, column = 10 }, Color.orange);
+            PaintParameter obj2 = new PaintParameter(new Color[0, 0], new Coordinates() { row = -1, column = 1 }, Color.orange);
+
+            return new TheoryData<PaintParameter>() { obj1, obj2};
+        }
+    }
+
+    class PaintParameter
+    {
+        public Color[,] screen { get; }
+        public Coordinates coordinates { get; }
+        public Color newColor { get; }
+        public PaintParameter(Color[,] screen, Coordinates coordinates, Color newColor)
+        {
+            this.screen = screen;
+            this.coordinates = coordinates;
+            this.newColor = newColor;
+        }
     }
 }

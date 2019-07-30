@@ -8,7 +8,7 @@ namespace Chapter8
     {
         public static int CountEvaluation(string s, bool result)
         {
-            if (isStringValid(s))
+            if (s != null && isStringValid(s))
             {
                 return countEval(s, result);
             }
@@ -20,13 +20,13 @@ namespace Chapter8
 
         public static int CountEvaluationOptimized(string s, bool result)
         {
-            if (isStringValid(s))
+            if (s != null && isStringValid(s))
             {
                 return countEval(s, result);
             }
             else
             {
-                throw new ArgumentException($"{nameof(CountEvaluation)} must have a valid string s");
+                throw new ArgumentException($"{nameof(CountEvaluationOptimized)} must have a valid string s");
             }
         }
 

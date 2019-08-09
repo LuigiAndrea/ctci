@@ -6,6 +6,7 @@ namespace Chapter8
     {
         public static int GetHeightBoxes(Box[] boxes)
         {
+            validateBoxes(boxes);
             int maxHeight = 0;
             Array.Sort(boxes, new Comparison<Box>((x, y) => y.Height.CompareTo(x.Height)));
 
@@ -38,6 +39,7 @@ namespace Chapter8
 
         public static int GetHeightBoxesMemorization(Box[] boxes)
         {
+            validateBoxes(boxes);
             int maxHeight = 0;
             Array.Sort(boxes, new Comparison<Box>((x, y) => y.Height.CompareTo(x.Height)));
             int[] BoxHeighstMap = new int[boxes.Length];
@@ -77,6 +79,7 @@ namespace Chapter8
         //Decide every step whether to place or not the current box in the stack
         public static int GetHeightBoxesWithOrWithoutCurrentBox(Box[] boxes)
         {
+            validateBoxes(boxes);
             Array.Sort(boxes, new Comparison<Box>((x, y) => y.Height.CompareTo(x.Height)));
             int[] boxHeightsMap = new int[boxes.Length];
             return buildStackOfBoxesWithOrWithoutCurrentBox(boxes, null, 0, boxHeightsMap);
@@ -91,10 +94,11 @@ namespace Chapter8
             int heightWithBottom = 0;
 
             //Height with current bottom
-            if(bottomBox == null || newBottomBox.CanGoAbove(bottomBox))
+            if (bottomBox == null || newBottomBox.CanGoAbove(bottomBox))
             {
-                if(boxHeightsMap[offset] == 0){
-                    boxHeightsMap[offset] = buildStackOfBoxesWithOrWithoutCurrentBox(boxes,newBottomBox,offset + 1,boxHeightsMap);
+                if (boxHeightsMap[offset] == 0)
+                {
+                    boxHeightsMap[offset] = buildStackOfBoxesWithOrWithoutCurrentBox(boxes, newBottomBox, offset + 1, boxHeightsMap);
                     boxHeightsMap[offset] += newBottomBox.Height;
                 }
 
@@ -102,9 +106,9 @@ namespace Chapter8
             }
 
             //Height without current bottom
-            int heightWithoutCurrentBottom = buildStackOfBoxesWithOrWithoutCurrentBox(boxes,bottomBox,offset + 1,boxHeightsMap);
+            int heightWithoutCurrentBottom = buildStackOfBoxesWithOrWithoutCurrentBox(boxes, bottomBox, offset + 1, boxHeightsMap);
 
-            return Math.Max(heightWithBottom,heightWithoutCurrentBottom);
+            return Math.Max(heightWithBottom, heightWithoutCurrentBottom);
         }
 
         public class Box
@@ -116,6 +120,22 @@ namespace Chapter8
             public bool CanGoAbove(Box b)
             {
                 return this.Depth < b.Depth && this.Width < b.Width && this.Height < b.Height;
+            }
+
+            public bool isValid() => this.Depth >= 0 && this.Height >= 0 && this.Width >= 0;
+        }
+
+        public static void validateBoxes(Box[] boxes)
+        {
+            string error = $"{nameof(Box)} must be not null and with valid dimensions";
+            if (boxes == null){
+                throw new ArgumentException(error);
+            }   
+
+            foreach (var item in boxes)
+            {
+                if (item == null || !item.isValid())
+                    throw new ArgumentException(error);
             }
         }
     }

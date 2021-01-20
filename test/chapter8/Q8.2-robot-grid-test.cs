@@ -9,7 +9,7 @@ namespace Tests.Chapter8
     public class Q8_2
     {
         [TheoryAttribute]
-        [MemberDataAttribute("getGridPath", MemberType = typeof(Grid))]
+        [MemberDataAttribute(nameof(Grid.getGridPath), MemberType = typeof(Grid))]
         private static void RobotGridTest(bool[,] grid)
         {
             List<Point> expectedPoints = createExpectedPoints(new List<(int c, int r)>() { (0, 0), (1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (4, 2) });
@@ -18,7 +18,7 @@ namespace Tests.Chapter8
         }
 
         [TheoryAttribute]
-        [MemberDataAttribute("getGridNoPath", MemberType = typeof(Grid))]
+        [MemberDataAttribute(nameof(Grid.getGridNoPath), MemberType = typeof(Grid))]
         private static void RobotGridExceptionTest(bool[,] grid)
         {
             Exception actualException = Record.Exception(() => getPathRobot(grid));

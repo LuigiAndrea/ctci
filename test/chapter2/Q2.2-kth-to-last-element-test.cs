@@ -10,7 +10,7 @@ namespace Tests.Chapter2
     public class Q2_2
     {
         [TheoryAttribute]
-        [MemberData("getLinkedList", MemberType = typeof(TestDataKLastElement))]
+        [MemberData(nameof(TestDataKLastElement.getLinkedList), MemberType = typeof(TestDataKLastElement))]
         public static void KLastElementTest(Singly head, int k)
         {
             Singly node = KLastElement(head, k);
@@ -19,7 +19,7 @@ namespace Tests.Chapter2
             Assert.True(node2.data.Equals(55));
         }
         [TheoryAttribute]
-        [MemberData("getLinkedList2", MemberType = typeof(TestDataKLastElement))]
+        [MemberData(nameof(TestDataKLastElement.getLinkedList2), MemberType = typeof(TestDataKLastElement))]
         public static void KLastElementTest2(Singly head, int k)
         {
             Singly node = KLastElement(head, k);
@@ -29,7 +29,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList3", MemberType = typeof(TestDataKLastElement))]
+        [MemberData(nameof(TestDataKLastElement.getLinkedList3), MemberType = typeof(TestDataKLastElement))]
         public static void KLastElementTest3(Singly head, int k)
         {
             Singly node = KLastElement(head, k);
@@ -39,7 +39,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList", MemberType = typeof(TestDataKLastElement))]
+        [MemberData(nameof(TestDataKLastElement.getLinkedList), MemberType = typeof(TestDataKLastElement))]
         public static void KLastElementRecursiveTest(Singly head, int k)
         {
             Singly node = KLastElementRec(head, k);
@@ -49,7 +49,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList2", MemberType = typeof(TestDataKLastElement))]
+        [MemberData(nameof(TestDataKLastElement.getLinkedList2), MemberType = typeof(TestDataKLastElement))]
         public static void KLastElementRecursiveTest2(Singly head, int k)
         {
             Singly node = KLastElementRec(head, k);
@@ -59,7 +59,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList3", MemberType = typeof(TestDataKLastElement))]
+        [MemberData(nameof(TestDataKLastElement.getLinkedList3), MemberType = typeof(TestDataKLastElement))]
         public static void KLastElementRecursiveTest3(Singly head, int k)
         {
             Singly node = KLastElementRec(head, k);

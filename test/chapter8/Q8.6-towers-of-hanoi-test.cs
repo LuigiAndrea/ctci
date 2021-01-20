@@ -20,13 +20,13 @@ namespace Tests.Chapter8
             Tower bufferTower = towers.ElementAt(1);
             Tower destTower = towers.ElementAt(2);
 
-            Assert.Equal(sourceTower.disks.Count,numberOfDisks);
-            Assert.Equal(destTower.disks.Count,0);
+            Assert.Equal(numberOfDisks,sourceTower.disks.Count);
+            Assert.Empty(destTower.disks);
 
             sourceTower.moveDisks(numberOfDisks, destTower, bufferTower);
 
-            Assert.Equal(sourceTower.disks.Count,0);
-            Assert.Equal(destTower.disks.Count,numberOfDisks);
+            Assert.Empty(sourceTower.disks);
+            Assert.Equal(numberOfDisks,destTower.disks.Count);
 
             int i = 1; 
             foreach (var disk in destTower.disks)

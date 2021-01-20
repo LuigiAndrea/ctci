@@ -51,7 +51,7 @@ namespace Tests.Chapter4
             TreeBinaryParentNode<int> firstNode = (TreeBinaryParentNode<int>)tree.right;
             TreeBinaryParentNode<int> secondtNode = (TreeBinaryParentNode<int>)tree2.left;
             TreeBinaryParentNode<int> ancestor = commonAncestor(firstNode, secondtNode);
-            Assert.Equal(null, ancestor);
+            Assert.Null(ancestor);
         }
 
          [FactAttribute]

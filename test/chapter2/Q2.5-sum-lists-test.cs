@@ -11,7 +11,7 @@ namespace Tests.Chapter2
     public class Q2_5
     {
         [TheoryAttribute]
-        [MemberData("getLists", MemberType = typeof(TestDataSumLists))]
+        [MemberData(nameof(TestDataSumLists.getLists), MemberType = typeof(TestDataSumLists))]
         public static void sumLists(Singly l1, Singly l2)
         {
             int[] result = new int[6] { 1, 0, 8, 7, 2, 2 };
@@ -27,7 +27,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLists2", MemberType = typeof(TestDataSumLists))]
+        [MemberData(nameof(TestDataSumLists.getLists2), MemberType = typeof(TestDataSumLists))]
         public static void sumLists2(Singly l1, Singly l2)
         {
             int[] result = new int[2] { 8, 1 };
@@ -43,7 +43,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLists3", MemberType = typeof(TestDataSumLists))]
+        [MemberData(nameof(TestDataSumLists.getLists3), MemberType = typeof(TestDataSumLists))]
         public static void sumLists3(Singly l1, Singly l2)
         {
             Assert.True(addListsForward(l1, l2) == null);

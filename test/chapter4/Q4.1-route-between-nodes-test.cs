@@ -30,8 +30,8 @@ namespace Tests.Chapter4
             
             testGraph(() => Assert.False(searchRouteBetweenNodes(node23, node15)));
             testGraph(() => Assert.True(searchRouteBetweenNodes(node15, node23)));
-            testGraph(() => Assert.Equal(getRouteBetweenNodes(node15, node23), "15 -> 8 -> 13 -> 3 -> 23"));
-            testGraph(() => Assert.Equal(getRouteBetweenNodes(node23, node15), $"No route between the nodes {node23.value} and {node15.value}"));
+            testGraph(() => Assert.Equal("15 -> 8 -> 13 -> 3 -> 23",getRouteBetweenNodes(node15, node23)));
+            testGraph(() => Assert.Equal($"No route between the nodes {node23.value} and {node15.value}",getRouteBetweenNodes(node23, node15)));
 
             //We have a node with value 3 but this is a different instance
             GraphNode<int> newInstanceNode3 = new GraphNode<int>(3);

@@ -12,7 +12,7 @@ namespace Tests.Chapter2
     {
 
         [TheoryAttribute]
-        [MemberData("getLinkedList", MemberType = typeof(TestDataremoveDuplicates))]
+        [MemberData(nameof(TestDataremoveDuplicates.getLinkedList), MemberType = typeof(TestDataremoveDuplicates))]
         public static void removeDuplicatesTest(LinkedList<int> list)
         {
             Assert.True(list.Count.Equals(5));
@@ -23,7 +23,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList2", MemberType = typeof(TestDataremoveDuplicates))]
+        [MemberData(nameof(TestDataremoveDuplicates.getLinkedList2), MemberType = typeof(TestDataremoveDuplicates))]
         public static void removeDuplicatesTestNoChange(LinkedList<int> list)
         {
             Assert.True(list.Count.Equals(0) || list.Count.Equals(3));
@@ -32,7 +32,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList", MemberType = typeof(TestDataremoveDuplicates))]
+        [MemberData(nameof(TestDataremoveDuplicates.getLinkedList), MemberType = typeof(TestDataremoveDuplicates))]
         public static void removeDuplicatesTest2(LinkedList<int> list)
         {
             Assert.True(list.Count.Equals(5));
@@ -43,7 +43,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList2", MemberType = typeof(TestDataremoveDuplicates))]
+        [MemberData(nameof(TestDataremoveDuplicates.getLinkedList2), MemberType = typeof(TestDataremoveDuplicates))]
         public static void removeDuplicatesTestNoChange2(LinkedList<int> list)
         {
             Assert.True(list.Count.Equals(0) || list.Count.Equals(3));
@@ -52,7 +52,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList", MemberType = typeof(TestDataremoveDuplicates))]
+        [MemberData(nameof(TestDataremoveDuplicates.getLinkedList), MemberType = typeof(TestDataremoveDuplicates))]
         public static void removeDuplicatesTest3(LinkedList<int> list)
         {
             Assert.True(list.Count.Equals(5));
@@ -63,7 +63,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList2", MemberType = typeof(TestDataremoveDuplicates))]
+        [MemberData(nameof(TestDataremoveDuplicates.getLinkedList2), MemberType = typeof(TestDataremoveDuplicates))]
         public static void removeDuplicatesTestNoChange3(LinkedList<int> list)
         {
             Assert.True(list.Count.Equals(0) || list.Count.Equals(3));
@@ -72,7 +72,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList", MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
+        [MemberData(nameof(TestDataRemoveDuplicatesFromSratch.getLinkedList), MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
         public static void removeDuplicatesScratchTest(LinkedListNode node)
         {
             removeDuplicates(node);
@@ -82,7 +82,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList2", MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
+        [MemberData(nameof(TestDataRemoveDuplicatesFromSratch.getLinkedList2), MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
         public static void removeDuplicatesScratchTestNoChange(LinkedListNode node)
         {
             Assert.True(node.data.Equals(1) && node.next.data.Equals(2) && node.next.next.data.Equals(3));
@@ -93,7 +93,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList3", MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
+        [MemberData(nameof(TestDataRemoveDuplicatesFromSratch.getLinkedList3), MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
         public static void removeDuplicatesScratchTestNoChangeNull(LinkedListNode node)
         {
             Assert.True(node == null);
@@ -102,7 +102,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList", MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
+        [MemberData(nameof(TestDataRemoveDuplicatesFromSratch.getLinkedList), MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
         public static void removeDuplicatesScratchTest2(LinkedListNode node)
         {
             removeDuplicatesNoBuffer(node);
@@ -112,7 +112,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList2", MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
+        [MemberData(nameof(TestDataRemoveDuplicatesFromSratch.getLinkedList2), MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
         public static void removeDuplicatesScratchTestNoChange2(LinkedListNode node)
         {
             Assert.True(node.data.Equals(1) && node.next.data.Equals(2) && node.next.next.data.Equals(3));
@@ -123,7 +123,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLinkedList3", MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
+        [MemberData(nameof(TestDataRemoveDuplicatesFromSratch.getLinkedList3), MemberType = typeof(TestDataRemoveDuplicatesFromSratch))]
         public static void removeDuplicatesScratchTestNoChangeNull2(LinkedListNode node)
         {
             Assert.True(node == null);

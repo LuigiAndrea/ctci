@@ -14,11 +14,11 @@ namespace Tests.Chapter4
             TreeBinaryParentNode<int> tree = CreateBinaryTree<TreeBinaryParentNode<int>,int>(array);
             TreeBinaryParentNode<int> child = (TreeBinaryParentNode<int>)tree.right.right;
 
-            Assert.Equal(child.parent.value,4);
-            Assert.Equal(tree.left.value,1);
+            Assert.Equal(4,child.parent.value);
+            Assert.Equal(1,tree.left.value);
             Assert.Null(tree.left.left);
             Assert.Null(child.parent.left);
-            Assert.Equal(child.parent.right.value,14);
+            Assert.Equal(14,child.parent.right.value);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Tests.Chapter1 {
         [TheoryAttribute]
         [InlineDataAttribute("11")]
         [InlineDataAttribute("abcdefghilgmn")]
-        [MemberData("getString", MemberType = typeof(TestDataIsUnique))]
+        [MemberData(nameof(TestDataIsUnique.getString), MemberType = typeof(TestDataIsUnique))]
         public void TestFalseisUnique(string s)
         {
             bool r = isUnique(s);
@@ -39,7 +39,7 @@ namespace Tests.Chapter1 {
         [TheoryAttribute]
         [InlineDataAttribute("11")]
         [InlineDataAttribute("abcdefghilgmn")]
-        [MemberData("getString", MemberType = typeof(TestDataIsUnique))]
+        [MemberData(nameof(TestDataIsUnique.getString), MemberType = typeof(TestDataIsUnique))]
         public void TestFalseisUnique2(string s)
         {
             bool r = isUnique2(s);
@@ -59,7 +59,7 @@ namespace Tests.Chapter1 {
         [TheoryAttribute]
         [InlineDataAttribute("11")]
         [InlineDataAttribute("abcdefghilgmn")]
-        [MemberData("getString", MemberType = typeof(TestDataIsUnique))]
+        [MemberData(nameof(TestDataIsUnique.getString), MemberType = typeof(TestDataIsUnique))]
         public void TestFalseisUnique3(string s)
         {
             bool r = isUnique3(s);

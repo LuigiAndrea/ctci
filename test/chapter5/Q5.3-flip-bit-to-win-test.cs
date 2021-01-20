@@ -10,13 +10,13 @@ namespace Tests.Chapter5
         private static void FlipBitTest()
         {
             int count = flipBit(-1);
-            Assert.Equal(count,32);
+            Assert.Equal(32,count);
             count = flipBit(0);
-            Assert.Equal(count, 0);
+            Assert.Equal(0,count);
             count = flipBit(-1148952);
-            Assert.Equal(count, 15);
+            Assert.Equal(15,count);
             count = flipBit(8646467);
-            Assert.Equal(count, 10);
+            Assert.Equal(10,count);
         }
     }
 }

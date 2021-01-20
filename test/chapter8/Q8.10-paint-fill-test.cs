@@ -33,7 +33,7 @@ namespace Tests.Chapter8
         }
 
         [TheoryAttribute]
-        [MemberData("getPaintParameters", MemberType = typeof(TestPaintDataExceptions))]
+        [MemberData(nameof(TestPaintDataExceptions.getPaintParameters), MemberType = typeof(TestPaintDataExceptions))]
         private void exceptionWrongParameters(PaintParameter p)
         {
             Exception actualException = Record.Exception(() => PaintFill(p.screen, p.coordinates, p.newColor));
@@ -41,7 +41,7 @@ namespace Tests.Chapter8
         }
 
         [TheoryAttribute]
-        [MemberData("getPaintParametersForFixture", MemberType = typeof(TestPaintDataExceptions))]
+        [MemberData(nameof(TestPaintDataExceptions.getPaintParametersForFixture), MemberType = typeof(TestPaintDataExceptions))]
         private void exceptionWrongParametersForFixture(PaintParameter p)
         {
             Exception actualException = Record.Exception(() => PaintFill(_fixture.screen.screenFilledUp, p.coordinates, p.newColor));

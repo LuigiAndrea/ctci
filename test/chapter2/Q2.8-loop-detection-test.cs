@@ -10,7 +10,7 @@ namespace Tests.Chapter2
     public class Q2_8
     {
         [TheoryAttribute]
-        [MemberDataAttribute("getListWithLoop", MemberType = typeof(TestDataLoop))]
+        [MemberDataAttribute(nameof(TestDataLoop.getListWithLoop), MemberType = typeof(TestDataLoop))]
         public static void listLoopTest(Singly list)
         {
             Singly startLoopNode = loopDetection(list);
@@ -21,7 +21,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberDataAttribute("getListWithoutLoop", MemberType = typeof(TestDataLoop))]
+        [MemberDataAttribute(nameof(TestDataLoop.getListWithoutLoop), MemberType = typeof(TestDataLoop))]
         public static void listLoopTest2(Singly list)
         {
             Singly startLoopNode = loopDetection(list);

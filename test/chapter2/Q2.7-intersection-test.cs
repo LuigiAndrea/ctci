@@ -9,7 +9,7 @@ namespace Tests.Chapter2
     public class Q2_7
     {
         [TheoryAttribute]
-        [MemberData("getLists", MemberType = typeof(TestDataIntersection))]
+        [MemberData(nameof(TestDataIntersection.getLists), MemberType = typeof(TestDataIntersection))]
         public static void intersectionTest(Singly l1, Singly l2)
         {
             Singly result = intersection(l1, l2);
@@ -17,7 +17,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getLists2", MemberType = typeof(TestDataIntersection))]
+        [MemberData(nameof(TestDataIntersection.getLists2), MemberType = typeof(TestDataIntersection))]
         public static void intersectionTestNull(Singly l1, Singly l2)
         {
             Singly result = intersection(l1, l2);

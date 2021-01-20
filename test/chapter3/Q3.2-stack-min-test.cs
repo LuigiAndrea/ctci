@@ -8,7 +8,7 @@ namespace Tests.Chapter3
     public class Q3_2
     {
         [TheoryAttribute]
-        [MemberDataAttribute("getStack", MemberType = typeof(DataStackMin))]
+        [MemberDataAttribute(nameof(DataStackMin.getStack), MemberType = typeof(DataStackMin))]
         public static void stackMinTest(StackWithMin m)
         {
             for (int i = 0; i < 4; i++)

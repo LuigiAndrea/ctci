@@ -9,7 +9,7 @@ namespace Tests.Chapter2
     public class Q2_3
     {
         [TheoryAttribute]
-        [MemberData("getMiddleNode", MemberType = typeof(TestDataMiddleNode))]
+        [MemberData(nameof(TestDataMiddleNode.getMiddleNode), MemberType = typeof(TestDataMiddleNode))]
         public static void deleteMiddleNodeTest(Singly middleNode)
         {
             Singly newNextNode = middleNode.next.next;
@@ -23,7 +23,7 @@ namespace Tests.Chapter2
         }
 
         [TheoryAttribute]
-        [MemberData("getMiddleNode2", MemberType = typeof(TestDataMiddleNode))]
+        [MemberData(nameof(TestDataMiddleNode.getMiddleNode2), MemberType = typeof(TestDataMiddleNode))]
         public static void deleteMiddleNodeTest2(Singly middleNode)
         {
             bool result = DeleteMiddleNode(middleNode);

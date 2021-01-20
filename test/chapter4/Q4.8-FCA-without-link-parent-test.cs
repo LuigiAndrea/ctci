@@ -51,7 +51,7 @@ namespace Tests.Chapter4
             TreeBinaryNode<int> firstNode = tree.right;
             TreeBinaryNode<int> secondtNode = tree2.left;
             TreeBinaryNode<int> ancestor = commonAncestorWithoutLinkParent(tree, firstNode, secondtNode);
-            Assert.Equal(null, ancestor);
+            Assert.Null(ancestor);
         }
 
         [FactAttribute]
@@ -66,7 +66,7 @@ namespace Tests.Chapter4
         private void FCANullValuesWithoutLinkParentTest()
         {
             TreeBinaryNode<int> ancestor = commonAncestorWithoutLinkParent(tree, null, null);
-            Assert.Equal(null, ancestor);
+            Assert.Null(ancestor);
         }
     }
 }

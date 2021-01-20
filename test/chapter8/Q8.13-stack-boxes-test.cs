@@ -10,7 +10,7 @@ namespace Tests.Chapter8
     {
 
         [TheoryAttribute]
-        [MemberDataAttribute("getBoxes", MemberType = typeof(Boxes))]
+        [MemberDataAttribute(nameof(Boxes.getBoxes), MemberType = typeof(Boxes))]
         private static void StackOfBoxesTest(Box[][] boxes)
         {
             int[] expectedValues = new int[] { 128, 132, 92, 94, 100, 12 };
@@ -26,7 +26,7 @@ namespace Tests.Chapter8
         }
 
         [TheoryAttribute]
-        [MemberDataAttribute("getBoxesNullOrWrongDimensions", MemberType = typeof(Boxes))]
+        [MemberDataAttribute(nameof(Boxes.getBoxesNullOrWrongDimensions), MemberType = typeof(Boxes))]
         private static void StackOfBoxesNullTest(Box[] b)
         {
             Exception actualException = Record.Exception(() => GetHeightBoxesWithOrWithoutCurrentBox(b));

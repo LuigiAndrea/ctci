@@ -11,7 +11,7 @@ namespace Tests.Chapter5
         {
             int number = 100;
             int index = 3;
-            Assert.Equal(false, getBit(number, index));
+            Assert.False(getBit(number, index));
             Assert.Equal(108, setBit(number, index));
 
             Assert.Equal(108, updateBit(number, index, true));

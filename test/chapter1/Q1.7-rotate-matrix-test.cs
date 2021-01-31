@@ -1,6 +1,7 @@
 
 using static Chapter1.Q1_7RotateMatrix;
 using Xunit;
+using System;
 
 namespace Tests.Chapter1
 {
@@ -21,11 +22,24 @@ namespace Tests.Chapter1
             rm.Rotate();
             Assert.Equal(expected, matrix);
 
-            matrix = new int[,] { { 120 }};
+            matrix = new int[,] { { 120 } };
             expected = new int[,] { { 120 } };
             rm = new RotateMatrix(matrix);
             rm.Rotate();
             Assert.Equal(expected, matrix);
         }
+
+        [FactAttribute]
+        public void TestRotateMatrixException()
+        {                   
+            Exception ex = Record.Exception(() => new RotateMatrix(new int[,]{}));
+            Assert.IsType<ArgumentException>(ex);
+
+            ex = Record.Exception(() => new RotateMatrix(new int[,]{{2},{3}}));
+            Assert.IsType<ArgumentException>(ex);
+
+            ex = Record.Exception(() => new RotateMatrix(null));
+            Assert.IsType<ArgumentException>(ex);
+        }  
     }
 }

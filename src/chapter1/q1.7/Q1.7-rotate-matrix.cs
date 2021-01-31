@@ -12,12 +12,13 @@ namespace Chapter1
             int size = 0;
             public RotateMatrix(int[,] matrix)
             {
-                mtx = matrix;
-                size = mtx.GetLength(0);
-                if (size == 0 || size != mtx.GetLength(1))
+                if (matrix == null || matrix.GetLength(0) == 0 || matrix.GetLength(0) != matrix.GetLength(1))
                 {
                     throw new ArgumentException("Please provide a non empty NxN matrix");
                 }
+
+                mtx = matrix;
+                size = mtx.GetLength(0);
             }
 
             //Rotate the matrix clockwise

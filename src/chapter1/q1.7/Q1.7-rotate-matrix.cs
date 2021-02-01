@@ -2,7 +2,6 @@ namespace Chapter1
 {
     using System;
     using System.Text;
-    using static Chapter6.Q16_1NumberSwapper;
 
     public static class Q1_7RotateMatrix
     {

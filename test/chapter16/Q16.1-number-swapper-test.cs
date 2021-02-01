@@ -1,6 +1,6 @@
 using Xunit;
 
-using static Chapter6.Q16_1NumberSwapper;
+using static Chapter16.Q16_1NumberSwapper;
 
 namespace Tests.Chapter6
 {

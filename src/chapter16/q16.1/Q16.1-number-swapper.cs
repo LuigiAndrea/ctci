@@ -1,4 +1,4 @@
-namespace Chapter6
+namespace Chapter16
 {
     public static class Q16_1NumberSwapper
     {

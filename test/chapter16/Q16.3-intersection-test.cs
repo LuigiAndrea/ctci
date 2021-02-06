@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 using static Chapter16.Q16_3Intersection;
@@ -48,37 +49,62 @@ namespace Tests.Chapter6
             Assert.NotNull(p);
             Assert.Equal(1.8, p.x);
             Assert.Equal(-1.2, p.y);
+
+            // Same Lines (same slope and shift)
+            l1 = new Line(new Point(-1, 7), new Point(-2, 12));
+            l2 = new Line(new Point(-4, 22), new Point(0, 2));
+            p = Intersection(l1, l2);
+
         }
 
         [TheoryAttribute]
-        [MemberData(nameof(TestDataIntersection.geLinesWithoutIntersection), MemberType = typeof(TestDataIntersection))]
+        [MemberData(nameof(TestDataIntersection.getLinesWithoutIntersection), MemberType = typeof(TestDataIntersection))]
         public void WithoutIntersectionTest(Line l1, Line l2)
         {
             Assert.Null(Intersection(l1, l2));
         }
-    }
 
-    class TestDataIntersection
-    {
-        public static TheoryData<Line, Line> geLinesWithoutIntersection()
+
+        [TheoryAttribute]
+        [MemberData(nameof(TestDataIntersection.getWrongLinesAndPoints), MemberType = typeof(TestDataIntersection))]
+        public void IntersectionExceptionTest(Line l1, Line l2)
         {
-            // Vertical lines
-            Line lv1 = new Line(new Point(2, 4), new Point(2, 10));
-            Line lv2 = new Line(new Point(2, 10.2), new Point(2, 13));
+            Exception ex = Record.Exception(() => Intersection(l1, l2));
+            Assert.IsType<ArgumentNullException>(ex);
+        }
 
-            // Horizontal lines
-            Line lh1 = new Line(new Point(8.5, 5), new Point(7.1, 5));
-            Line lh2 = new Line(new Point(3, 5), new Point(7, 5));
+        class TestDataIntersection
+        {
+            public static TheoryData<Line, Line> getWrongLinesAndPoints()
+            {
+                return new TheoryData<Line, Line>() {
+                    { null, null },
+                    { new Line(null,null), new Line(null,null) },
+                    { new Line(new Point(0,0), new Point(0,0)),null },
+                    { new Line(new Point(0,0), null),new Line(new Point(0,0), new Point(0,0)) }
+                    };
+            }
 
-            // Oblique lines
-            Line lo1 = new Line(new Point(1, 5), new Point(4, 11));
-            Line lo2 = new Line(new Point(1, 6.5), new Point(11, 31.5));
+            public static TheoryData<Line, Line> getLinesWithoutIntersection()
+            {
+                // Vertical Lines
+                Line lv1 = new Line(new Point(2, 4), new Point(2, 10));
+                Line lv2 = new Line(new Point(2, 10.2), new Point(2, 13));
 
-            // Parallel lines
-            Line lpar1 = new Line(new Point(1, 5), new Point(1.5, 6));
-            Line lpar2 = new Line(new Point(5, 14), new Point(-1, 2));
+                // Horizontal Lines
+                Line lh1 = new Line(new Point(8.5, 5), new Point(7.1, 5));
+                Line lh2 = new Line(new Point(3, 5), new Point(7, 5));
 
-            return new TheoryData<Line, Line>() { { lv1, lv2 }, { lh1, lh2 }, { lo1, lo2 }, { lpar1, lpar2 } };
+                // Oblique Lines
+                Line lo1 = new Line(new Point(1, 5), new Point(4, 11));
+                Line lo2 = new Line(new Point(1, 6.5), new Point(11, 31.5));
+
+                // Parallel Lines
+                Line lpar1 = new Line(new Point(1, 5), new Point(1.5, 6));
+                Line lpar2 = new Line(new Point(5, 14), new Point(-1, 2));
+
+                return new TheoryData<Line, Line>() { { lv1, lv2 }, { lh1, lh2 }, { lo1, lo2 }, { lpar1, lpar2 } };
+            }
         }
     }
 }

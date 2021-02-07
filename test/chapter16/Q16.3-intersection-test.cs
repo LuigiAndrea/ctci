@@ -10,7 +10,7 @@ namespace Tests.Chapter6
         [FactAttribute]
         public void VerticalLinesIntersectionTest()
         {
-            // Vertical Lines
+            //Vertical Lines
             Line lv1 = new Line(new Point(2, 4), new Point(2, 10));
             Line lv2 = new Line(new Point(2, 7), new Point(2, 13));
             Point p = Intersection(lv1, lv2);
@@ -55,6 +55,21 @@ namespace Tests.Chapter6
             l2 = new Line(new Point(-4, 22), new Point(0, 2));
             p = Intersection(l1, l2);
 
+            Assert.NotNull(p);
+            Assert.Equal(-2, p.x);
+            Assert.Equal(12, p.y);
+        }
+
+        [FactAttribute]
+        public void NoLinesSegmentTest()
+        {
+            Line l1 = new Line(new Point(-2, 12), new Point(-2, 12));
+            Line l2 = new Line(new Point(-4, 22), new Point(0, 2));
+            Assert.Null(Intersection(l1, l2));
+
+            l1 = new Line(new Point(-2, 12), new Point(-2, 12));
+            l2 = new Line(new Point(-4, 22), new Point(-4, 22));
+            Assert.Null(Intersection(l1, l2));
         }
 
         [TheoryAttribute]
@@ -63,7 +78,6 @@ namespace Tests.Chapter6
         {
             Assert.Null(Intersection(l1, l2));
         }
-
 
         [TheoryAttribute]
         [MemberData(nameof(TestDataIntersection.getWrongLinesAndPoints), MemberType = typeof(TestDataIntersection))]

@@ -105,9 +105,15 @@ namespace Tests.Chapter6
                 Line lv1 = new Line(new Point(2, 4), new Point(2, 10));
                 Line lv2 = new Line(new Point(2, 10.2), new Point(2, 13));
 
+                Line lv3 = new Line(new Point(2, 4), new Point(2, 10));
+                Line lv4 = new Line(new Point(3, 5.2), new Point(3, 5.8));
+
                 // Horizontal Lines
                 Line lh1 = new Line(new Point(8.5, 5), new Point(7.1, 5));
                 Line lh2 = new Line(new Point(3, 5), new Point(7, 5));
+
+                Line lh3 = new Line(new Point(2, 5), new Point(4, 5));
+                Line lh4 = new Line(new Point(3, 6), new Point(7, 6));
 
                 // Oblique Lines
                 Line lo1 = new Line(new Point(1, 5), new Point(4, 11));
@@ -117,7 +123,7 @@ namespace Tests.Chapter6
                 Line lpar1 = new Line(new Point(1, 5), new Point(1.5, 6));
                 Line lpar2 = new Line(new Point(5, 14), new Point(-1, 2));
 
-                return new TheoryData<Line, Line>() { { lv1, lv2 }, { lh1, lh2 }, { lo1, lo2 }, { lpar1, lpar2 } };
+               return new TheoryData<Line, Line>() { { lv1, lv2 }, { lv3, lv4 }, { lh1, lh2 }, { lh3, lh4 }, { lo1, lo2 }, { lpar1, lpar2 } };
             }
         }
     }

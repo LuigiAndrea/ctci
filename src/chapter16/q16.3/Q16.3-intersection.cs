@@ -28,6 +28,9 @@ namespace Chapter16
             {
                 if (l1.pa.x == l1.pb.x && l1.pa.y != l1.pb.y) // vertical line
                 {
+                    if (l1.pa.x != l2.pa.x)
+                        return null;
+
                     double y_minl1 = (l1.pa.y > l1.pb.y) ? l1.pb.y : l1.pa.y;
                     double y_minl2 = (l2.pa.y > l2.pb.y) ? l2.pb.y : l2.pa.y;
 

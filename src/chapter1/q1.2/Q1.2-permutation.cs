@@ -5,17 +5,6 @@ namespace Chapter1
 {
     public class Q1_2Permutation
     {
-
-        // Summary:
-        //   Give two strings, write a method to decide if one is a permutation of the other
-        //
-        // Parameters:
-        //   a:
-        //     A string
-        //   b:
-        //     A String
-        // Returns:
-        //     a boolean value
         public static bool permutation(string a, string b)
         {
             if (a.Length != b.Length)

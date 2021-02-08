@@ -2,7 +2,7 @@ namespace Chapter1
 {
     public class Q1_4IsPermutationOfPalindromeTweak
     { 
-         //Tweaks of the other solution
+         //Tweaks of the standard solution
         public static bool isPermutationOfPalindrome2(string s)
         {
             int[] letters = new int[256];

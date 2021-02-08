@@ -2,17 +2,6 @@ namespace Chapter1
 {
     public class Q1_1IsUnique
     {
-
-        // Summary:
-        //   Implement an algorithm to determine if a string has all unique characters.
-        //
-        // Parameters:
-        //   value:
-        //     A string to check
-        //
-        // Returns:
-        //     true if the string is Unique, false otherwise
-
         public static bool isUnique(string a)
         {
             //Using Ascii codes
@@ -35,8 +24,7 @@ namespace Chapter1
             return true;
         }
 
-        // Summary:
-        //   Implement an algorithm to determine if a string has all unique characters without using additional DS
+        // Implement an algorithm to determine if a string has all unique characters without using additional DS
         public static bool isUnique2(string s)
         {
             int size = s.Length;

@@ -3,7 +3,7 @@ namespace Chapter1
     using System;
     using System.Text;
 
-    public static class Q1_7RotateMatrix
+    public class Q1_7RotateMatrix
     {
         public class RotateMatrix
         {

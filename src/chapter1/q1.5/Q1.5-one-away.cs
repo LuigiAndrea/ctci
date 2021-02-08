@@ -4,11 +4,6 @@ namespace Chapter1
 {
     public class Q1_5OneAway
     {
-        // Summary:
-        // There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. 
-        // Given two strings, write a function to check if they are one edit (or zero edits) away.
-        // Ex: pale, ple true; pales, pale -> true; pale, bale -> true; pale, bae -> false 
-
         public static bool oneAway(string str1, string str2)
         {
             int diff = str1.Length - str2.Length;

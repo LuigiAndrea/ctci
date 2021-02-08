@@ -1,0 +1,3 @@
+## Palindrome Permutation
+
+#### Given a string, write a function to check if it is a permutation of a palindrome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words. The alghoritms is case-insensitive; abba is the same as aBba, delete the line s.ToLower() otherwise

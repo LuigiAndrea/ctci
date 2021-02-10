@@ -8,17 +8,24 @@ namespace Tests.Chapter6
     public class Q16_4
     {
         [TheoryAttribute]
-        [MemberData(nameof(TestDataTicTac.getWinningCombinations), MemberType = typeof(TestDataTicTac))]
-        public void TicTacWinningTest(value[,] board)
+        [MemberData(nameof(TestDataTicTac.getWinningXCombinations), MemberType = typeof(TestDataTicTac))]
+        public void TicTacWinningXTest(value[,] board)
         {
-            Assert.True(hasWonTicTac(board));
+            Assert.Equal(value.X, hasWonTicTac(board));
+        }
+
+        [TheoryAttribute]
+        [MemberData(nameof(TestDataTicTac.getWinningOCombinations), MemberType = typeof(TestDataTicTac))]
+        public void TicTacWinningOTest(value[,] board)
+        {
+            Assert.Equal(value.X, hasWonTicTac(board));
         }
 
         [TheoryAttribute]
         [MemberData(nameof(TestDataTicTac.getNoWinningCombinations), MemberType = typeof(TestDataTicTac))]
         public void TicTacNoWinningTest(value[,] board)
         {
-            Assert.False(hasWonTicTac(board));
+            Assert.Equal(value.blank, hasWonTicTac(board));
         }
 
         [TheoryAttribute]
@@ -32,7 +39,6 @@ namespace Tests.Chapter6
 
     class TestDataTicTac
     {
-
         public static TheoryData<value[,]> getWrongBoard()
         {
             return new TheoryData<value[,]>() {
@@ -41,24 +47,35 @@ namespace Tests.Chapter6
                 { new value[1, 2] {{ value.blank, value.blank }}}};
         }
 
-        public static TheoryData<value[,]> getWinningCombinations()
+        public static TheoryData<value[,]> getWinningXCombinations()
         {
             value[,] board1 = new value[3, 3] {
-                { value.X, value.O, value.O },
-                { value.blank, value.O, value.X },
-                { value.X, value.O, value.X } };
-
-            value[,] board2 = new value[3, 3] {
                 { value.X, value.O, value.O },
                 { value.O, value.X, value.blank },
                 { value.blank, value.blank, value.X } };
 
-            value[,] board3 = new value[3, 3] {
+            value[,] board2 = new value[3, 3] {
                 { value.O, value.O, value.X },
                 { value.X, value.X, value.X },
                 { value.O, value.O, value.blank } };
 
-            return new TheoryData<value[,]>() { board1, board2, board3 };
+            return new TheoryData<value[,]>() { board1, board2 };
+        }
+
+
+        public static TheoryData<value[,]> getWinningOCombinations()
+        {
+            value[,] board1 = new value[3, 3] {
+                    { value.X, value.O, value.O },
+                    { value.blank, value.O, value.X },
+                    { value.X, value.O, value.X } };
+
+            value[,] board2 = new value[3, 3] {
+                { value.O, value.X, value.O },
+                { value.X, value.O, value.X },
+                { value.O, value.X, value.blank } };
+
+            return new TheoryData<value[,]>() { board1, board2 };
         }
 
         public static TheoryData<value[,]> getNoWinningCombinations()

@@ -18,7 +18,7 @@ namespace Tests.Chapter6
         [MemberData(nameof(TestDataTicTac.getWinningOCombinations), MemberType = typeof(TestDataTicTac))]
         public void TicTacWinningOTest(value[,] board)
         {
-            Assert.Equal(value.X, hasWonTicTac(board));
+            Assert.Equal(value.O, hasWonTicTac(board));
         }
 
         [TheoryAttribute]
@@ -44,6 +44,7 @@ namespace Tests.Chapter6
             return new TheoryData<value[,]>() {
                 { null},
                 { new value[3, 2] {{ value.blank, value.blank },{ value.blank, value.blank },{ value.blank, value.blank }}},
+                { new value[4, 4] {{ value.blank, value.blank,value.blank,value.blank },{ value.blank, value.blank,value.blank,value.blank },{ value.blank, value.blank,value.blank,value.blank },{ value.blank, value.blank,value.blank,value.blank }}},
                 { new value[1, 2] {{ value.blank, value.blank }}}};
         }
 

@@ -32,13 +32,13 @@ namespace Tests.Chapter6
         [FactAttribute]
         public void SmallestDiffFirsTest()
         {
-            Assert.Equal(10, SmallestPairDifference(new int[] { 10, 11, 12 }, new int[] { 0, 0, 0 }));
+            Assert.Equal(10, SmallestPairDifference(new int[] { 11, 10, 12 }, new int[] { 0, 0, 0 }));
         }
 
         [FactAttribute]
         public void SmallestDiffZeroTest()
         {
-            Assert.Equal(0, SmallestPairDifference(new int[] { -5, -2, 0, 5 }, new int[] { -2, -1, 2, 6 }));
+            Assert.Equal(0, SmallestPairDifference(new int[] { -2, -5, 5, 0 }, new int[] { -2, -1, 6, 2 }));
         }
     }
     class TestDataSmallestDifference
@@ -51,17 +51,17 @@ namespace Tests.Chapter6
         }
         public static TheoryData<int[], int[]> getSPDOne()
         {
-            return new TheoryData<int[], int[]>() { {new int[] { 10, 15, 17 }, new int[] { 2, 8, 9 }},
+            return new TheoryData<int[], int[]>() { {new int[] { 17, 15, 10 }, new int[] { 2, 8, 9 }},
                                                     {new int[] { -5, 4, 5, 12 }, new int[] { -6, 2, 10, 18 }},
                                                     {new int[] { -1,2,30 }, new int[] { 5,7,10,15,19,29 }},
-                                                    {new int[] { 4,5,6,9,15,18 }, new int[] { 2,8 }}
+                                                    {new int[] { 18,5,6,9,15,4 }, new int[] { 2,8 }}
                                                     };
         }
 
         public static TheoryData<int[], int[]> getSPDArrayDiffSize()
         {
             return new TheoryData<int[], int[]>() { {new int[] { 10, 15, 17 }, new int[] { 13, 18, 22, 25, 29 }},
-                                                    {new int[] { 10, 15, 18, 22 }, new int[] { 2, 8 }},
+                                                    {new int[] { 10, 18, 15, 22 }, new int[] { 2, 8 }},
                                                     };
         }
     }

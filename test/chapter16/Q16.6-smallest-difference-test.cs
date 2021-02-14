@@ -67,8 +67,8 @@ namespace Tests.Chapter6
         {
             int[] a = new int[] { -2, -3, -5 };
             int[] b = new int[] { 2, 3, 5 };
-            
-            Assert.Equal(4, SmallestPairDifference(a, b));
+
+            Assert.Equal(4, SmallestPairDifferenceAbs(a, b));
         }
     }
 
@@ -92,7 +92,7 @@ namespace Tests.Chapter6
         public static TheoryData<int[], int[]> getSPDArrayDiffSize()
         {
             return new TheoryData<int[], int[]>() { {new int[] { 10, 15, 17 }, new int[] { 13, 18, 22, 25, 29 }},
-                                                    {new int[] { 10, 18, 15, 22 }, new int[] { 2, 8 }},
+                                                    {new int[] { 10, 18, 15, 22 }, new int[] { 2, 8,11 }},
                                                     };
         }
     }

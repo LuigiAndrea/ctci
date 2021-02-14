@@ -1,6 +1,7 @@
 using Xunit;
 
 using static Chapter16.Q16_6SmallestDifference;
+using static Chapter16.Q16_6SmallestDifferenceAbs;
 
 namespace Tests.Chapter6
 {
@@ -19,6 +20,7 @@ namespace Tests.Chapter6
         public void SmallestDiffOneTest(int[] a, int[] b)
         {
             Assert.Equal(1, SmallestPairDifference(a, b));
+            Assert.Equal(1, SmallestPairDifferenceAbs(a, b));
 
         }
 
@@ -27,20 +29,49 @@ namespace Tests.Chapter6
         public void SmallestDifferenceArrayDiffSizeTest(int[] a, int[] b)
         {
             Assert.Equal(2, SmallestPairDifference(a, b));
+            Assert.Equal(1, SmallestPairDifferenceAbs(a, b));
         }
 
         [FactAttribute]
         public void SmallestDiffFirsTest()
         {
-            Assert.Equal(10, SmallestPairDifference(new int[] { 11, 10, 12 }, new int[] { 0, 0, 0 }));
+            int[] a = new int[] { 11, 10, 12 };
+            int[] b = new int[] { 0, 0, 0 };
+
+            Assert.Equal(10, SmallestPairDifference(a, b));
+            Assert.Equal(10, SmallestPairDifferenceAbs(a, b));
         }
 
         [FactAttribute]
         public void SmallestDiffZeroTest()
         {
-            Assert.Equal(0, SmallestPairDifference(new int[] { -2, -5, 5, 0 }, new int[] { -2, -1, 6, 2 }));
+            int[] a = new int[] { -2, -5, 5, 0 };
+            int[] b = new int[] { -2, -1, 6, 2 };
+
+            Assert.Equal(0, SmallestPairDifference(a, b));
+            Assert.Equal(0, SmallestPairDifferenceAbs(a, b));
+        }
+
+        [FactAttribute]
+        public void SmallestDiffTest()
+        {
+            int[] a = new int[] { 5, 15, 40, 55 };
+            int[] b = new int[] { 10, 19, 22, 72 };
+
+            Assert.Equal(5, SmallestPairDifference(a, b));
+            Assert.Equal(4, SmallestPairDifferenceAbs(a, b));
+        }
+
+        [FactAttribute]
+        public void SmallestDiffNegativeAbsTest()
+        {
+            int[] a = new int[] { -2, -3, -5 };
+            int[] b = new int[] { 2, 3, 5 };
+            
+            Assert.Equal(4, SmallestPairDifference(a, b));
         }
     }
+
     class TestDataSmallestDifference
     {
         public static TheoryData<int[], int[]> getSPDNegative()

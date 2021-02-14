@@ -9,28 +9,29 @@ namespace Chapter16
         {
             Array.Sort(a);
             Array.Sort(b);
-            int i = 0;
+            
             int diff = int.MaxValue;
             int currentDiff = -1;
-            for (int j = 0; j < b.Length; j++)
+
+            for (int i = 0, j = 0; i < a.Length && j < b.Length;)
             {
-                for (currentDiff = a[i] - b[j]; currentDiff < 0 && i < a.Length; i++)
-                {
-                    currentDiff = a[i] - b[j];
+                currentDiff = a[i] - b[j];
 
-                    //optimizations
-                    if (currentDiff < 0 && i == a.Length - 1)
-                        return Difference(diff);
+                if (currentDiff == 0)
+                    return diff = 0;
 
-                    if (currentDiff == 0)
-                        return diff = 0;
-                }
-
-                if (i != 0) i--;
-
-                if (currentDiff >= 0 && currentDiff < diff)
+                if (currentDiff > 0 && currentDiff < diff)
                 {
                     diff = currentDiff;
+                }
+
+                if (currentDiff < 0)
+                {
+                    i++;
+                }
+                else
+                {
+                    j++;
                 }
             }
 

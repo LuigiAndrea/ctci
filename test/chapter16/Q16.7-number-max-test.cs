@@ -9,7 +9,10 @@ namespace Tests.Chapter6
         [TheoryAttribute]
         [InlineDataAttribute(31, 4)]
         [InlineDataAttribute(-5, -10)]
-        [InlineDataAttribute(2, 0)]
+        [InlineDataAttribute(2, -4)]
+        [InlineDataAttribute(int.MaxValue, int.MaxValue - 3)]
+        [InlineDataAttribute(int.MaxValue, -3)]
+        [InlineDataAttribute(2, int.MinValue)]
         public void FirstNumberMaxTest(int a, int b)
         {
             Assert.Equal(a, GetMaxNumber(a, b));
@@ -18,7 +21,8 @@ namespace Tests.Chapter6
         [TheoryAttribute]
         [InlineDataAttribute(1, 4)]
         [InlineDataAttribute(-50, -10)]
-        [InlineDataAttribute(0, 10)]
+        [InlineDataAttribute(-10, 10)]
+        [InlineDataAttribute(-5, int.MaxValue)]
         public void SecondNumberMaxTest(int a, int b)
         {
             Assert.Equal(b, GetMaxNumber(a, b));

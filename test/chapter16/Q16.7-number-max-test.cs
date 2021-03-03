@@ -32,7 +32,7 @@ namespace Tests.Chapter6
         [InlineDataAttribute(4, 4)]
         [InlineDataAttribute(-50, -50)]
         [InlineDataAttribute(0, 0)]
-        public void Test(int a, int b)
+        public void SameNumbersTest(int a, int b)
         {
             Assert.Equal(a, GetMaxNumber(a, b));
         }

@@ -52,10 +52,10 @@ namespace Chapter16
             if (n == 0)
                 return str;
 
-            int firstNninteen = n % 100;
-            if (firstNninteen < 20 && firstNninteen > 0)
+            int firstNineteen = n % 100;
+            if (firstNineteen < 20 && firstNineteen > 0)
             {
-                str.Insert(0, dic[(firstNninteen)]);
+                str.Insert(0, dic[firstNineteen]);
                 n /= 100;
             }
             else

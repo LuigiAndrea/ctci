@@ -2,7 +2,7 @@ using System;
 
 namespace Chapter16
 {
-    public static class Q16_5FactorialZeros
+    public class Q16_5FactorialZeros
     {
         public static int GetFactorialTrailingZeros(int n)
         {

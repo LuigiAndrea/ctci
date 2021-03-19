@@ -1,6 +1,6 @@
 namespace Chapter16
 {
-    public static class Q16_1NumberSwapper
+    public class Q16_1NumberSwapper
     {
         public static void SwapNumber(ref int a,ref int b)
         {

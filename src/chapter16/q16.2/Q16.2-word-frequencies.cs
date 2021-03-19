@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Chapter16
 {
-    public static class Q16_2WordFrequencies
+    public class Q16_2WordFrequencies
     {
         public class Book
         {

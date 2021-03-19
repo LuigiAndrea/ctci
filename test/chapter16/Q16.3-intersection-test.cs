@@ -3,7 +3,7 @@ using Xunit;
 
 using static Chapter16.Q16_3Intersection;
 
-namespace Tests.Chapter6
+namespace Tests.Chapter16
 {
     public class Q16_3
     {

@@ -2,7 +2,7 @@ using Xunit;
 
 using static Chapter16.Q16_1NumberSwapper;
 
-namespace Tests.Chapter6
+namespace Tests.Chapter16
 {
     public class Q16_1
     {
@@ -16,7 +16,7 @@ namespace Tests.Chapter6
         [InlineDataAttribute(2, -2)]
         [InlineDataAttribute(-2, -7)]
         [InlineDataAttribute(-10, 3)]
-        private static void NumberSwapperTest(int a, int b)
+        private void NumberSwapperTest(int a, int b)
         {
             prev_a = a;
             prev_b = b;
@@ -32,7 +32,7 @@ namespace Tests.Chapter6
         [InlineDataAttribute(2, -2)]
         [InlineDataAttribute(-2, -7)]
         [InlineDataAttribute(-10, 3)]
-        private static void NumberSwapperXorTest(int a, int b)
+        private void NumberSwapperXorTest(int a, int b)
         {
             prev_a = a;
             prev_b = b;

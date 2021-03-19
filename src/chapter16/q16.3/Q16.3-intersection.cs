@@ -2,7 +2,7 @@ using System;
 
 namespace Chapter16
 {
-    public static class Q16_3Intersection
+    public class Q16_3Intersection
     {
         public static Point Intersection(Line l1, Line l2)
         {

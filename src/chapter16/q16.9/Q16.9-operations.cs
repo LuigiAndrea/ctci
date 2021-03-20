@@ -8,8 +8,8 @@ namespace Chapter16
         {
             int res = 0;
 
-            int sign = getSign(a);
-            sign *= getSign(b);
+            //Determine final sign
+            int sign = (getSign(a) != getSign(b)) ? -1 : 1;
 
             makePositive(ref a, ref b);
             swap(ref a, ref b);
@@ -18,48 +18,60 @@ namespace Chapter16
             {
                 res += b;
             }
-            return sign * res;
+
+            return (sign == -1) ? changeSign(res) : res;
         }
 
         public static int Divide(int a, int b)
         {
             int res = 0;
 
-            if(b==0){
-                  throw new ArgumentException("Please provide a number greater than 0 for the second parameter");
+            if (b == 0)
+            {
+                throw new ArgumentException("Please provide a number greater than 0 for the second parameter");
             }
 
-            int sign = getSign(a);
-            sign *= getSign(b);
+            //Determine final sign
+            int sign = (getSign(a) != getSign(b)) ? -1 : 1;
 
             makePositive(ref a, ref b);
-            int cond=b;
-            while(a >= cond)
+            int cond = b;
+            while (a >= cond)
             {
-                cond+=b;
+                cond += b;
                 res++;
             }
 
-            return sign*res;
-        }
-
-        public static int Subtract(int a, int b)
-        {
-            return 0;
+            return (sign == -1) ? changeSign(res) : res;
         }
 
         //Return 1 if the sign is positive +, -1 otherwise -
         private static int getSign(int n) => (n < 0) ? -1 : 1;
 
+
+        //change sign of n
+        private static int changeSign(int n)
+        {
+            int newValue = 0;
+            int add = (n < 0) ? 1 : -1;
+            while (n != 0)
+            {
+                n += add;
+                newValue += add;
+            }
+            return newValue;
+        }
+
         //Make a and b positive numbers
         private static void makePositive(ref int a, ref int b)
         {
-            a = (a < 0) ? -a : a;
-            b = (b < 0) ? -b : b;
+            a = (a < 0) ? changeSign(a) : a;
+            b = (b < 0) ? changeSign(b) : b;
         }
 
         //swap a and b in order to have a < b 
-        private static void swap(ref int a, ref int b){
+        private static void swap(ref int a, ref int b)
+        {
             if (a > b)
             {
                 int temp = b;
@@ -67,6 +79,5 @@ namespace Chapter16
                 a = temp;
             }
         }
-
     }
 }

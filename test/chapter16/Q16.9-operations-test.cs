@@ -14,6 +14,7 @@ namespace Tests.Chapter16
         [InlineDataAttribute(2, -10, -20)]
         [InlineDataAttribute(-2, -10, 20)]
         [InlineDataAttribute(-3, 3, -9)]
+        [InlineDataAttribute(-3, 1, -3)]
         public void MultiplyTest(int a, int b, int result)
         {
             Assert.Equal(result, Multiply(a, b));
@@ -30,6 +31,7 @@ namespace Tests.Chapter16
         [InlineDataAttribute(-20, -2, 10)]
         [InlineDataAttribute(-20, -3, 6)]
         [InlineDataAttribute(-3, 3, -1)]
+        [InlineDataAttribute(-3, 1, -3)]
         public void DivideTest(int a, int b, int result)
         {
             Assert.Equal(result, Divide(a, b));
@@ -42,6 +44,24 @@ namespace Tests.Chapter16
         {
             Exception actualException = Record.Exception(() => Divide(a, b));
             Assert.IsType<ArgumentException>(actualException);
+        }
+
+        [TheoryAttribute]
+        [InlineDataAttribute(9, 11, -2)]
+        [InlineDataAttribute(12, 11, 1)]
+        [InlineDataAttribute(0, 10, -10)]
+        [InlineDataAttribute(5, 0, 5)]
+        [InlineDataAttribute(-12, 0, -12)]
+        [InlineDataAttribute(20, 2, 18)]
+        [InlineDataAttribute(20, 3, 17)]
+        [InlineDataAttribute(-20, 2, -22)]
+        [InlineDataAttribute(20, -3, 23)]
+        [InlineDataAttribute(-20, -2, -18)]
+        [InlineDataAttribute(-20, -3, -17)]
+        [InlineDataAttribute(-3, 3, -6)]
+        public void SubtractTest(int a, int b, int result)
+        {
+            Assert.Equal(result, Subtract(a, b));
         }
     }
 }

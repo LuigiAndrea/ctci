@@ -56,10 +56,15 @@ namespace Chapter16
         {
             int newValue = 0;
             int add = (n < 0) ? 1 : -1;
+            int jump = add;
             while (n != 0)
             {
-                n += add;
-                newValue += add;
+                if (n + jump < 0)
+                {
+                    jump = add;
+                }
+                n += jump;
+                newValue += jump;
             }
             return newValue;
         }

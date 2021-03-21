@@ -10,9 +10,8 @@ namespace Chapter16
 
             //Determine final sign
             int sign = (getSign(a) != getSign(b)) ? -1 : 1;
-
             makePositive(ref a, ref b);
-            swap(ref a, ref b);
+            swapInOrder(ref a, ref b);
 
             for (int i = 0; i < a; i++)
             {
@@ -45,30 +44,8 @@ namespace Chapter16
             return (sign == -1) ? changeSign(res) : res;
         }
 
-        public static int Subtract(int a, int b)
-        {
-            int signa = getSign(a);
-            int signb = getSign(b);
+        public static int Subtract(int a, int b) => a + changeSign(b);
 
-            //Determine final sign
-            int sign = (signa == signb) ? ((a > b) ? 1 : -1) : (a > 0) ? 1 : -1;
-
-            makePositive(ref a, ref b);
-            swap(ref a, ref b);
-            if (signa != signb)
-            {
-                b += a;
-            }
-            else
-            {
-                for (int i = 0; i < a; i++)
-                {
-                    b += -1;
-                }
-            }
-
-            return (sign == -1) ? changeSign(b) : b;
-        }
 
         //Return 1 if the sign is positive +, -1 otherwise -
         private static int getSign(int n) => (n < 0) ? -1 : 1;
@@ -95,7 +72,7 @@ namespace Chapter16
         }
 
         //swap a and b in order to have a < b 
-        private static void swap(ref int a, ref int b)
+        private static void swapInOrder(ref int a, ref int b)
         {
             if (a > b)
             {

@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-using static Chapter16.Q16_8Operations;
+using static Chapter16.Q16_9Operations;
 
 namespace Tests.Chapter16
 {

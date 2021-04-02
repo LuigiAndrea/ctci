@@ -2,7 +2,7 @@ using System;
 
 namespace Chapter16
 {
-    public class Q16_8Operations
+    public class Q16_9Operations
     {
         public static int Multiply(int a, int b)
         {

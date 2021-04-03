@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Chapter16;
 using Xunit;
@@ -12,12 +13,20 @@ namespace Tests.Chapter16
         [MemberData(nameof(TestDataLivingPeople.getLivingPeople), MemberType = typeof(TestDataLivingPeople))]
         public void LivingPeopleTest(List<Person> persons, int min, int max, int year)
         {
-            Assert.Equal(year, GetYearMostPeopleAlive(persons, min, max));
+            Func<List<Person>, int, int, int>[] funcToRun = new Func<List<Person>, int, int, int>[]{
+                GetYearMostPeopleAlive,GetYearMostPeopleAliveOptimal
+            };
+
+            foreach (var f in funcToRun)
+            {
+                Assert.Equal(year, f(persons, min, max));
+            }
         }
     }
+
     class TestDataLivingPeople
     {
-        public static TheoryData<List<Person>, int, int,int> getLivingPeople()
+        public static TheoryData<List<Person>, int, int, int> getLivingPeople()
         {
             var persons = new List<Person>(){
                     new Person(1905,1950),

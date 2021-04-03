@@ -10,14 +10,14 @@ namespace Tests.Chapter16
     {
         [TheoryAttribute]
         [MemberData(nameof(TestDataLivingPeople.getLivingPeople), MemberType = typeof(TestDataLivingPeople))]
-        public void LivingPeopleTest(List<Person> persons, int min, int max)
+        public void LivingPeopleTest(List<Person> persons, int min, int max, int year)
         {
-            Assert.Equal(1905, GetYearMostPeopleAlive(persons, min, max));
+            Assert.Equal(year, GetYearMostPeopleAlive(persons, min, max));
         }
     }
     class TestDataLivingPeople
     {
-        public static TheoryData<List<Person>, int, int> getLivingPeople()
+        public static TheoryData<List<Person>, int, int,int> getLivingPeople()
         {
             var persons = new List<Person>(){
                     new Person(1905,1950),
@@ -28,9 +28,18 @@ namespace Tests.Chapter16
                     new Person(1965,1980),
                     };
 
-            return new TheoryData<List<Person>, int, int>() {
-                {persons, 1900, 2000}};
+            var persons2 = new List<Person>(){
+                    new Person(1905,1950),
+                    new Person(1902,1915),
+                    new Person(1910,1960),
+                    new Person(1906,1960),
+                    new Person(1965,1980),
+                    };
 
+            return new TheoryData<List<Person>, int, int, int>() {
+                {persons, 1900, 2000,1905},
+                {persons2, 1900, 2000,1910},
+                };
         }
     }
 }

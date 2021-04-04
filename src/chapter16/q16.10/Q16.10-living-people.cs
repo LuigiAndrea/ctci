@@ -86,6 +86,35 @@ namespace Chapter16
             return l;
         }
 
+        public static int GetYearMostPeopleAliveOptimal2(List<Person> persons, int min, int max)
+        {
+            int maxpeoplealive = 0, currentpeoplealive = 0;;
+            int maxyear = min;
+            int size = max - min + 2;
+            int[] yearChanges = new int[size];
+            populateYearChanges(persons, min, yearChanges);
+
+            for (int i = 0; i < size; i++)
+            {
+                currentpeoplealive+=yearChanges[i];
+                if (currentpeoplealive > maxpeoplealive)
+                {
+                    maxpeoplealive = currentpeoplealive;
+                    maxyear = min + i;
+                }
+            }
+
+            return maxyear;
+        }
+
+        public static void populateYearChanges(List<Person> persons, int minYear, int[] yc)
+        {
+            foreach (var p in persons)
+            {
+                yc[p.Birth - minYear]++;
+                yc[p.Death - minYear + 1]--;
+            }
+        }
     }
 
     public class Person

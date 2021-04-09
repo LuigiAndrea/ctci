@@ -3,7 +3,6 @@ using Xunit;
 using Chapter4;
 using static Chapter4.Q4_8FirstCommonAncestorWithoutLinkParent<int>;
 using static Chapter4.Utilities;
-using System;
 
 namespace Tests.Chapter4
 {

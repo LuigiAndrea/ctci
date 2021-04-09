@@ -7,7 +7,6 @@ namespace Chapter1
     {
         public static void ZeroMatrix(int[,] mtx)
         {
-
             if (mtx == null || mtx.GetLength(0) == 0)
             {
                 throw new ArgumentException("Please provide a non empty MxN matrix");

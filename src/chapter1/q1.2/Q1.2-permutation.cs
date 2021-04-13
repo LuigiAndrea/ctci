@@ -15,10 +15,7 @@ namespace Chapter1
             char[] s2 = b.ToCharArray();
             Array.Sort(s2);
 
-            IStructuralEquatable se = s1;
-            bool areEqual = se.Equals(s2, EqualityComparer<char>.Default);
-
-            return areEqual ? true : false;
+            return System.Linq.Enumerable.SequenceEqual(s1, s2);
         }
 
         public static bool permutationEff(string a, string b)

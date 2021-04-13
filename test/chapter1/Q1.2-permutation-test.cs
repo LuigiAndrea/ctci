@@ -8,39 +8,28 @@ namespace Tests.Chapter1
     {
 
         [TheoryAttribute]
-        [InlineDataAttribute("1ff1a", "f1a1f")]
-        [InlineDataAttribute("", "")]
-        public void TestPermutationTrue(string s1, string s2)
+        [InlineDataAttribute("1ff1a", "f1a1f", true)]
+        [InlineDataAttribute("", "", true)]
+        [InlineDataAttribute("a", "fsd", false)]
+        [InlineDataAttribute("bca", "adb", false)]
+        public void PermutationTest(string s1, string s2, bool res)
         {
-            bool r = permutation(s1, s2);
-            Assert.True(r);
-        }
 
-        [TheoryAttribute]
-        [InlineDataAttribute("a", "fsd")]
-        [InlineDataAttribute("bca", "adb")]
-        public void TestPermutationFalse(string s1, string s2)
-        {
-            bool r = permutation(s1, s2);
-            Assert.False(r);
-        }
+            Func<string, string, bool>[] funcToRun = new Func<string, string, bool>[]{
+                permutation,permutationEff
+            };
 
-        [TheoryAttribute]
-        [InlineDataAttribute("1ff1a", "f1a1f")]
-        [InlineDataAttribute("", "")]
-        public void TestPermutationEffTrue(string s1, string s2)
-        {
-            bool r = permutationEff(s1, s2);
-            Assert.True(r);
-        }
-
-        [TheoryAttribute]
-        [InlineDataAttribute("a", "fsd")]
-        [InlineDataAttribute("bca", "adb")]
-        public void TestPermutationEffFalse(string s1, string s2)
-        {
-            bool r = permutationEff(s1, s2);
-            Assert.False(r);
+            foreach (var f in funcToRun)
+            {
+                if (res)
+                {
+                    Assert.True(f(s1, s2));
+                }
+                else
+                {
+                    Assert.False(f(s1, s2));
+                }
+            }
         }
     }
 }

@@ -1,82 +1,35 @@
 using System;
-using static Chapter1.Q1_1IsUnique;
-using System.Text;
 using Xunit;
+using static Chapter1.Q1_1IsUnique;
 
-namespace Tests.Chapter1 {
+namespace Tests.Chapter1
+{
     public class Q1_1
     {
         [TheoryAttribute]
-        [InlineDataAttribute("abcdefgh")]
-        [InlineDataAttribute("")]
-        [InlineDataAttribute("1")]
-        public void TestTrueisUnique(string s)
-        {
-            bool r = isUnique(s);
-            Assert.True(r);
-        }
-
-        [TheoryAttribute]
-        [InlineDataAttribute("11")]
-        [InlineDataAttribute("abcdefghilgmn")]
+        [InlineDataAttribute("abcdefgh", true)]
+        [InlineDataAttribute("", true)]
+        [InlineDataAttribute("1", true)]
+        [InlineDataAttribute("11", false)]
+        [InlineDataAttribute("abcdefghilgmn", false)]
         [MemberData(nameof(TestDataIsUnique.getString), MemberType = typeof(TestDataIsUnique))]
-        public void TestFalseisUnique(string s)
+        public void IsUniqueTest(string s, bool result)
         {
-            bool r = isUnique(s);
-            Assert.False(r);
-        }
 
-        [TheoryAttribute]
-        [InlineDataAttribute("abcdefgh")]
-        [InlineDataAttribute("")]
-        [InlineDataAttribute("1")]
-        public void TestTrueisUnique2(string s)
-        {
-            bool r = isUnique2(s);
-            Assert.True(r);
-        }
+            Func<string, bool>[] funcToRun = new Func<string, bool>[]{
+                isUnique, isUnique2, isUnique3, isUnique4
+            };
 
-        [TheoryAttribute]
-        [InlineDataAttribute("11")]
-        [InlineDataAttribute("abcdefghilgmn")]
-        [MemberData(nameof(TestDataIsUnique.getString), MemberType = typeof(TestDataIsUnique))]
-        public void TestFalseisUnique2(string s)
-        {
-            bool r = isUnique2(s);
-            Assert.False(r);
-        }
-
-        [TheoryAttribute]
-        [InlineDataAttribute("abcdefgh")]
-        [InlineDataAttribute("")]
-        [InlineDataAttribute("1")]
-        public void TestTrueisUnique3(string s)
-        {
-            bool r = isUnique3(s);
-            Assert.True(r);
-        }
-
-        [TheoryAttribute]
-        [InlineDataAttribute("11")]
-        [InlineDataAttribute("abcdefghilgmn")]
-        [MemberData(nameof(TestDataIsUnique.getString), MemberType = typeof(TestDataIsUnique))]
-        public void TestFalseisUnique3(string s)
-        {
-            bool r = isUnique3(s);
-            Assert.False(r);
+            foreach (var f in funcToRun)
+            {
+                Assert.Equal(result, f(s));
+            }
         }
     }
 
     class TestDataIsUnique
     {
-        public static TheoryData<String> getString()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            for (short i = 0; i <= 256; i++)
-                sb.Append('a');
-
-            return new TheoryData<String>() { sb.ToString() };
-        }
+        public static TheoryData<String, bool> getString()
+            => new TheoryData<String, bool>() { { new String('a', 256), false } };
     }
 }

@@ -1,3 +1,5 @@
+using System;
+
 namespace Chapter1
 {
     public class Q1_1IsUnique
@@ -24,7 +26,7 @@ namespace Chapter1
             return true;
         }
 
-        // Implement an algorithm to determine if a string has all unique characters without using additional DS
+        // Determine if a string has all unique characters without using additional DS O(n^2)
         public static bool isUnique2(string s)
         {
             int size = s.Length;
@@ -41,6 +43,7 @@ namespace Chapter1
             return true;
         }
 
+        // Determine if a string has all unique characters without using additional DS O(n), only lowercase letters a-z
         public static bool isUnique3(string s)
         {
             int check = 0;
@@ -52,6 +55,22 @@ namespace Chapter1
 
                 check |= val;
             }
+            return true;
+        }
+
+        // Determine if a string has all unique characters without using additional DS O(log(n)*n)
+        public static bool isUnique4(string s)
+        {
+
+            var a = s.ToCharArray();
+            Array.Sort(a);
+
+            for (int i = 0, j = 1; j < s.Length; i++, j++)
+            {
+                if (a[i] == a[j])
+                    return false;
+            }
+
             return true;
         }
     }

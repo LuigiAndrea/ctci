@@ -229,10 +229,7 @@ namespace Chapter4
         /// <param name="size">Number of nodes contained in the tree.</param>
         public static TTree CreateBinarySearchTree<TTree>(int size) where TTree : TreeBinaryNode<int>
         {
-            int[] array = new int[size];
-            for (int i = 0; i < size; i++)
-                array[i] = i;
-
+            int[] array = Enumerable.Range(0,size).ToArray();
             return (TTree)((typeof(TTree) == typeof(TreeBinaryNode<int>))
                    ? MinimalTree(array)
                    : MinimalParentTree(array));

@@ -15,18 +15,18 @@ namespace Tests.Chapter4
             TreeBinaryNode<int> tree = CreateBinarySearchTree<TreeBinaryNode<int>>(13);
             TreeBinaryNode<int> tree2 = new TreeBinaryNode<int>(13, null, tree.right);
 
-            Assert.True(bst.isBST(tree));
-            Assert.True(bst2.isBST(tree));
+            Assert.True(bst.IsBST(tree));
+            Assert.True(bst2.IsBST(tree));
 
-            Assert.False(bst.isBST(tree2));
-            Assert.False(bst2.isBST(tree2));
+            Assert.False(bst.IsBST(tree2));
+            Assert.False(bst2.IsBST(tree2));
         }
 
         [FactAttribute]
         private void validateBSTNullTest()
         {
-            Assert.True(bst.isBST(null));
-            Assert.True(bst2.isBST(null));
+            Assert.True(bst.IsBST(null));
+            Assert.True(bst2.IsBST(null));
         }
     }
 }

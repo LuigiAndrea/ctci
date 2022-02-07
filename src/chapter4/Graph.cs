@@ -22,5 +22,4 @@ namespace Chapter4
             adjacent = graphNodes;
         }
     }
-
 }

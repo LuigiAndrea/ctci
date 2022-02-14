@@ -9,14 +9,12 @@ namespace Chapter4
             if (tree == null)
                 return true;
 
-            if (!IsBST(tree.left)) 
+            if (!IsBST(tree.left) || (lastNumber != null && tree.value <= lastNumber))
                 return false;
 
-            if (lastNumber !=null && tree.value <= lastNumber)
-                return false;
             lastNumber = tree.value;
 
-            return (!IsBST(tree.right)) ? false : true;
+            return IsBST(tree.right);
         }
     }
 }
